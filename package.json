@@ -20,7 +20,6 @@
     "@types/better-sqlite3": "7.6.3",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
-    "@yarnpkg/sdks": "3.0.0-rc.33",
     "autoprefixer": "10.4.13",
     "better-sqlite3": "8.0.1",
     "daisyui": "2.43.2",
@@ -35,6 +34,9 @@
     "vitest": "0.25.8"
   },
   "dependencies": {
+    "@mikro-orm/better-sqlite": "5.6.0",
+    "@mikro-orm/core": "5.6.0",
+    "@mikro-orm/sqlite": "5.6.0",
     "@rjsf/bootstrap-4": "5.0.0-beta.14",
     "@rjsf/core": "5.0.0-beta.14",
     "@rjsf/utils": "5.0.0-beta.14",
@@ -43,6 +45,7 @@
     "react": "18.2.0",
     "react-bootstrap": "2.7.0",
     "react-dom": "18.2.0",
+    "sequelize": "6.27.0",
     "typeorm": "0.3.11"
   },
   "packageManager": "yarn@3.3.0"

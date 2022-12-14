@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     rakkas({
-      adapter: "cloudflare-workers",
+      // adapter: "cloudflare-workers",
     }),
   ],
+  // ssr: {
+  //   format: "esm",
+  //   target: "webworker",
+  // },
 });

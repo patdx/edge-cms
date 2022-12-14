@@ -1,5 +1,10 @@
-import { DB, ENTITIES } from "src/db";
-import type { EntitySchema } from "typeorm";
+import {
+  convertMikroOrmSchemaToJsonSchema,
+  ORM,
+  ENTITIES,
+  getNewEm,
+} from "src/db/mikro-orm";
+import type { EntitySchema } from "@mikro-orm/core";
 import type { JSONSchema7 } from "json-schema";
 
 export const loadEntityData = async ({
@@ -11,92 +16,54 @@ export const loadEntityData = async ({
   withEntities?: boolean;
   byId?: string | number;
 }) => {
-  const entity = ENTITIES.find(
-    (entity) => entity.options.tableName === entityName
-  );
+  const entity = ENTITIES.find((entity) => entity.name === entityName);
 
   if (!entity) return;
 
+  const em = await getNewEm();
+
   return {
     entities: withEntities
-      ? await DB.getRepository(entity).find({
-          // relations: ["categories"],
-        })
+      ? JSON.parse(
+          JSON.stringify(
+            await em.find(entity, {
+              // relations: ["categories"],
+            })
+          )
+        )
       : [],
     entity: byId
-      ? await DB.getRepository(entity).findOneBy({
-          id: byId,
-        })
+      ? JSON.parse(
+          JSON.stringify(
+            await em.findOne(entity, {
+              id: byId,
+            })
+          )
+        )
       : undefined,
-    schema: convertTypeormSchemaToJsonSchema(entity), //test
-    typeOrmSchema: entity.options,
+    schema: JSON.parse(
+      JSON.stringify(convertMikroOrmSchemaToJsonSchema(entity))
+    ), //test
+    // typeOrmSchema: JSON.parse(JSON.stringify(entity.meta)),
   };
 };
 
 export const insertItem = async (entityName: string, data: any) => {
-  const entity = ENTITIES.find(
-    (entity) => entity.options.tableName === entityName
-  );
+  const entity = ENTITIES.find((entity) => entity.name === entityName);
 
   if (!entity) return;
 
-  await DB.getRepository(entity).insert(data);
+  const em = await getNewEm();
+
+  await em.create(entity, data);
 };
 
 export const updateItem = async (entityName: string, data: any) => {
-  const entity = ENTITIES.find(
-    (entity) => entity.options.tableName === entityName
-  );
+  const entity = ENTITIES.find((entity) => entity.name === entityName);
 
   if (!entity) return;
 
-  await DB.getRepository(entity).update(data);
-};
+  const em = await getNewEm();
 
-const convertSqlTypeToJsonSchema = new Map([
-  ["int", "integer"],
-  ["varchar", "string"],
-  ["text", "string"],
-]);
-
-const convertTypeormSchemaToJsonSchema = (model: EntitySchema) => {
-  // https://github.com/AlfieriChou/typeorm-schema-to-json-schema/blob/master/index.js
-  const columns = model.options.columns || {};
-
-  const result: JSONSchema7 = {
-    type: "object",
-    properties: {},
-    required: [],
-  };
-
-  for (const [columnName, _columnInfo] of Object.entries(columns)) {
-    const columnInfo = _columnInfo!;
-    const jsonSchema = (columnInfo ?? {}) as any as JSONSchema7;
-
-    const isNotRequired =
-      columnInfo.nullable || columnInfo.generated || columnInfo.createDate;
-
-    if (!isNotRequired) {
-      result.required!.push(columnName);
-    }
-
-    if (columnInfo.generated || columnInfo.createDate) {
-      jsonSchema.readOnly = true;
-    }
-
-    if (convertSqlTypeToJsonSchema.has(jsonSchema.type)) {
-      jsonSchema.type = convertSqlTypeToJsonSchema.get(jsonSchema.type)!;
-    } else if (jsonSchema.type === "date") {
-      jsonSchema.type = "string";
-      jsonSchema.format = "date-time";
-    }
-    // if (type === "in")
-
-    result.properties![columnName] = jsonSchema;
-  }
-
-  // console.log(result);
-
-  // there may still be some non-plain stuff in the output
-  return JSON.parse(JSON.stringify(result));
+  await em.upsert(entity, data);
 };

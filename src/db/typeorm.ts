@@ -1,3 +1,4 @@
+import { JSONSchema7 } from "json-schema";
 import { DataSource, EntitySchema } from "typeorm/browser"; // TODO: reduce size here
 import type { BetterSqlite3Driver } from "typeorm/driver/better-sqlite3/BetterSqlite3Driver";
 // import sqlite from "better-sqlite3";
@@ -76,3 +77,45 @@ export const driver = DB.driver as BetterSqlite3Driver;
 
 export const getSqlite = () =>
   driver.databaseConnection as import("better-sqlite3").Database;
+
+export const convertTypeormSchemaToJsonSchema = (model: EntitySchema) => {
+  // https://github.com/AlfieriChou/typeorm-schema-to-json-schema/blob/master/index.js
+  const columns = model.options.columns || {};
+
+  const result: JSONSchema7 = {
+    type: "object",
+    properties: {},
+    required: [],
+  };
+
+  for (const [columnName, _columnInfo] of Object.entries(columns)) {
+    const columnInfo = _columnInfo!;
+    const jsonSchema = (columnInfo ?? {}) as any as JSONSchema7;
+
+    const isNotRequired =
+      columnInfo.nullable || columnInfo.generated || columnInfo.createDate;
+
+    if (!isNotRequired) {
+      result.required!.push(columnName);
+    }
+
+    if (columnInfo.generated || columnInfo.createDate) {
+      jsonSchema.readOnly = true;
+    }
+
+    if (convertSqlTypeToJsonSchema.has(jsonSchema.type)) {
+      jsonSchema.type = convertSqlTypeToJsonSchema.get(jsonSchema.type)!;
+    } else if (jsonSchema.type === "date") {
+      jsonSchema.type = "string";
+      jsonSchema.format = "date-time";
+    }
+    // if (type === "in")
+
+    result.properties![columnName] = jsonSchema;
+  }
+
+  // console.log(result);
+
+  // there may still be some non-plain stuff in the output
+  return JSON.parse(JSON.stringify(result));
+};
