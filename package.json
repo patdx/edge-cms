@@ -6,6 +6,7 @@
     "dev": "rakkas",
     "build": "rakkas build",
     "start": "node dist/server",
+    "start-miniflare": "miniflare --modules dist/server/cloudflare-workers-bundle.js",
     "format": "prettier --write --ignore-unknown src",
     "test": "npm run test:typecheck && npm run test:format && npm run test:lint && npm run test:unit",
     "test:typecheck": "tsc -p tsconfig.json --noEmit",
@@ -14,6 +15,7 @@
     "test:unit": "vitest run"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20221111.1",
     "@hattip/adapter-cloudflare-workers": "0.0.22",
     "@rakkasjs/eslint-config": "0.6.8",
     "@tailwindcss/forms": "0.5.3",
@@ -23,7 +25,9 @@
     "autoprefixer": "10.4.13",
     "better-sqlite3": "8.0.1",
     "daisyui": "2.43.2",
+    "esbuild-plugin-polyfill-node": "0.1.2",
     "eslint": "8.29.0",
+    "miniflare": "2.11.0",
     "postcss": "8.4.20",
     "prettier": "2.8.1",
     "rakkasjs": "0.6.8",
@@ -31,22 +35,36 @@
     "typescript": "4.9.4",
     "vite": "4.0.1",
     "vite-tsconfig-paths": "4.0.2",
-    "vitest": "0.25.8"
+    "vitest": "0.25.8",
+    "wrangler": "2.6.2"
   },
   "dependencies": {
     "@mikro-orm/better-sqlite": "5.6.0",
     "@mikro-orm/core": "5.6.0",
-    "@mikro-orm/sqlite": "5.6.0",
-    "@rjsf/bootstrap-4": "5.0.0-beta.14",
     "@rjsf/core": "5.0.0-beta.14",
+    "@rjsf/semantic-ui": "5.0.0-beta.14",
     "@rjsf/utils": "5.0.0-beta.14",
     "@rjsf/validator-ajv8": "5.0.0-beta.14",
     "@types/json-schema": "7.0.11",
+    "assert": "2.0.0",
+    "constants": "npm:constants-browserify@latest",
+    "crypto": "npm:crypto-browserify@latest",
+    "events": "3.3.0",
+    "inherits": "2.0.4",
+    "module": "link:./packages/stub-module",
+    "os": "link:./packages/os-browserify",
+    "path": "npm:path-browserify@latest",
     "react": "18.2.0",
     "react-bootstrap": "2.7.0",
     "react-dom": "18.2.0",
-    "sequelize": "6.27.0",
-    "typeorm": "0.3.11"
+    "semantic-ui-css": "2.5.0",
+    "semantic-ui-react": "2.1.4",
+    "sqlstring-sqlite": "0.1.1",
+    "stream": "npm:stream-browserify@latest",
+    "timers": "npm:timers-browserify@latest",
+    "tty": "link:./packages/stub-module",
+    "url": "0.11.0",
+    "util": "0.12.5"
   },
   "packageManager": "yarn@3.3.0"
 }

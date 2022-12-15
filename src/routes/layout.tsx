@@ -4,6 +4,7 @@ import { Head, Link, StyledLink, Layout, useServerSideQuery } from "rakkasjs";
 import { ENTITY_MAP } from "src/db/mikro-orm";
 
 import "tailwindcss/tailwind.css";
+import "semantic-ui-css/semantic.min.css";
 
 const MainLayout: Layout = ({ children }) => {
   const { data } = useServerSideQuery(() => Object.keys(ENTITY_MAP));
@@ -12,11 +13,11 @@ const MainLayout: Layout = ({ children }) => {
     <>
       {/* Rakkas relies on react-helmet-async for managing the document head */}
       {/* See their documentation: https://github.com/staylor/react-helmet-async#readme */}
-      <Head title="Rakkas Demo App" />
+      <Head title="Edge CMS" />
 
       <header className="flex p-2 gap-2 shadow justify-between items-center bg-gray-200">
         {/* <Link /> is like <a /> but it provides client-side navigation without full page reload. */}
-        <Link href="/">Rakkas Demo App</Link>
+        <Link href="/">Edge CMS</Link>
 
         <nav>
           <ul className="flex gap-2 items-center">
@@ -24,6 +25,12 @@ const MainLayout: Layout = ({ children }) => {
               {/* <StyledLink /> is like <Link /> but it can be styled based on the current route ()which is useful for navigation links). */}
               <StyledLink href="/" activeClass="bg-[#ddd]">
                 Home
+              </StyledLink>
+            </li>
+
+            <li>
+              <StyledLink href="/schema" activeClass="bg-[#ddd]">
+                Schema
               </StyledLink>
             </li>
 
