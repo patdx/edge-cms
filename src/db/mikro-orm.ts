@@ -1,6 +1,13 @@
-import { BetterSqliteDriver } from "@mikro-orm/better-sqlite";
-import { EntitySchema, MikroORM } from "@mikro-orm/core"; // TODO: reduce size here
-import { JSONSchema7 } from "json-schema";
+// import type { BetterSqliteDriver } from "@mikro-orm/better-sqlite";
+import {
+  ColumnType,
+  EntityProperty,
+  EntitySchema,
+  MikroORM,
+} from "@mikro-orm/core"; // TODO: reduce size here
+import type { JSONSchema7, JSONSchema7TypeName } from "json-schema";
+import type { RequestContext } from "rakkasjs";
+import { CloudflareD1Driver } from "./d1-driver";
 // import sqlite from "better-sqlite3";
 
 // export const DB = sqlite("data.db", {});
@@ -11,8 +18,8 @@ export const Category = new EntitySchema({
   properties: {
     id: {
       primary: true,
-      type: "int",
-      generated: true,
+      type: "integer",
+      // generated: true,
     },
     name: {
       type: "varchar",
@@ -23,11 +30,12 @@ export const Category = new EntitySchema({
 export const Post = new EntitySchema({
   name: "Post", // Will use table name `post` as default behaviour.
   tableName: "posts", // Optional: Provide `tableName` property to override the default behaviour for table name.
+  // expression: "",
   properties: {
     id: {
       primary: true,
-      type: "int",
-      generated: true,
+      type: "integer",
+      // generated: true,
     },
     title: {
       type: "varchar",
@@ -35,14 +43,14 @@ export const Post = new EntitySchema({
     text: {
       type: "text",
     },
-    createdAt: {
-      type: "date",
-      // createDate: true,
-      // this would be more json friendly, but can't
-      // get it to work at the moment:
-      // https://www.golang.dk/articles/go-and-sqlite-in-the-cloud
-      // default: "strftime('%Y-%m-%dT%H:%M:%fZ')",
-    },
+    // createdAt: {
+    //   type: "date",
+    //   // createDate: true,
+    //   // this would be more json friendly, but can't
+    //   // get it to work at the moment:
+    //   // https://www.golang.dk/articles/go-and-sqlite-in-the-cloud
+    //   // default: "strftime('%Y-%m-%dT%H:%M:%fZ')",
+    // },
     categories: {
       reference: "m:n",
       entity: "Category",
@@ -65,31 +73,72 @@ export const ENTITY_MAP = Object.fromEntries(
   ENTITIES.map((item) => [item.name, item])
 );
 
-export const ORM = MikroORM.init<BetterSqliteDriver>({
-  driver: BetterSqliteDriver,
-  dbName: "data.db",
-  // database: "data.db",
-  // synchronize: true,
-  // logging: true,
-  entities: [Category, Post],
-  // subscribers: [],
-  // migrations: [],
-});
+export const getOrm = (context: RequestContext) => {
+  console.log(context);
+  const CLOUDFLARE_DB = context.CLOUDFLARE_DB;
 
-export const getNewEm = () => ORM.then((orm) => orm.em.fork());
+  const orm = MikroORM.init<CloudflareD1Driver>({
+    driver: CloudflareD1Driver,
+    driverOptions: {
+      CLOUDFLARE_DB,
+    },
+    dbName: "data.db",
+    entities: [Category, Post],
+  });
 
-// DB.then(db => db.em.find(Category))
+  const getEntityManager = () => orm.then((orm) => orm.em.fork());
 
-// export const driver = DB.driver as BetterSqlite3Driver;
+  return {
+    orm,
+    getEntityManager,
+  };
+};
 
-// export const getSqlite = () =>
-//   driver.databaseConnection as import("better-sqlite3").Database;
+export const getNewEm = (env: RequestContext) => getOrm(env).getEntityManager();
 
-const DATABASE_TYPE_TO_JSON_SCHEMA_TYPE = new Map([
+const DATABASE_TYPE_TO_JSON_SCHEMA_TYPE = new Map<
+  ColumnType,
+  JSONSchema7TypeName
+>([
   ["int", "integer"],
   ["varchar", "string"],
   ["text", "string"],
 ]);
+
+const getJsonSchemaForEntityProperty = (
+  columnInfo?: EntityProperty
+): JSONSchema7 => {
+  if (!columnInfo) return { type: "null" };
+
+  if (columnInfo.reference === "m:n") {
+    const result: JSONSchema7 = {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          id: getJsonSchemaForEntityProperty(
+            columnInfo.targetMeta?.properties.id
+          ),
+        },
+      },
+    };
+    return result;
+  } else if (DATABASE_TYPE_TO_JSON_SCHEMA_TYPE.has(columnInfo.type as any)) {
+    return {
+      type: DATABASE_TYPE_TO_JSON_SCHEMA_TYPE.get(columnInfo.type as any)!,
+    };
+  } else if (columnInfo.type === "date") {
+    return {
+      type: "string",
+      format: "date-time",
+    };
+  } else {
+    // fallback
+    return {
+      type: columnInfo.type as any,
+    };
+  }
+};
 
 export const convertMikroOrmSchemaToJsonSchema = (model: EntitySchema) => {
   // https://github.com/AlfieriChou/typeorm-schema-to-json-schema/blob/master/index.js
@@ -101,15 +150,16 @@ export const convertMikroOrmSchemaToJsonSchema = (model: EntitySchema) => {
     required: [],
   };
 
-  for (const [columnName, _columnInfo] of Object.entries(columns)) {
-    const columnInfo = _columnInfo!;
-    const jsonSchema = (columnInfo ?? {}) as any as JSONSchema7;
+  for (const [columnName, columnInfo] of Object.entries(columns)) {
+    const jsonSchema: JSONSchema7 = {};
 
     const isNotRequired =
       columnInfo.nullable ||
       columnInfo.default ||
       columnInfo.defaultRaw ||
-      columnInfo.autoincrement;
+      columnInfo.autoincrement ||
+      columnInfo.primary ||
+      columnInfo.reference === "m:n";
 
     if (!isNotRequired) {
       result.required!.push(columnName);
@@ -119,18 +169,10 @@ export const convertMikroOrmSchemaToJsonSchema = (model: EntitySchema) => {
       jsonSchema.readOnly = true;
     }
 
-    if (DATABASE_TYPE_TO_JSON_SCHEMA_TYPE.has(jsonSchema.type)) {
-      jsonSchema.type = DATABASE_TYPE_TO_JSON_SCHEMA_TYPE.get(jsonSchema.type)!;
-    } else if (jsonSchema.type === "date") {
-      jsonSchema.type = "string";
-      jsonSchema.format = "date-time";
-    }
-    // if (type === "in")
+    Object.assign(jsonSchema, getJsonSchemaForEntityProperty(columnInfo));
 
     result.properties![columnName] = jsonSchema;
   }
-
-  // console.log(result);
 
   // there may still be some non-plain stuff in the output
   return JSON.parse(JSON.stringify(result));

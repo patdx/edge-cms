@@ -1,0 +1,21 @@
+name = "my-rakkas-project"
+
+compatibility_date = "2022-12-14"
+
+compatibility_flags = [
+  "streams_enable_constructors",
+]
+main = "dist/server/cloudflare-workers-bundle.js"
+# usage_model = 'bundled'
+workers_dev = true
+
+# node_compat = true
+
+[site]
+bucket = "./dist/client"
+
+[[ d1_databases ]]
+binding = "CLOUDFLARE_DB" # i.e. available in your Worker on env.CLOUDFLARE_DB
+database_name = "edge-cdn-db"
+database_id = "bf2fda34-ed98-4399-8fef-7a382effaac5"
+preview_database_id = "55232a8f-8509-4eda-84a6-f75decaf0a39" # edge-cdn-db-preview
