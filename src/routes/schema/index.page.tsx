@@ -1,21 +1,40 @@
+// import { useServerSideMutation, useServerSideQuery } from "rakkasjs";
+// import { getOrm } from "src/db/mikro-orm";
+
 import { useServerSideMutation, useServerSideQuery } from "rakkasjs";
-import { getOrm } from "src/db/mikro-orm";
+import { getAllCreateQueries } from "src/db/get-query-query";
+import { getOrm } from "src/db/orm";
 
 const SchemaPage = () => {
   const query = useServerSideQuery(async (context) => {
-    const orm = await getOrm(context).orm;
-    const generator = orm.getSchemaGenerator();
+    const schema = await getOrm(context)
+      .DB.prepare("SELECT * from sqlite_schema")
+      .all<{ type: string; name: string; tbl_name: string; sql: string }>();
 
-    const updateDump = await generator.getUpdateSchemaSQL();
-    console.log(updateDump);
+    console.log("db result", schema);
 
-    return { updateDump };
+    await Promise.all(
+      schema.results?.map(async (row) => {
+        const cols = await getOrm(context)
+          .DB.prepare(`PRAGMA table_info(${row.name})`)
+          .all();
+
+        row.cols = cols.results;
+      }) ?? []
+    );
+
+    const updateDump = getAllCreateQueries();
+
+    return { updateDump, schema: schema.results };
   });
 
   const update = useServerSideMutation(
     async (context) => {
-      const orm = await getOrm(context).orm;
-      await orm.getSchemaGenerator().updateSchema();
+      const statements = getAllCreateQueries();
+      const DB = getOrm(context).DB;
+      await DB.batch(statements.map((statement) => DB.prepare(statement)));
+
+      // exec();
     },
     {
       onSettled() {
@@ -27,7 +46,16 @@ const SchemaPage = () => {
   return (
     <>
       <h2>Pending schema changes:</h2>
-      <pre>{query.data.updateDump || "None"}</pre>
+      {query.data.updateDump.map((line) => (
+        <pre key={line}>{line || "None"}</pre>
+      ))}
+
+      {Array.isArray(query.data.schema) && query.data.schema.length >= 1 ? (
+        <pre>{JSON.stringify(query.data.schema, undefined, 2)}</pre>
+      ) : (
+        <pre>(No tables yet)</pre>
+      )}
+
       <button className="btn btn-danger" onClick={() => update.mutate()}>
         Update schema
       </button>

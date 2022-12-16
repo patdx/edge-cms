@@ -1,7 +1,7 @@
 // This is the main layout of our app. It renders the header and the footer.
 
 import { Head, Link, StyledLink, Layout, useServerSideQuery } from "rakkasjs";
-import { ENTITY_MAP } from "src/db/mikro-orm";
+import { ENTITY_MAP } from "src/db/entities";
 
 import "tailwindcss/tailwind.css";
 import "semantic-ui-css/semantic.min.css";

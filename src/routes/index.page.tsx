@@ -1,4 +1,4 @@
-import { Page } from "rakkasjs";
+import type { Page } from "rakkasjs";
 
 const HomePage: Page = function HomePage() {
   return (
