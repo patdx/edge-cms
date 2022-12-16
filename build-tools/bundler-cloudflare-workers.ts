@@ -1,7 +1,6 @@
 import { build, BuildOptions } from "esbuild";
 import { builtinModules } from "module";
 import path from "path";
-import { polyfillNode } from "esbuild-plugin-polyfill-node";
 
 // https://github.com/hattipjs/hattip/blob/main/packages/bundler/bundler-cloudflare-workers/src/index.ts
 
@@ -82,17 +81,7 @@ export default async function bundle(
       "process.versions.node": '"16.0.0"',
     },
     treeShaking: true,
-    plugins: [
-      polyfillNode({
-        polyfills: {
-          module: "empty",
-          os: false,
-          // fs: true,
-          inherits: false,
-        },
-        // Options (optional)
-      }),
-    ],
+    plugins: [],
   };
 
   if (!cfwEntry) {

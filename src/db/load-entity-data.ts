@@ -1,9 +1,6 @@
 import type { RequestContext } from "rakkasjs";
-import {
-  convertMikroOrmSchemaToJsonSchema,
-  ENTITIES,
-  getNewEm,
-} from "src/db/mikro-orm";
+import { ENTITIES, ENTITY_MAP } from "src/db/entities";
+import { getOrm } from "./orm";
 
 export const loadEntityData = async ({
   context,
@@ -16,13 +13,16 @@ export const loadEntityData = async ({
   withEntities?: boolean;
   byId?: string | number;
 }) => {
-  const entity = ENTITIES.find((entity) => entity.name === entityName);
+  console.log("loadEntityData");
+  const entity = ENTITY_MAP[entityName];
 
   if (!entity) return;
 
-  const em = await getNewEm(context);
+  const orm = getOrm(context);
 
-  const jsonSchema = convertMikroOrmSchemaToJsonSchema(entity);
+  console.log("ENTITY", entity);
+
+  // const jsonSchema = convertMikroOrmSchemaToJsonSchema(entity);
 
   // console.log(jsonSchema);
 
@@ -32,7 +32,7 @@ export const loadEntityData = async ({
     entities: withEntities
       ? JSON.parse(
           JSON.stringify(
-            await em.find(entity, {
+            await orm.find(entity, {
               // relations: ["categories"],
             })
           )
@@ -41,13 +41,13 @@ export const loadEntityData = async ({
     entity: byId
       ? JSON.parse(
           JSON.stringify(
-            await em.findOne(entity, {
+            await orm.findOne(entity, {
               id: byId,
             })
           )
         )
       : undefined,
-    schema: JSON.parse(JSON.stringify(jsonSchema)), //test
+    schema: JSON.parse(JSON.stringify(entity)), //test
     // dbSchema: JSON.parse(JSON.stringify(entity.meta)),
   };
 };
@@ -62,9 +62,11 @@ export const insertItem = async (
 
   if (!entity) return;
 
-  const em = await getNewEm(context);
+  // return {};
 
-  await em.nativeInsert(entity, data);
+  // const em = await getNewEm(context);
+
+  // await em.nativeInsert(entity, data);
 };
 
 export const updateItem = async (
@@ -76,7 +78,7 @@ export const updateItem = async (
 
   if (!entity) return;
 
-  const em = await getNewEm(context);
+  // const em = await getNewEm(context);
 
-  await em.nativeUpdate(entity, { id: data.id }, data);
+  // await em.nativeUpdate(entity, { id: data.id }, data);
 };
