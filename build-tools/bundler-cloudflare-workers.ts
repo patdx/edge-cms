@@ -64,17 +64,6 @@ export default async function bundle(
       // ...builtinModules,
       "async_hooks",
       "__STATIC_CONTENT_MANIFEST",
-      // SPECIAL CHANGES,
-      "@mikro-orm/better-sqlite",
-      "@mikro-orm/entity-generator",
-      "@mikro-orm/mariadb",
-      "@mikro-orm/migrations",
-      "@mikro-orm/migrations-mongodb",
-      "@mikro-orm/mongodb",
-      "@mikro-orm/mysql",
-      "@mikro-orm/postgresql",
-      "@mikro-orm/seeder",
-      "@mikro-orm/sqlite",
     ],
     define: {
       "process.env.NODE_ENV": '"production"', // must set separately when not minifying

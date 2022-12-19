@@ -1,3 +1,5 @@
+-- this is theoretically
+-- a way to query every table at once, but I can't figure out the syntax error that is happening
 WITH all_tables AS (
   SELECT
     name
@@ -7,8 +9,7 @@ WITH all_tables AS (
     type = 'table'
 )
 SELECT
-  at.name table_name,
-  -- pti.*,
+  at.name as name,
   json_group_array(
     json_object(
       'cid',
@@ -17,17 +18,17 @@ SELECT
       pti.name,
       'type',
       pti.type,
-      'notnull',
-      pti.notnull,
       'dflt_value',
       pti.dflt_value,
       'pk',
-      pti.pk
+      pti.notnullx
     )
   ) as cols
 FROM
   all_tables at
-  INNER JOIN pragma_table_info(at.name) pti -- ORDER BY
+  INNER JOIN pragma_table_info(at.name) pti -- GROUP BY
+  --   at.name;
+  -- ORDER BY
   --   table_name
-GROUP BY
-  at.name;
+  'notnull',
+  pti.notnull,

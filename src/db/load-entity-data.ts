@@ -1,6 +1,7 @@
 import type { RequestContext } from "rakkasjs";
-import { ENTITIES, ENTITY_MAP } from "src/db/entities";
-import { getOrm } from "./orm";
+import { entities } from "src/db/entities";
+import { getEntity, getOrm } from "./orm";
+import sql, { join, raw } from "sql-template-tag";
 
 export const loadEntityData = async ({
   context,
@@ -9,46 +10,20 @@ export const loadEntityData = async ({
   byId,
 }: {
   context: RequestContext;
-  entityName: string;
+  entityName: keyof typeof entities;
   withEntities?: boolean;
   byId?: string | number;
 }) => {
   console.log("loadEntityData");
-  const entity = ENTITY_MAP[entityName];
-
-  if (!entity) return;
-
+  const entity = entities[entityName];
   const orm = getOrm(context);
 
-  console.log("ENTITY", entity);
-
-  // const jsonSchema = convertMikroOrmSchemaToJsonSchema(entity);
-
-  // console.log(jsonSchema);
-
-  // entity.meta.relations[0].m;
-
   return {
-    entities: withEntities
-      ? JSON.parse(
-          JSON.stringify(
-            await orm.find(entity, {
-              // relations: ["categories"],
-            })
-          )
-        )
-      : [],
+    entities: withEntities ? await orm.find(entityName) : [],
     entity: byId
-      ? JSON.parse(
-          JSON.stringify(
-            await orm.findOne(entity, {
-              id: byId,
-            })
-          )
-        )
+      ? JSON.parse(JSON.stringify(await orm.findOne(entityName, byId)))
       : undefined,
-    schema: JSON.parse(JSON.stringify(entity)), //test
-    // dbSchema: JSON.parse(JSON.stringify(entity.meta)),
+    schema: JSON.parse(JSON.stringify(entity)),
   };
 };
 
@@ -58,15 +33,23 @@ export const insertItem = async (
   data: any
 ) => {
   console.log(`insert item`, entityName, data);
-  const entity = ENTITIES.find((entity) => entity.name === entityName);
+  const entity = getEntity(entityName);
 
-  if (!entity) return;
+  const dataPairs = Object.entries(data);
 
-  // return {};
+  const query = sql`INSERT INTO ${raw(entityName)} (${raw(
+    dataPairs.map((pair) => pair[0]).join(", ")
+  )}) VALUES (${join(
+    dataPairs.map((pair) => pair[1]),
+    ", "
+  )})`;
 
-  // const em = await getNewEm(context);
+  console.log(query.sql, query.values);
 
-  // await em.nativeInsert(entity, data);
+  await getOrm(context)
+    .DB.prepare(query.sql)
+    .bind(...query.values)
+    .run();
 };
 
 export const updateItem = async (
@@ -74,11 +57,19 @@ export const updateItem = async (
   entityName: string,
   data: Record<string, any>
 ) => {
-  const entity = ENTITIES.find((entity) => entity.name === entityName);
+  // const entity = getEntity(entityName);
 
-  if (!entity) return;
+  const { id, ...remaining } = data;
 
-  // const em = await getNewEm(context);
+  const query = sql`UPDATE ${raw(entityName)} SET ${join(
+    Object.entries(remaining).map((item) => sql`${raw(item[0])} = ${item[1]}`),
+    ", "
+  )} WHERE id = ${id}`;
 
-  // await em.nativeUpdate(entity, { id: data.id }, data);
+  console.log(query.sql, query.values);
+
+  await getOrm(context)
+    .DB.prepare(query.sql)
+    .bind(...query.values)
+    .run();
 };

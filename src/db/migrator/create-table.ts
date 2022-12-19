@@ -1,38 +1,7 @@
 import type { JSONSchema7, JSONSchema7TypeName } from "json-schema";
-import { ENTITY_MAP } from "./entities";
+import { entities } from "../entities";
 import { format } from "sql-formatter";
-
-const escapeIdIfNeeded = (text: string) => {
-  // no-op for now
-  return text;
-};
-
-const getSqlType = (
-  typeName: JSONSchema7TypeName
-): "INTEGER" | "REAL" | "TEXT" | "BLOB" => {
-  if (typeName === "string") {
-    return "TEXT";
-  } else if (typeName === "integer") {
-    return "INTEGER";
-  } else if (typeName === "number") {
-    return "REAL";
-  } else {
-    return typeName.toUpperCase() as any;
-  }
-};
-
-const getColumnDef = (
-  name: string,
-  schema: JSONSchema7,
-  parent?: JSONSchema7
-) => {
-  return [
-    escapeIdIfNeeded(name),
-    getSqlType(schema.type),
-    ...(name === "id" ? ["PRIMARY KEY"] : []),
-    ...(parent?.required?.includes(name) ? ["NOT NULL"] : []),
-  ].join(" ");
-};
+import { escapeIdIfNeeded, getColumnDef } from "./shared";
 
 export const getCreateTableQuery = (
   schema: JSONSchema7,
@@ -64,7 +33,7 @@ export const getCreateTableQuery = (
 export const getAllCreateQueries = (options?: { format?: boolean }) => {
   const lines: string[] = [];
 
-  for (const [name, entity] of Object.entries(ENTITY_MAP)) {
+  for (const [name, entity] of Object.entries(entities)) {
     const query = getCreateTableQuery(entity, {
       name,
       format: options?.format,
@@ -75,5 +44,3 @@ export const getAllCreateQueries = (options?: { format?: boolean }) => {
 
   return lines;
 };
-
-console.log(getAllCreateQueries());

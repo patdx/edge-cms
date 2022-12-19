@@ -11,6 +11,9 @@ import { insertItem, loadEntityData } from "src/db/load-entity-data";
 const EntityPage = ({ params }: PageProps) => {
   const entityName = params.entity;
 
+  // TODO: figure out how to filter out default urls like favicon.ico
+  // more effectively to avoid error messagesq
+
   const { data, refetch } = useServerSideQuery((context) =>
     loadEntityData({ context, entityName, withEntities: true })
   );

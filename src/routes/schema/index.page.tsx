@@ -2,7 +2,7 @@
 // import { getOrm } from "src/db/mikro-orm";
 
 import { useServerSideMutation, useServerSideQuery } from "rakkasjs";
-import { getAllCreateQueries } from "src/db/get-query-query";
+import { getAllCreateQueries } from "src/db/migrator/create-table";
 import { getOrm } from "src/db/orm";
 
 const SchemaPage = () => {

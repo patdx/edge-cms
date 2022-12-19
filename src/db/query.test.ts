@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Post } from "./entities";
-import { getCreateTableQuery } from "./get-query-query";
+import { getCreateTableQuery } from "./migrator/create-table";
 
 describe("can create table", () => {
   it("post table", () => {
