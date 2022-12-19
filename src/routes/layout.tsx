@@ -1,19 +1,39 @@
 // This is the main layout of our app. It renders the header and the footer.
 
 import { Head, Link, StyledLink, Layout, useServerSideQuery } from "rakkasjs";
-import { ENTITY_MAP } from "src/db/entities";
+import { entities } from "src/db/entities";
 
 import "tailwindcss/tailwind.css";
 import "semantic-ui-css/semantic.min.css";
 
 const MainLayout: Layout = ({ children }) => {
-  const { data } = useServerSideQuery(() => Object.keys(ENTITY_MAP));
+  const { data } = useServerSideQuery(() => Object.keys(entities));
 
   return (
     <>
       {/* Rakkas relies on react-helmet-async for managing the document head */}
       {/* See their documentation: https://github.com/staylor/react-helmet-async#readme */}
       <Head title="Edge CMS" />
+      <Head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
 
       <header className="flex p-2 gap-2 shadow justify-between items-center bg-gray-200">
         {/* <Link /> is like <a /> but it provides client-side navigation without full page reload. */}
