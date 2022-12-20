@@ -1,5 +1,5 @@
 import type { JSONSchema7, JSONSchema7TypeName } from "json-schema";
-import type { SqliteCOlumnType } from "./types";
+import type { SqliteColumnType } from "./types";
 
 export const escapeIdIfNeeded = (text: string) => {
   // no-op for now
@@ -8,7 +8,7 @@ export const escapeIdIfNeeded = (text: string) => {
 
 export const getSqlType = (
   typeName?: JSONSchema7TypeName | JSONSchema7TypeName[]
-): SqliteCOlumnType => {
+): SqliteColumnType => {
   if (typeName === "string") {
     return "TEXT";
   } else if (typeName === "integer") {

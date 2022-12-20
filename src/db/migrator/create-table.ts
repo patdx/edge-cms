@@ -1,8 +1,12 @@
-import type { JSONSchema7, JSONSchema7TypeName } from "json-schema";
-import { entities } from "../entities";
+import type { JSONSchema7 } from "json-schema";
 import { formatDialect, sqlite } from "sql-formatter";
+import { entities } from "../entities";
 import { escapeIdIfNeeded, getColumnDef } from "./shared";
 
+/**
+ * @deprecated, there is a more useful
+ * version that works on the immediate data format
+ */
 export const getCreateTableQuery = (
   jsonSchema: JSONSchema7,
   options?: {

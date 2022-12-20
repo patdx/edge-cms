@@ -5,7 +5,7 @@ import { createSQLiteDB } from "@miniflare/shared";
 
 const dbPromise = Promise.resolve()
   // .then(() => createSQLiteDB(":memory:"))
-  .then(() => createSQLiteDB("data.db"))
+  .then(() => createSQLiteDB("./data/data.db"))
   .then((db) => new BetaDatabase(db));
 
 export default createMiddleware(async (context) => {

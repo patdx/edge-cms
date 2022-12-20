@@ -1378,6 +1378,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/gensync@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@types/gensync@npm:1.0.0"
+  checksum: f17581b8067057994c59d3351d0253ffbb90afb27a8636641d2c1d764c196ef7a735a674bb34ecc45ef1b3bfc0c8d37f92e0c6808cc8dc178d4746631dd31fba
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:7.0.11, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -2678,6 +2685,7 @@ __metadata:
     "@sinclair/typebox": 0.25.14
     "@tailwindcss/forms": 0.5.3
     "@types/better-sqlite3": 7.6.3
+    "@types/gensync": 1.0.0
     "@types/json-schema": 7.0.11
     "@types/react": 18.0.26
     "@types/react-dom": 18.0.9
@@ -2685,6 +2693,7 @@ __metadata:
     better-sqlite3: 8.0.1
     daisyui: 2.45.0
     eslint: 8.30.0
+    gensync: 1.0.0-beta.2
     miniflare: 2.11.0
     postcss: 8.4.20
     prettier: 2.8.1
@@ -2704,6 +2713,7 @@ __metadata:
     vite-tsconfig-paths: 4.0.3
     vitest: 0.26.0
     wrangler: 2.6.2
+    zod: 3.20.2
   languageName: unknown
   linkType: soft
 
@@ -3869,7 +3879,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gensync@npm:^1.0.0-beta.2":
+"gensync@npm:1.0.0-beta.2, gensync@npm:^1.0.0-beta.2":
   version: 1.0.0-beta.2
   resolution: "gensync@npm:1.0.0-beta.2"
   checksum: a7437e58c6be12aa6c90f7730eac7fa9833dc78872b4ad2963d2031b00a3367a93f98aec75f9aaac7220848e4026d67a8655e870b24f20a543d103c0d65952ec
@@ -7252,5 +7262,12 @@ __metadata:
     mustache: ^4.2.0
     stack-trace: 0.0.10
   checksum: e81644ad9469a26949a85cb2e1a3f9c9faf11daa67a265e9ad0361942b2c06cf02ee1dc8c85d74fe7ad25d35bbc2fee34717a54c5a0b8eeb82dc9276d139906b
+  languageName: node
+  linkType: hard
+
+"zod@npm:3.20.2":
+  version: 3.20.2
+  resolution: "zod@npm:3.20.2"
+  checksum: 04172f7e9350372684ccd298d4716908edc9113751295b6c4e1b3ea84e2af8997e504b33ba36f4741417bb2a5dc90bfd40501f6b0e7389df10e42a63d6d8366c
   languageName: node
   linkType: hard
