@@ -1,3 +1,5 @@
+// TODO: add validation for types for unit tests
+
 export type SqliteTableSchema = {
   type: "table";
   name: string;
@@ -10,7 +12,7 @@ export type SqliteTableSchema = {
 export type SqliteCOlumnType = "INTEGER" | "REAL" | "TEXT" | "BLOB";
 
 export type SqliteColumnSchema = {
-  cid: number;
+  cid?: number;
   name: string;
   type: SqliteCOlumnType;
   notnull: 0 | 1;

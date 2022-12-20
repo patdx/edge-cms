@@ -1,28 +1,28 @@
 import type { JSONSchema7, JSONSchema7TypeName } from "json-schema";
 import { entities } from "../entities";
-import { format } from "sql-formatter";
+import { formatDialect, sqlite } from "sql-formatter";
 import { escapeIdIfNeeded, getColumnDef } from "./shared";
 
 export const getCreateTableQuery = (
-  schema: JSONSchema7,
+  jsonSchema: JSONSchema7,
   options?: {
     name: string;
     format?: boolean;
   }
 ) => {
-  const name = options?.name ?? schema.title;
+  const name = options?.name ?? jsonSchema.title;
 
   if (!name) throw new Error(`Name of table is required`);
 
   const query = `CREATE TABLE ${escapeIdIfNeeded(name)} (${Object.entries(
-    schema.properties ?? {}
+    jsonSchema.properties ?? {}
   )
-    .map(([name, options]) => getColumnDef(name, options as any, schema))
+    .map(([name, options]) => getColumnDef(name, options as any, jsonSchema))
     .join(", ")}) STRICT;`;
 
   if (options?.format) {
-    return format(query, {
-      language: "sqlite",
+    return formatDialect(query, {
+      dialect: sqlite,
       keywordCase: "upper",
     });
   } else {
