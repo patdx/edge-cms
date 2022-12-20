@@ -1,0 +1,109 @@
+import { escapeIdIfNeeded } from "./shared";
+import type {
+  MigrationStep,
+  SqliteColumnSchema,
+  SqliteTableSchema,
+} from "./types";
+
+export const diffSchema = (
+  oldSchema: SqliteTableSchema[],
+  newSchema: SqliteTableSchema[]
+): MigrationStep[] => {
+  const steps: MigrationStep[] = [];
+
+  const oldTableNames = oldSchema.map((item) => item.tbl_name!);
+  const newTableNames = newSchema.map((item) => item.tbl_name!);
+
+  const added = newTableNames.filter(
+    (newTableName) => !oldTableNames.includes(newTableName)
+  );
+
+  for (const add of added) {
+    steps.push({
+      type: "create-table",
+      table: newSchema.find((item) => item.name === add)!,
+    });
+  }
+
+  const dropped = oldTableNames.filter(
+    (oldTableName) => !newTableNames.includes(oldTableName)
+  );
+
+  for (const drop of dropped) {
+    steps.push({
+      type: "drop-table",
+      tableName: drop,
+    });
+  }
+
+  for (const newTable of newSchema) {
+    const oldTable = oldSchema.find((item) => item.tbl_name === newTable.name);
+
+    if (oldTable) {
+      const oldColumnNames = oldTable.columns.map((col) => col.name);
+      const newColumnNames = newTable.columns.map((col) => col.name);
+
+      const added = newColumnNames.filter(
+        (newColumnName) => !oldColumnNames.includes(newColumnName)
+      );
+
+      for (const add of added) {
+        steps.push({
+          type: "add-column",
+          tableName: newTable.name!,
+          column: newTable.columns.find((column) => column.name === add)!,
+        });
+      }
+
+      const dropped = oldColumnNames.filter(
+        (oldColumnName) => !newColumnNames.includes(oldColumnName)
+      );
+
+      for (const drop of dropped) {
+        steps.push({
+          type: "drop-column",
+          tableName: newTable.name!,
+          columnName: drop,
+        });
+      }
+    }
+  }
+
+  return steps;
+};
+
+export const generateMigrationStepSql = (step: MigrationStep) => {
+  if (step.type === "create-table") {
+    const name = step.table.name;
+
+    if (!name) throw new Error(`Name of table is required`);
+
+    const query = `CREATE TABLE ${escapeIdIfNeeded(name)} (${step.table.columns
+      .map((column) => getColumnDef(column))
+      .join(", ")}) STRICT;`;
+
+    return query;
+  } else if (step.type === "drop-table") {
+    return `DROP TABLE ${escapeIdIfNeeded(step.tableName)}`;
+  } else if (step.type === "add-column") {
+    return `ALTER TABLE ${escapeIdIfNeeded(
+      step.tableName
+    )} ADD COLUMN ${getColumnDef(step.column)}`;
+  } else if (step.type === "drop-column") {
+    return `ALTER TABLE ${escapeIdIfNeeded(step.tableName)} DROP COLUMN ${
+      step.columnName
+    }`;
+  } else {
+    // no matching rinser
+    return undefined;
+  }
+};
+
+const getColumnDef = (column: SqliteColumnSchema) => {
+  return [
+    escapeIdIfNeeded(column.name),
+    column.type,
+    ...(column.pk === 1 ? ["PRIMARY KEY"] : []),
+    ...(column.notnull ? ["NOT NULL"] : []),
+  ].join(" ");
+};

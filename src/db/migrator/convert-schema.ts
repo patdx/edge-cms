@@ -1,10 +1,12 @@
 import type { JSONSchema7 } from "json-schema";
+import { getSqlType } from "./shared";
 import type { SqliteTableSchema } from "./types";
 
 export const convertJsonSchemaToDatabaseSchema = (
-  jsonSchema: JSONSchema7
+  jsonSchema: JSONSchema7,
+  options?: { tableName?: string }
 ): SqliteTableSchema => {
-  const title = jsonSchema.title as string;
+  const title = options?.tableName ?? jsonSchema.title;
 
   const rootTable: SqliteTableSchema = {
     type: "table",
@@ -17,7 +19,7 @@ export const convertJsonSchemaToDatabaseSchema = (
     if (typeof prop === "object") {
       rootTable.columns.push({
         name: key,
-        type: prop.type as any,
+        type: getSqlType(prop.type),
         notnull: jsonSchema.required?.includes(key) ? 1 : 0,
         dflt_value: prop.default as any,
         pk: key === "id" ? 1 : 0,

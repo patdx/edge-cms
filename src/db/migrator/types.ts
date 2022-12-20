@@ -1,21 +1,48 @@
-// TODO: add validation for types for unit tests
+import { z } from "zod";
 
-export type SqliteTableSchema = {
-  type: "table";
-  name: string;
-  tbl_name: string;
+export const SqliteColumnSchema = z.object({
+  cid: z.number().int().nullish(),
+  name: z.string(),
+  type: z.string(), // SqliteColumnType
+  notnull: z.union([z.literal(0), z.literal(1)]),
+  dflt_value: z.string().nullish(),
+  pk: z.number().int(),
+});
+
+export const SqliteTableSchema = z.object({
+  type: z.literal("table").optional(),
+  name: z.string().optional(),
+  tbl_name: z.string().optional(),
+  columns: z.array(SqliteColumnSchema),
   // rootpage: number;
   // sql: string;
-  columns: SqliteColumnSchema[];
-};
+});
 
-export type SqliteCOlumnType = "INTEGER" | "REAL" | "TEXT" | "BLOB";
+export type SqliteTableSchema = z.infer<typeof SqliteTableSchema>;
 
-export type SqliteColumnSchema = {
-  cid?: number;
-  name: string;
-  type: SqliteCOlumnType;
-  notnull: 0 | 1;
-  dflt_value: null | string;
-  pk: 0 | 1;
-};
+export type SqliteColumnType = "INTEGER" | "REAL" | "TEXT" | "BLOB";
+
+export type SqliteColumnSchema = z.infer<typeof SqliteColumnSchema>;
+
+export const MigrationStep = z.union([
+  z.object({
+    type: z.literal("create-table"),
+    table: SqliteTableSchema,
+  }),
+  z.object({
+    type: z.literal("drop-table"),
+    tableName: z.string(),
+  }),
+  z.object({
+    type: z.literal("add-column"),
+    tableName: z.string(),
+    column: SqliteColumnSchema,
+  }),
+  z.object({
+    type: z.literal("drop-column"),
+    tableName: z.string(),
+    columnName: z.string(),
+  }),
+]);
+
+export type MigrationStep = z.infer<typeof MigrationStep>;
