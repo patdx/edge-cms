@@ -12,7 +12,7 @@ export const systemTables = {
   ),
   _schemas: Type.Object(
     {
-      id: Type.Optional(Type.String()),
+      id: Type.Optional(Type.Integer()),
       json: Type.String(),
     },
     {

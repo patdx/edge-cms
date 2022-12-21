@@ -11,7 +11,7 @@ const MainLayout: Layout = ({ children }) => {
     async (context) => {
       const DB = getOrm(context).DB;
       const tables = await DB.prepare(
-        `SELECT name FROM sqlite_schema WHERE type = 'table'`
+        `SELECT name FROM sqlite_schema WHERE type = 'table' ORDER BY name`
       ).all<{ name: string }>();
       return tables.results?.map((table) => table.name) ?? [];
     },
@@ -58,14 +58,18 @@ const MainLayout: Layout = ({ children }) => {
             </li>
 
             <li>
-              <StyledLink href="/schema" activeClass="bg-[#ddd]">
-                Schema
+              <StyledLink href="/database" activeClass="bg-[#ddd]">
+                Database
               </StyledLink>
             </li>
 
             {data.map((name) => (
               <li key={name}>
-                <StyledLink href={`/${name}`} activeClass="bg-[#ddd]">
+                <StyledLink
+                  href={`/${name}`}
+                  className="capitalize"
+                  activeClass="bg-[#ddd]"
+                >
                   {name}
                 </StyledLink>
               </li>

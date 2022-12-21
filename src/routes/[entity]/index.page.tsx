@@ -38,7 +38,7 @@ const EntityPage = ({ params }: PageProps) => {
 
   return (
     <div className="p-2">
-      <h2>{entityName}</h2>
+      {/* <h2>{entityName}</h2> */}
       <Form
         schema={data?.schema ?? {}}
         onSubmit={async (data) => {

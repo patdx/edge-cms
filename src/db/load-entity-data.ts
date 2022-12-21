@@ -25,9 +25,14 @@ export const loadEntityData = async ({
           (systemTables as Record<string, JSONSchema6>)[entityName]
         )
       )
-    : await orm
-        .findOne<SchemaTable>("_schemas", entityName)
-        .then((result) => (result?.json ? JSON.parse(result.json) : undefined));
+    : await orm.DB.prepare(
+        `SELECT json FROM _schemas WHERE json_extract(json, '$.title') = ?`
+      )
+        .bind(entityName)
+        .first("json")
+        .then((res) => {
+          return typeof res === "string" ? JSON.parse(res) : undefined;
+        });
 
   return {
     entities: withEntities ? await orm.find(entityName) : [],
