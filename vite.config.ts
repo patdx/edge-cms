@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     rakkas({
-      adapter: cloudflareWorkersCustomAdapter,
+      adapter: "cloudflare-workers",
+      // adapter: cloudflareWorkersCustomAdapter,
     }),
   ],
   // ssr: {

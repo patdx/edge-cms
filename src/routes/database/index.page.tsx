@@ -7,6 +7,7 @@ import {
   useServerSideQuery,
 } from "rakkasjs";
 import { defaultEntities } from "src/db/entities";
+import { insertItem } from "src/db/load-entity-data";
 import { convertManyJsonSchemasToDatabaseSchema } from "src/db/migrator/convert-schema";
 import {
   diffSchema,
@@ -77,7 +78,9 @@ const SchemaPage = () => {
     }
   );
 
-  const update = useServerSideMutation(
+  const queryClient = useQueryClient();
+
+  const syncDatabaseSchema = useServerSideMutation(
     async (context) => {
       const orm = getOrm(context);
       const { DB } = orm;
@@ -113,7 +116,10 @@ const SchemaPage = () => {
     },
     {
       onSettled() {
-        query.refetch();
+        queryClient.invalidateQueries([
+          "overall-database-status",
+          "available-entities",
+        ]);
       },
     }
   );
@@ -123,13 +129,14 @@ const SchemaPage = () => {
       <AdminTools />
 
       <div className="p-2 rounded border shadow">
+        {/* TODO: make sure this automatically invalidates when updating _schemas table */}
         <h2>Pending schema changes:</h2>
         {query.data.updateDump.length === 0 ? (
           <p>No pending changes.</p>
         ) : (
           <button
-            className="btn btn-danger transition bg-orange-300 hover"
-            onClick={() => update.mutate()}
+            className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1"
+            onClick={() => syncDatabaseSchema.mutate()}
           >
             Apply changes
           </button>
@@ -141,24 +148,26 @@ const SchemaPage = () => {
 
       <div className="p-2 rounded border shadow">
         <h2>Current database schema</h2>
-        {Array.isArray(query.data.schema) && query.data.schema.length >= 1 ? (
-          query.data.schema.map((item) => (
-            <div className="p-2 rounded border shadow">
-              <h4>{item.name}</h4>
-              {item.columns.map((column) => {
-                const { name, ...remaining } = column;
-                return (
-                  <div>
-                    <strong>{name}</strong>{" "}
-                    <pre className="inline">{JSON.stringify(remaining)}</pre>
-                  </div>
-                );
-              })}
-            </div>
-          ))
-        ) : (
-          <pre>(No tables yet)</pre>
-        )}
+        <div className="flex flex-col gap-2">
+          {Array.isArray(query.data.schema) && query.data.schema.length >= 1 ? (
+            query.data.schema.map((item) => (
+              <div key={item.name} className="p-2 rounded border shadow">
+                <h4>{item.name}</h4>
+                {item.columns.map((column) => {
+                  const { name, ...remaining } = column;
+                  return (
+                    <div>
+                      <strong>{name}</strong>{" "}
+                      <pre className="inline">{JSON.stringify(remaining)}</pre>
+                    </div>
+                  );
+                })}
+              </div>
+            ))
+          ) : (
+            <pre>(No tables yet)</pre>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -200,7 +209,33 @@ const AdminTools = () => {
     },
     {
       onSettled() {
-        queryClient.invalidateQueries("overall-database-status");
+        queryClient.invalidateQueries([
+          "overall-database-status",
+          "available-entities",
+        ]);
+      },
+    }
+  );
+
+  const setUpDefaultSchemas = useServerSideMutation(
+    async (context) => {
+      // const DB = getOrm(context).DB;
+
+      // TODO: support insert in batch
+      await Promise.allSettled(
+        Object.values(defaultEntities).map(async (entity) => {
+          await insertItem(context, "_schemas", {
+            json: JSON.stringify(entity), // , undefined, 2
+          });
+        })
+      );
+    },
+    {
+      onSettled() {
+        queryClient.invalidateQueries([
+          "overall-database-status",
+          "available-entities",
+        ]);
       },
     }
   );
@@ -208,9 +243,22 @@ const AdminTools = () => {
   return (
     <div className="p-2 rounded border shadow">
       <h2>Tools</h2>
-      <button type="button" onClick={() => deleteAllTables.mutate()}>
-        Delete all tables
-      </button>
+      <div className="flex gap-2">
+        <button
+          type="button"
+          onClick={() => deleteAllTables.mutate()}
+          className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1 rounded"
+        >
+          Delete all tables
+        </button>
+        <button
+          type="button"
+          onClick={() => setUpDefaultSchemas.mutate()}
+          className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1 rounded"
+        >
+          Set up default schemas
+        </button>
+      </div>
     </div>
   );
 };
