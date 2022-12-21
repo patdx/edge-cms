@@ -2,12 +2,12 @@ WITH all_tables AS (
   SELECT
     name
   FROM
-    sqlite_master
+    sqlite_schema
   WHERE
     type = 'table'
 )
 SELECT
-  at.name table_name,
+  at.name name,
   json_group_array(
     json_object(
       'cid',
@@ -27,5 +27,7 @@ SELECT
 FROM
   all_tables at
   INNER JOIN pragma_table_info(at.name) pti
+GROUP BY
+  at.name
 ORDER BY
-  table_name
+  name;

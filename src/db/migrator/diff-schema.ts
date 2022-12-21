@@ -1,6 +1,7 @@
 import { escapeIdIfNeeded } from "./shared";
 import type {
   MigrationStep,
+  MigrationStepCreateTable,
   SqliteColumnSchema,
   SqliteTableSchema,
 } from "./types";
@@ -11,8 +12,8 @@ export const diffSchema = (
 ): MigrationStep[] => {
   const steps: MigrationStep[] = [];
 
-  const oldTableNames = oldSchema.map((item) => item.tbl_name!);
-  const newTableNames = newSchema.map((item) => item.tbl_name!);
+  const oldTableNames = oldSchema.map((item) => item.name!);
+  const newTableNames = newSchema.map((item) => item.name!);
 
   const added = newTableNames.filter(
     (newTableName) => !oldTableNames.includes(newTableName)
@@ -37,7 +38,7 @@ export const diffSchema = (
   }
 
   for (const newTable of newSchema) {
-    const oldTable = oldSchema.find((item) => item.tbl_name === newTable.name);
+    const oldTable = oldSchema.find((item) => item.name === newTable.name);
 
     if (oldTable) {
       const oldColumnNames = oldTable.columns.map((col) => col.name);
@@ -72,17 +73,27 @@ export const diffSchema = (
   return steps;
 };
 
+export const generateMigrationStepCreateTable = (
+  step: MigrationStepCreateTable
+) => {
+  const name = step.table.name;
+
+  if (!name) throw new Error(`Name of table is required`);
+
+  return [
+    "CREATE TABLE",
+    // if not exists may be used for specia features, for example
+    // bootstrapping a migrations table
+    ...(step.ifNotExists ? ["IF NOT EXISTS"] : []),
+    escapeIdIfNeeded(name),
+    `(${step.table.columns.map((column) => getColumnDef(column)).join(", ")})`,
+    "STRICT;",
+  ].join(" ");
+};
+
 export const generateMigrationStepSql = (step: MigrationStep) => {
   if (step.type === "create-table") {
-    const name = step.table.name;
-
-    if (!name) throw new Error(`Name of table is required`);
-
-    const query = `CREATE TABLE ${escapeIdIfNeeded(name)} (${step.table.columns
-      .map((column) => getColumnDef(column))
-      .join(", ")}) STRICT;`;
-
-    return query;
+    return generateMigrationStepCreateTable(step);
   } else if (step.type === "drop-table") {
     return `DROP TABLE ${escapeIdIfNeeded(step.tableName)}`;
   } else if (step.type === "add-column") {
@@ -94,10 +105,12 @@ export const generateMigrationStepSql = (step: MigrationStep) => {
       step.columnName
     }`;
   } else {
-    // no matching rinser
-    return undefined;
+    throw new Error(`Unknown migration step type ${step}`);
   }
 };
+
+export const generateManyMigrationStepsSql = (steps: MigrationStep[]) =>
+  steps.map((step) => generateMigrationStepSql(step));
 
 const getColumnDef = (column: SqliteColumnSchema) => {
   return [

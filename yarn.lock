@@ -1328,10 +1328,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinclair/typebox@npm:0.25.14":
-  version: 0.25.14
-  resolution: "@sinclair/typebox@npm:0.25.14"
-  checksum: 3388d8b0f6234b77638735b9213b1b2b17e20bde7f96ac39a16b673d22ab53bb0c2e4a0e29401ab4a62a766bd1a0e45d3dd6ca49b0d84b0bc6c65b1c8c3fc3bd
+"@sinclair/typebox@npm:0.25.15":
+  version: 0.25.15
+  resolution: "@sinclair/typebox@npm:0.25.15"
+  checksum: af2f330e4fba7a38edfebb0c9210d14687de296a4dced71d653f5ce5fa8aa641159180c24f2b67c8f8fe725925d031d227f6d89f21cbaeba560ca58ce204ab4d
   languageName: node
   linkType: hard
 
@@ -2420,9 +2420,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"daisyui@npm:2.45.0":
-  version: 2.45.0
-  resolution: "daisyui@npm:2.45.0"
+"daisyui@npm:2.46.0":
+  version: 2.46.0
+  resolution: "daisyui@npm:2.46.0"
   dependencies:
     color: ^4.2
     css-selector-tokenizer: ^0.8.0
@@ -2431,7 +2431,7 @@ __metadata:
   peerDependencies:
     autoprefixer: ^10.0.2
     postcss: ^8.1.6
-  checksum: 75466adeea385b10c47f736c8ccbb721172846a0e69840be1ee42d2f841894ea950e8c6953bfaf745341f402abc8e107f182cfe97903f1d5ababaa105f84019c
+  checksum: 9fedcec550fd4aa33dfd424ba8e772f318f6367486cd2aaebc2eff83541c4b82d7f514ab123880b2b1b0b3f4b8ced2aab4bbd43dd1cd951c67253931411f2450
   languageName: node
   linkType: hard
 
@@ -2682,7 +2682,7 @@ __metadata:
     "@rjsf/semantic-ui": 5.0.0-beta.14
     "@rjsf/utils": 5.0.0-beta.14
     "@rjsf/validator-ajv8": 5.0.0-beta.14
-    "@sinclair/typebox": 0.25.14
+    "@sinclair/typebox": 0.25.15
     "@tailwindcss/forms": 0.5.3
     "@types/better-sqlite3": 7.6.3
     "@types/gensync": 1.0.0
@@ -2691,7 +2691,7 @@ __metadata:
     "@types/react-dom": 18.0.9
     autoprefixer: 10.4.13
     better-sqlite3: 8.0.1
-    daisyui: 2.45.0
+    daisyui: 2.46.0
     eslint: 8.30.0
     gensync: 1.0.0-beta.2
     miniflare: 2.11.0
@@ -2709,9 +2709,9 @@ __metadata:
     tailwindcss: 3.2.4
     typescript: 4.9.4
     vite: 4.0.2
-    vite-node: 0.26.0
+    vite-node: 0.26.1
     vite-tsconfig-paths: 4.0.3
-    vitest: 0.26.0
+    vitest: 0.26.1
     wrangler: 2.6.2
     zod: 3.20.2
   languageName: unknown
@@ -7008,9 +7008,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-node@npm:0.26.0":
-  version: 0.26.0
-  resolution: "vite-node@npm:0.26.0"
+"vite-node@npm:0.26.1":
+  version: 0.26.1
+  resolution: "vite-node@npm:0.26.1"
   dependencies:
     debug: ^4.3.4
     mlly: ^1.0.0
@@ -7020,7 +7020,7 @@ __metadata:
     vite: ^3.0.0 || ^4.0.0
   bin:
     vite-node: vite-node.mjs
-  checksum: a938cc96a297f75841564210e6b18c0c56dab8c59eb944cef8435a4a3c1b998400e5a9ef9945e86ac83cf6d321c05129173301e9f56ba58f9ea267c238bf0bf9
+  checksum: 4a2a6ad5f363041f0f9ab6224db985bd0b3bdf994e69ffd4e317889b5e92af92ec615371512763d47bb4504fe3803dbbf2d8bd79344e846ac1e9b6c85cca055e
   languageName: node
   linkType: hard
 
@@ -7075,9 +7075,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:0.26.0":
-  version: 0.26.0
-  resolution: "vitest@npm:0.26.0"
+"vitest@npm:0.26.1":
+  version: 0.26.1
+  resolution: "vitest@npm:0.26.1"
   dependencies:
     "@types/chai": ^4.3.4
     "@types/chai-subset": ^1.3.3
@@ -7093,7 +7093,7 @@ __metadata:
     tinypool: ^0.3.0
     tinyspy: ^1.0.2
     vite: ^3.0.0 || ^4.0.0
-    vite-node: 0.26.0
+    vite-node: 0.26.1
   peerDependencies:
     "@edge-runtime/vm": "*"
     "@vitest/browser": "*"
@@ -7113,7 +7113,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 5a603e57f6016d77dedc39d9cb61e618bf84fd08e955cdd299001f5213018fb446d1d88916fc70d1ff8184c72592ed88a773d36e38b29d713bae9960f6249836
+  checksum: 2913492d29ab75b7b961f7e6be9cee99875faa2ea2886da67582d9d51396b1bd24b64430ea2d2009473b94343f289921d34822d67cd5e7dbff1e03a640f69a03
   languageName: node
   linkType: hard
 

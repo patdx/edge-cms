@@ -1,13 +1,15 @@
-import { Value } from "@sinclair/typebox/value";
+import { Type } from "@sinclair/typebox";
 import Database from "better-sqlite3";
 import { describe, expect, test } from "vitest";
-import { entities } from "../entities";
-import { convertJsonSchemaToDatabaseSchema } from "./convert-schema";
-import { SqliteTableSchema } from "./types";
+import { defaultEntities } from "../entities";
+import {
+  convertJsonSchemaToDatabaseSchema,
+  convertManyJsonSchemasToDatabaseSchema,
+} from "./convert-schema";
 import { getCreateTableQuery } from "./create-table";
-import { introspectDatabase } from "./introspect-database";
 import { diffSchema, generateMigrationStepSql } from "./diff-schema";
-import { Type } from "@sinclair/typebox";
+import { introspectDatabase } from "./introspect-database";
+import { SqliteTableSchema } from "./types";
 
 // How migration works
 // 1. convert desired schema to entity format
@@ -17,7 +19,9 @@ import { Type } from "@sinclair/typebox";
 
 describe("migrator", () => {
   test("convert json schema to entity format", () => {
-    const dbSchema = convertJsonSchemaToDatabaseSchema(entities.categories);
+    const dbSchema = convertJsonSchemaToDatabaseSchema(
+      defaultEntities.categories
+    );
 
     const errors = SqliteTableSchema.safeParse(dbSchema);
 
@@ -41,8 +45,7 @@ describe("migrator", () => {
             "type": "TEXT",
           },
         ],
-        "name": undefined,
-        "tbl_name": undefined,
+        "name": "categories",
         "type": "table",
       }
     `);
@@ -51,9 +54,7 @@ describe("migrator", () => {
   test("introspect format from datbase", async () => {
     const db = new Database(":memory:");
     try {
-      const migration = getCreateTableQuery(entities.categories, {
-        name: "categories",
-      });
+      const migration = getCreateTableQuery(defaultEntities.categories);
 
       db.exec(migration);
 
@@ -72,11 +73,7 @@ describe("migrator", () => {
 
 describe("can create table", () => {
   test("post table", () => {
-    expect(
-      getCreateTableQuery(entities.posts, {
-        name: "posts",
-      })
-    ).toMatchInlineSnapshot(
+    expect(getCreateTableQuery(defaultEntities.posts)).toMatchInlineSnapshot(
       '"CREATE TABLE posts (id INTEGER PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL) STRICT;"'
     );
   });
@@ -84,15 +81,25 @@ describe("can create table", () => {
   // it("match formatting")
 });
 
-const Categories1 = Type.Object({
-  id: Type.Optional(Type.Integer()),
-  name: Type.String(),
-});
+const Categories1 = Type.Object(
+  {
+    id: Type.Optional(Type.Integer()),
+    name: Type.String(),
+  },
+  {
+    title: "categories",
+  }
+);
 
-const Categories2 = Type.Object({
-  id: Type.Optional(Type.Integer()),
-  type: Type.String(),
-});
+const Categories2 = Type.Object(
+  {
+    id: Type.Optional(Type.Integer()),
+    type: Type.String(),
+  },
+  {
+    title: "categories",
+  }
+);
 
 describe("diff tables", () => {
   test("diff empty to empty", () => {
@@ -102,11 +109,7 @@ describe("diff tables", () => {
   test("diff for creating one table", () => {
     const steps = diffSchema(
       [],
-      [
-        convertJsonSchemaToDatabaseSchema(entities.categories, {
-          tableName: "categories",
-        }),
-      ]
+      [convertJsonSchemaToDatabaseSchema(defaultEntities.categories)]
     );
 
     expect(steps).toMatchInlineSnapshot(`
@@ -130,7 +133,6 @@ describe("diff tables", () => {
               },
             ],
             "name": "categories",
-            "tbl_name": "categories",
             "type": "table",
           },
           "type": "create-table",
@@ -138,9 +140,8 @@ describe("diff tables", () => {
       ]
     `);
 
-    expect(
-      steps.map((step) => generateMigrationStepSql(step))
-    ).toMatchInlineSnapshot(`
+    expect(steps.map((step) => generateMigrationStepSql(step)))
+      .toMatchInlineSnapshot(`
       [
         "CREATE TABLE categories (id INTEGER PRIMARY KEY, name TEXT NOT NULL) STRICT;",
       ]
@@ -149,11 +150,7 @@ describe("diff tables", () => {
 
   test("diff for removing one table", () => {
     const steps = diffSchema(
-      [
-        convertJsonSchemaToDatabaseSchema(entities.categories, {
-          tableName: "categories",
-        }),
-      ],
+      [convertJsonSchemaToDatabaseSchema(defaultEntities.categories)],
       []
     );
 
@@ -175,18 +172,21 @@ describe("diff tables", () => {
   });
 
   test("diff for adding one column", () => {
-    const steps = diffSchema(
-      [
-        convertJsonSchemaToDatabaseSchema(Categories1, {
-          tableName: "categories",
-        }),
-      ],
-      [
-        convertJsonSchemaToDatabaseSchema(Categories2, {
-          tableName: "categories",
-        }),
-      ]
+    const current = convertManyJsonSchemasToDatabaseSchema([Categories1]);
+    const target = convertManyJsonSchemasToDatabaseSchema([Categories2]);
+
+    console.log(
+      JSON.stringify(
+        {
+          current,
+          target,
+        },
+        undefined,
+        2
+      )
     );
+
+    const steps = diffSchema(current, target);
 
     expect(steps).toMatchInlineSnapshot(`
       [
@@ -216,5 +216,27 @@ describe("diff tables", () => {
           "ALTER TABLE categories DROP COLUMN name",
         ]
       `);
+  });
+
+  test("will handle system tables", () => {
+    const result = diffSchema(
+      [],
+      [
+        {
+          name: "_migrations",
+          columns: [
+            { name: "id", type: "TEXT", notnull: 1, pk: 1 },
+            { name: "sql", type: "TEXT", notnull: 1, pk: 0 },
+          ],
+        },
+        {
+          name: "_migrations",
+          columns: [
+            { name: "id", type: "TEXT", notnull: 1, pk: 1 },
+            { name: "json", type: "TEXT", notnull: 1, pk: 0 },
+          ],
+        },
+      ]
+    );
   });
 });

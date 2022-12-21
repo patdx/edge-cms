@@ -1,17 +1,16 @@
-import type { JSONSchema7 } from "json-schema";
+import type { JSONSchema6 } from "json-schema";
 import { getSqlType } from "./shared";
 import type { SqliteTableSchema } from "./types";
 
 export const convertJsonSchemaToDatabaseSchema = (
-  jsonSchema: JSONSchema7,
-  options?: { tableName?: string }
+  jsonSchema: JSONSchema6
 ): SqliteTableSchema => {
-  const title = options?.tableName ?? jsonSchema.title;
+  const title = jsonSchema.title;
+
+  if (!title) throw new Error("json schema is missing a title");
 
   const rootTable: SqliteTableSchema = {
-    type: "table",
     name: title,
-    tbl_name: title,
     columns: [],
   };
 
@@ -31,3 +30,7 @@ export const convertJsonSchemaToDatabaseSchema = (
 
   return rootTable;
 };
+
+export const convertManyJsonSchemasToDatabaseSchema = (
+  jsonSchemas: JSONSchema6[]
+) => jsonSchemas.map((schema) => convertJsonSchemaToDatabaseSchema(schema));

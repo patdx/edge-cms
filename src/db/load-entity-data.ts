@@ -1,7 +1,8 @@
+import type { JSONSchema6 } from "json-schema";
 import type { RequestContext } from "rakkasjs";
-import { entities } from "src/db/entities";
-import { getEntity, getOrm } from "./orm";
 import sql, { join, raw } from "sql-template-tag";
+import { SchemaTable, systemTables } from "./migrator/system-tables";
+import { getOrm } from "./orm";
 
 export const loadEntityData = async ({
   context,
@@ -10,20 +11,28 @@ export const loadEntityData = async ({
   byId,
 }: {
   context: RequestContext;
-  entityName: keyof typeof entities;
+  entityName: string;
   withEntities?: boolean;
   byId?: string | number;
 }) => {
   console.log("loadEntityData");
-  const entity = entities[entityName];
+
   const orm = getOrm(context);
+
+  const entity = entityName.startsWith("_")
+    ? JSON.parse(
+        JSON.stringify(
+          (systemTables as Record<string, JSONSchema6>)[entityName]
+        )
+      )
+    : await orm
+        .findOne<SchemaTable>("_schemas", entityName)
+        .then((result) => (result?.json ? JSON.parse(result.json) : undefined));
 
   return {
     entities: withEntities ? await orm.find(entityName) : [],
-    entity: byId
-      ? JSON.parse(JSON.stringify(await orm.findOne(entityName, byId)))
-      : undefined,
-    schema: JSON.parse(JSON.stringify(entity)),
+    entity: byId ? await orm.findOne(entityName, byId) : undefined,
+    schema: entity,
   };
 };
 
@@ -33,7 +42,6 @@ export const insertItem = async (
   data: any
 ) => {
   console.log(`insert item`, entityName, data);
-  const entity = getEntity(entityName);
 
   const dataPairs = Object.entries(data);
 
@@ -57,8 +65,6 @@ export const updateItem = async (
   entityName: string,
   data: Record<string, any>
 ) => {
-  // const entity = getEntity(entityName);
-
   const { id, ...remaining } = data;
 
   const query = sql`UPDATE ${raw(entityName)} SET ${join(

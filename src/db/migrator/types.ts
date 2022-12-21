@@ -10,9 +10,9 @@ export const SqliteColumnSchema = z.object({
 });
 
 export const SqliteTableSchema = z.object({
-  type: z.literal("table").optional(),
-  name: z.string().optional(),
-  tbl_name: z.string().optional(),
+  // type: z.literal("table").optional(),
+  name: z.string(),
+  // tbl_name: z.string().optional(),
   columns: z.array(SqliteColumnSchema),
   // rootpage: number;
   // sql: string;
@@ -24,11 +24,15 @@ export type SqliteColumnType = "INTEGER" | "REAL" | "TEXT" | "BLOB";
 
 export type SqliteColumnSchema = z.infer<typeof SqliteColumnSchema>;
 
-export const MigrationStep = z.union([
-  z.object({
-    type: z.literal("create-table"),
-    table: SqliteTableSchema,
-  }),
+export const MigrationStepCreateTable = z.object({
+  type: z.literal("create-table"),
+  table: SqliteTableSchema,
+  ifNotExists: z.boolean().optional(),
+});
+export type MigrationStepCreateTable = z.infer<typeof MigrationStepCreateTable>;
+
+export const MigrationStep = z.discriminatedUnion("type", [
+  MigrationStepCreateTable,
   z.object({
     type: z.literal("drop-table"),
     tableName: z.string(),

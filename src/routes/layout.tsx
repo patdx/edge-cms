@@ -1,13 +1,22 @@
 // This is the main layout of our app. It renders the header and the footer.
 
-import { Head, Link, StyledLink, Layout, useServerSideQuery } from "rakkasjs";
-import { entities } from "src/db/entities";
+import { Head, Layout, Link, StyledLink, useServerSideQuery } from "rakkasjs";
 
-import "tailwindcss/tailwind.css";
 import "semantic-ui-css/semantic.min.css";
+import { getOrm } from "src/db/orm";
+import "tailwindcss/tailwind.css";
 
 const MainLayout: Layout = ({ children }) => {
-  const { data } = useServerSideQuery(() => Object.keys(entities));
+  const { data } = useServerSideQuery(
+    async (context) => {
+      const DB = getOrm(context).DB;
+      const tables = await DB.prepare(
+        `SELECT name FROM sqlite_schema WHERE type = 'table'`
+      ).all<{ name: string }>();
+      return tables.results?.map((table) => table.name) ?? [];
+    },
+    { key: "available-entities" }
+  );
 
   return (
     <>

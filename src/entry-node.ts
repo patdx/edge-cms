@@ -2,6 +2,9 @@ import { createMiddleware } from "rakkasjs/node-adapter";
 import hattipHandler from "./entry-hattip";
 import { BetaDatabase } from "@miniflare/d1";
 import { createSQLiteDB } from "@miniflare/shared";
+import fs from "fs";
+
+fs.mkdirSync("./data", { recursive: true });
 
 const dbPromise = Promise.resolve()
   // .then(() => createSQLiteDB(":memory:"))
