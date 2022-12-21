@@ -1,5 +1,5 @@
 import type { JSONSchema6, JSONSchema6TypeName } from "json-schema";
-import type { SqliteColumnType } from "./types";
+import type { SqliteColumnType, SqliteTableSchema } from "./types";
 
 export const escapeIdIfNeeded = (text: string) => {
   // no-op for now
@@ -31,4 +31,8 @@ export const getColumnDef = (
     ...(name === "id" ? ["PRIMARY KEY"] : []),
     ...(parent?.required?.includes(name) ? ["NOT NULL"] : []),
   ].join(" ");
+};
+
+export const isSystemTable = (table: SqliteTableSchema) => {
+  return table.name.startsWith("_") || table.name === "d1_kv";
 };

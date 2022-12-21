@@ -3,7 +3,7 @@ name = "my-rakkas-project"
 compatibility_date = "2022-12-14"
 
 compatibility_flags = [
-  "streams_enable_constructors",
+  # "streams_enable_constructors",
 ]
 main = "dist/server/cloudflare-workers-bundle.js"
 # usage_model = 'bundled'

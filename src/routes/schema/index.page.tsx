@@ -13,12 +13,15 @@ import {
   generateManyMigrationStepsSql,
 } from "src/db/migrator/diff-schema";
 import { introspectDatabase } from "src/db/migrator/introspect-database";
+import { isSystemTable } from "src/db/migrator/shared";
 import { SchemaTable, systemTables } from "src/db/migrator/system-tables";
 import { getOrm } from "src/db/orm";
 
 const SchemaPage = () => {
   const query = useServerSideQuery(
     async (context) => {
+      const orm = getOrm(context);
+
       const getDatabaseStatus = () =>
         introspectDatabase((sql) =>
           getOrm(context)
@@ -52,16 +55,22 @@ const SchemaPage = () => {
       );
       // finish sync
 
-      const schema = await getDatabaseStatus();
+      const databaseTables = await getDatabaseStatus();
+
+      const schemas = await orm.find<SchemaTable>("_schemas");
 
       const updateDump = generateManyMigrationStepsSql(
         diffSchema(
-          schema.filter((item) => !item.name.startsWith("_")),
-          convertManyJsonSchemasToDatabaseSchema(Object.values(defaultEntities))
+          databaseTables.filter((item) => !isSystemTable(item)),
+          convertManyJsonSchemasToDatabaseSchema(
+            schemas.map((schema) =>
+              schema.json ? JSON.parse(schema.json) : undefined
+            )
+          )
         )
       );
 
-      return { updateDump, schema };
+      return { updateDump, schema: databaseTables };
     },
     {
       key: "overall-database-status",
@@ -87,7 +96,7 @@ const SchemaPage = () => {
 
       const lines = generateManyMigrationStepsSql(
         diffSchema(
-          databaseTables.filter((item) => !item.name.startsWith("_")),
+          databaseTables.filter((item) => !isSystemTable(item)),
           convertManyJsonSchemasToDatabaseSchema(
             schemas.map((schema) =>
               schema.json ? JSON.parse(schema.json) : undefined
@@ -95,6 +104,8 @@ const SchemaPage = () => {
           )
         )
       );
+
+      console.log(`running these lines: ${JSON.stringify(lines)}`);
 
       await DB.batch(lines.map((statement) => DB.prepare(statement)));
 
@@ -116,8 +127,11 @@ const SchemaPage = () => {
         {query.data.updateDump.length === 0 ? (
           <p>No pending changes.</p>
         ) : (
-          <button className="btn btn-danger" onClick={() => update.mutate()}>
-            Apply changes schema
+          <button
+            className="btn btn-danger transition bg-orange-300 hover"
+            onClick={() => update.mutate()}
+          >
+            Apply changes
           </button>
         )}
         {query.data.updateDump.map((line) => (
