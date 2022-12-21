@@ -91,7 +91,7 @@ export const generateMigrationStepCreateTable = (
   ].join(" ");
 };
 
-export const generateMigrationStepSql = (step: MigrationStep) => {
+export const generateMigrationStepSql = (step: MigrationStep): string => {
   if (step.type === "create-table") {
     return generateMigrationStepCreateTable(step);
   } else if (step.type === "drop-table") {
@@ -109,8 +109,9 @@ export const generateMigrationStepSql = (step: MigrationStep) => {
   }
 };
 
-export const generateManyMigrationStepsSql = (steps: MigrationStep[]) =>
-  steps.map((step) => generateMigrationStepSql(step));
+export const generateManyMigrationStepsSql = (
+  steps: MigrationStep[]
+): string[] => steps.map((step) => generateMigrationStepSql(step));
 
 const getColumnDef = (column: SqliteColumnSchema) => {
   return [
