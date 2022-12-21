@@ -1,28 +1,24 @@
-import type { JSONSchema7 } from "json-schema";
+import type { JSONSchema6 } from "json-schema";
 import { formatDialect, sqlite } from "sql-formatter";
-import { entities } from "../entities";
-import { escapeIdIfNeeded, getColumnDef } from "./shared";
+import { convertJsonSchemaToDatabaseSchema } from "./convert-schema";
+import { generateMigrationStepCreateTable } from "./diff-schema";
 
-/**
- * @deprecated, there is a more useful
- * version that works on the immediate data format
- */
 export const getCreateTableQuery = (
-  jsonSchema: JSONSchema7,
+  jsonSchema: JSONSchema6,
   options?: {
-    name: string;
     format?: boolean;
   }
 ) => {
-  const name = options?.name ?? jsonSchema.title;
+  const name = jsonSchema.title;
 
   if (!name) throw new Error(`Name of table is required`);
 
-  const query = `CREATE TABLE ${escapeIdIfNeeded(name)} (${Object.entries(
-    jsonSchema.properties ?? {}
-  )
-    .map(([name, options]) => getColumnDef(name, options as any, jsonSchema))
-    .join(", ")}) STRICT;`;
+  const databaseSchema = convertJsonSchemaToDatabaseSchema(jsonSchema);
+
+  const query = generateMigrationStepCreateTable({
+    type: "create-table",
+    table: databaseSchema,
+  });
 
   if (options?.format) {
     return formatDialect(query, {
@@ -32,19 +28,4 @@ export const getCreateTableQuery = (
   } else {
     return query;
   }
-};
-
-export const getAllCreateQueries = (options?: { format?: boolean }) => {
-  const lines: string[] = [];
-
-  for (const [name, entity] of Object.entries(entities)) {
-    const query = getCreateTableQuery(entity, {
-      name,
-      format: options?.format,
-    });
-
-    lines.push(query);
-  }
-
-  return lines;
 };
