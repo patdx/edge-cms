@@ -7,6 +7,7 @@ import {
 import { loadEntityData, updateItem } from "src/db/load-entity-data";
 import Form from "@rjsf/semantic-ui";
 import validator from "@rjsf/validator-ajv8";
+import { widgets } from "src/json-schema-form";
 
 // console.log("entity details page");
 
@@ -34,6 +35,14 @@ const DetailPage = ({ params }: PageProps) => {
     }
   );
 
+  const schema = data?.schema ?? ({} as JSONSchema6);
+
+  // we just pass the whole thing through for now, to
+  // make it easy to pass properties inside one
+  // schema
+
+  const uiSchema = schema.properties ?? {};
+
   return (
     <div className="p-2">
       <h2>
@@ -41,13 +50,15 @@ const DetailPage = ({ params }: PageProps) => {
       </h2>
       <pre>{JSON.stringify(data?.entity, undefined, 2)}</pre>
       <Form
-        schema={data?.schema}
-        formData={data?.entity}
+        schema={schema}
         uiSchema={{
+          ...uiSchema,
           "ui:submitButtonOptions": {
             submitText: "Save",
           },
         }}
+        formData={data?.entity}
+        widgets={widgets}
         onSubmit={async (data) => {
           const formData = data.formData;
           console.log(formData);
