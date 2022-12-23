@@ -13,7 +13,7 @@ export const systemTables = {
   _schemas: Type.Object(
     {
       id: Type.Optional(Type.Integer()),
-      json: Type.String(),
+      json: Type.String({ "ui:widget": "json" }),
     },
     {
       title: "_schemas",
