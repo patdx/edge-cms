@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from '@sinclair/typebox';
 
 const defineEntities = <T extends Record<string, unknown>>(entities: T) =>
   entities;
@@ -10,7 +10,7 @@ export const defaultEntities = defineEntities({
       name: Type.String(),
     },
     {
-      title: "categories",
+      title: 'categories',
     }
   ),
   posts: Type.Object(
@@ -20,7 +20,7 @@ export const defaultEntities = defineEntities({
       text: Type.String(),
     },
     {
-      title: "posts",
+      title: 'posts',
     }
   ),
 });

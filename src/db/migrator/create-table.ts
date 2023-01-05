@@ -1,7 +1,7 @@
-import type { JSONSchema6 } from "json-schema";
-import { formatDialect, sqlite } from "sql-formatter";
-import { convertJsonSchemaToDatabaseSchema } from "./convert-schema";
-import { generateMigrationStepCreateTable } from "./diff-schema";
+import type { JSONSchema6 } from 'json-schema';
+import { formatDialect, sqlite } from 'sql-formatter';
+import { convertJsonSchemaToDatabaseSchema } from './convert-schema';
+import { generateMigrationStepCreateTable } from './diff-schema';
 
 export const getCreateTableQuery = (
   jsonSchema: JSONSchema6,
@@ -16,14 +16,14 @@ export const getCreateTableQuery = (
   const databaseSchema = convertJsonSchemaToDatabaseSchema(jsonSchema);
 
   const query = generateMigrationStepCreateTable({
-    type: "create-table",
+    type: 'create-table',
     table: databaseSchema,
   });
 
   if (options?.format) {
     return formatDialect(query, {
       dialect: sqlite,
-      keywordCase: "upper",
+      keywordCase: 'upper',
     });
   } else {
     return query;

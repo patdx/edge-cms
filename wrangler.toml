@@ -1,4 +1,5 @@
-name = "edge-cdn"
+name = "edge-cms"
+account_id = "ea9912205c2e699d022d135941e82e56"
 
 compatibility_date = "2022-12-14"
 
@@ -16,6 +17,6 @@ bucket = "./dist/client"
 
 [[ d1_databases ]]
 binding = "CLOUDFLARE_DB" # i.e. available in your Worker on env.CLOUDFLARE_DB
-database_name = "edge-cdn-db"
-database_id = "bf2fda34-ed98-4399-8fef-7a382effaac5"
-preview_database_id = "55232a8f-8509-4eda-84a6-f75decaf0a39" # edge-cdn-db-preview
+database_name = "edge-cms-db"
+database_id = "4fa22872-00da-46ad-a10d-18dbbd757efc"
+preview_database_id = "0a5bf2da-0e3a-477c-9e63-1a8e048b7dcb" # edge-cms-db-preview

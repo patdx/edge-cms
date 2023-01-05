@@ -11,12 +11,12 @@ export interface TodoItem {
 let todoItems: TodoItem[] = [
   {
     id: 1,
-    text: "Learn React",
+    text: 'Learn React',
     done: true,
   },
   {
     id: 2,
-    text: "Learn Rakkas",
+    text: 'Learn Rakkas',
     done: false,
   },
 ];
@@ -29,7 +29,7 @@ export function readAllTodos(): TodoItem[] {
   return todoItems;
 }
 
-export function createTodo(item: Omit<TodoItem, "id">): number {
+export function createTodo(item: Omit<TodoItem, 'id'>): number {
   todoItems.push({ ...item, id: nextId });
   return nextId++;
 }

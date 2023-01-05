@@ -1,6 +1,6 @@
-import { build, BuildOptions } from "esbuild";
-import { builtinModules } from "module";
-import path from "path";
+import { build, BuildOptions } from 'esbuild';
+import { builtinModules } from 'module';
+import path from 'path';
 
 // https://github.com/hattipjs/hattip/blob/main/packages/bundler/bundler-cloudflare-workers/src/index.ts
 
@@ -37,37 +37,37 @@ export default async function bundle(
 
   if (!cfwEntry) {
     if (!handlerEntry) {
-      throw new Error("Must provide either cfwEntry or handlerEntry");
+      throw new Error('Must provide either cfwEntry or handlerEntry');
     }
   } else {
     if (handlerEntry) {
-      throw new Error("Cannot provide both cfwEntry and handlerEntry");
+      throw new Error('Cannot provide both cfwEntry and handlerEntry');
     }
 
     if (serveStaticFiles !== undefined) {
-      throw new Error("Cannot provide serveStaticFiles with cfwEntry");
+      throw new Error('Cannot provide serveStaticFiles with cfwEntry');
     }
   }
 
   const esbuildOptions: BuildOptions = {
-    logLevel: "info",
+    logLevel: 'info',
     bundle: true,
     // minify: true // temporarily disabled for easier debugging
-    entryPoints: [cfwEntry ?? "virtual:entry-cfw.js"],
+    entryPoints: [cfwEntry ?? 'virtual:entry-cfw.js'],
     outfile: output,
-    platform: "browser",
-    target: "chrome96",
-    format: "esm",
-    mainFields: ["module", "main", "browser"],
-    conditions: ["worker", "import", "require"],
+    platform: 'browser',
+    target: 'chrome96',
+    format: 'esm',
+    mainFields: ['module', 'main', 'browser'],
+    conditions: ['worker', 'import', 'require'],
     external: [
       // ...builtinModules,
-      "async_hooks",
-      "__STATIC_CONTENT_MANIFEST",
+      'async_hooks',
+      '__STATIC_CONTENT_MANIFEST',
     ],
     define: {
-      "process.env.NODE_ENV": '"production"', // must set separately when not minifying
-      "process.versions.node": '"16.0.0"',
+      'process.env.NODE_ENV': '"production"', // must set separately when not minifying
+      'process.versions.node': '"16.0.0"',
     },
     treeShaking: true,
     plugins: [],
@@ -77,22 +77,22 @@ export default async function bundle(
     esbuildOptions.plugins!.push(
       ...[
         {
-          name: "hattip-virtual-cfw-entry",
+          name: 'hattip-virtual-cfw-entry',
           setup(build) {
             build.onResolve(
               {
                 filter: /^virtual:entry-cfw\.js$/,
               },
               () => ({
-                path: "virtual:entry-cfw.js",
-                namespace: "hattip-virtual-cfw-entry",
+                path: 'virtual:entry-cfw.js',
+                namespace: 'hattip-virtual-cfw-entry',
               })
             );
 
             build.onLoad(
               {
                 filter: /.*/,
-                namespace: "hattip-virtual-cfw-entry",
+                namespace: 'hattip-virtual-cfw-entry',
               },
               () => {
                 return {
@@ -100,8 +100,8 @@ export default async function bundle(
                   contents: getCfwEntryContents(
                     handlerEntry!,
                     serveStaticFiles === false
-                      ? "@hattip/adapter-cloudflare-workers/no-static"
-                      : "@hattip/adapter-cloudflare-workers"
+                      ? '@hattip/adapter-cloudflare-workers/no-static'
+                      : '@hattip/adapter-cloudflare-workers'
                   ),
                 };
               }
@@ -121,7 +121,7 @@ function getCfwEntryContents(handlerEntry: string, adapter: string) {
 
   return `
   import cloudflareWorkersAdapter from ${JSON.stringify(adapter)};
-  import handler from ${JSON.stringify("./" + relativeName)};
+  import handler from ${JSON.stringify('./' + relativeName)};
 
   export default {
     fetch: cloudflareWorkersAdapter(handler),

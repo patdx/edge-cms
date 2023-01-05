@@ -1,19 +1,19 @@
-require("@rakkasjs/eslint-config/patch");
+require('@rakkasjs/eslint-config/patch');
 
 module.exports = {
   root: true,
-  extends: ["@rakkasjs"],
+  extends: ['@rakkasjs'],
   parserOptions: { tsconfigRootDir: __dirname },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       typescript: {
-        project: [__dirname + "/tsconfig.json"],
+        project: [__dirname + '/tsconfig.json'],
       },
     },
   },
   rules: {
     rules: {
-      "no-console": "off",
+      'no-console': 'off',
     },
   },
 };
