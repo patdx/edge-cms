@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const SqliteColumnSchema = z.object({
   cid: z.number().int().nullish(),
@@ -20,30 +20,30 @@ export const SqliteTableSchema = z.object({
 
 export type SqliteTableSchema = z.infer<typeof SqliteTableSchema>;
 
-export type SqliteColumnType = "INTEGER" | "REAL" | "TEXT" | "BLOB";
+export type SqliteColumnType = 'INTEGER' | 'REAL' | 'TEXT' | 'BLOB';
 
 export type SqliteColumnSchema = z.infer<typeof SqliteColumnSchema>;
 
 export const MigrationStepCreateTable = z.object({
-  type: z.literal("create-table"),
+  type: z.literal('create-table'),
   table: SqliteTableSchema,
   ifNotExists: z.boolean().optional(),
 });
 export type MigrationStepCreateTable = z.infer<typeof MigrationStepCreateTable>;
 
-export const MigrationStep = z.discriminatedUnion("type", [
+export const MigrationStep = z.discriminatedUnion('type', [
   MigrationStepCreateTable,
   z.object({
-    type: z.literal("drop-table"),
+    type: z.literal('drop-table'),
     tableName: z.string(),
   }),
   z.object({
-    type: z.literal("add-column"),
+    type: z.literal('add-column'),
     tableName: z.string(),
     column: SqliteColumnSchema,
   }),
   z.object({
-    type: z.literal("drop-column"),
+    type: z.literal('drop-column'),
     tableName: z.string(),
     columnName: z.string(),
   }),

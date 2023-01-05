@@ -1,10 +1,10 @@
-import { escapeIdIfNeeded } from "./shared";
+import { escapeIdIfNeeded } from './shared';
 import type {
   MigrationStep,
   MigrationStepCreateTable,
   SqliteColumnSchema,
   SqliteTableSchema,
-} from "./types";
+} from './types';
 
 export const diffSchema = (
   oldSchema: SqliteTableSchema[],
@@ -21,7 +21,7 @@ export const diffSchema = (
 
   for (const add of added) {
     steps.push({
-      type: "create-table",
+      type: 'create-table',
       table: newSchema.find((item) => item.name === add)!,
     });
   }
@@ -32,7 +32,7 @@ export const diffSchema = (
 
   for (const drop of dropped) {
     steps.push({
-      type: "drop-table",
+      type: 'drop-table',
       tableName: drop,
     });
   }
@@ -50,7 +50,7 @@ export const diffSchema = (
 
       for (const add of added) {
         steps.push({
-          type: "add-column",
+          type: 'add-column',
           tableName: newTable.name!,
           column: newTable.columns.find((column) => column.name === add)!,
         });
@@ -62,7 +62,7 @@ export const diffSchema = (
 
       for (const drop of dropped) {
         steps.push({
-          type: "drop-column",
+          type: 'drop-column',
           tableName: newTable.name!,
           columnName: drop,
         });
@@ -81,26 +81,26 @@ export const generateMigrationStepCreateTable = (
   if (!name) throw new Error(`Name of table is required`);
 
   return [
-    "CREATE TABLE",
+    'CREATE TABLE',
     // if not exists may be used for specia features, for example
     // bootstrapping a migrations table
-    ...(step.ifNotExists ? ["IF NOT EXISTS"] : []),
+    ...(step.ifNotExists ? ['IF NOT EXISTS'] : []),
     escapeIdIfNeeded(name),
-    `(${step.table.columns.map((column) => getColumnDef(column)).join(", ")})`,
-    "STRICT;",
-  ].join(" ");
+    `(${step.table.columns.map((column) => getColumnDef(column)).join(', ')})`,
+    'STRICT;',
+  ].join(' ');
 };
 
 export const generateMigrationStepSql = (step: MigrationStep): string => {
-  if (step.type === "create-table") {
+  if (step.type === 'create-table') {
     return generateMigrationStepCreateTable(step);
-  } else if (step.type === "drop-table") {
+  } else if (step.type === 'drop-table') {
     return `DROP TABLE ${escapeIdIfNeeded(step.tableName)}`;
-  } else if (step.type === "add-column") {
+  } else if (step.type === 'add-column') {
     return `ALTER TABLE ${escapeIdIfNeeded(
       step.tableName
     )} ADD COLUMN ${getColumnDef(step.column)}`;
-  } else if (step.type === "drop-column") {
+  } else if (step.type === 'drop-column') {
     return `ALTER TABLE ${escapeIdIfNeeded(step.tableName)} DROP COLUMN ${
       step.columnName
     }`;
@@ -117,7 +117,7 @@ const getColumnDef = (column: SqliteColumnSchema) => {
   return [
     escapeIdIfNeeded(column.name),
     column.type,
-    ...(column.pk === 1 ? ["PRIMARY KEY"] : []),
-    ...(column.notnull ? ["NOT NULL"] : []),
-  ].join(" ");
+    ...(column.pk === 1 ? ['PRIMARY KEY'] : []),
+    ...(column.notnull ? ['NOT NULL'] : []),
+  ].join(' ');
 };

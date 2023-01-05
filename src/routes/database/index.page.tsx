@@ -1,22 +1,22 @@
-// import { useServerSideMutation, useServerSideQuery } from "rakkasjs";
-// import { getOrm } from "src/db/mikro-orm";
-
 import {
   useQueryClient,
   useServerSideMutation,
   useServerSideQuery,
-} from "rakkasjs";
-import { defaultEntities } from "src/db/entities";
-import { insertItem } from "src/db/load-entity-data";
-import { convertManyJsonSchemasToDatabaseSchema } from "src/db/migrator/convert-schema";
+} from 'rakkasjs';
+import { defaultEntities } from 'src/db/entities';
+import { insertItem } from 'src/db/load-entity-data';
+import {
+  convertManyJsonSchemasToDatabaseSchema,
+  safeParseJsonSchemaTables,
+} from 'src/db/migrator/convert-schema';
 import {
   diffSchema,
   generateManyMigrationStepsSql,
-} from "src/db/migrator/diff-schema";
-import { introspectDatabase } from "src/db/migrator/introspect-database";
-import { isSystemTable } from "src/db/migrator/shared";
-import { SchemaTable, systemTables } from "src/db/migrator/system-tables";
-import { getOrm } from "src/db/orm";
+} from 'src/db/migrator/diff-schema';
+import { introspectDatabase } from 'src/db/migrator/introspect-database';
+import { isUserTable } from 'src/db/migrator/shared';
+import { SchemaTable, systemTables } from 'src/db/migrator/system-tables';
+import { getOrm } from 'src/db/orm';
 
 const SchemaPage = () => {
   const query = useServerSideQuery(
@@ -36,8 +36,9 @@ const SchemaPage = () => {
       console.log(`current db status`, databaseStatus);
 
       const oldStatus = databaseStatus.filter((table) =>
-        table.name?.startsWith("_")
+        table.name?.startsWith('_')
       ); // system table starts with "_"
+
       const targetStatus = convertManyJsonSchemasToDatabaseSchema(
         Object.values(systemTables)
       );
@@ -58,23 +59,27 @@ const SchemaPage = () => {
 
       const databaseTables = await getDatabaseStatus();
 
-      const schemas = await orm.find<SchemaTable>("_schemas");
+      const schemas = await orm.find<SchemaTable>('_schemas');
+
+      console.log(schemas);
+
+      const target = safeParseJsonSchemaTables(schemas);
+
+      if (target.errors.length >= 1) {
+        console.warn(target.errors.join('\n'));
+      }
 
       const updateDump = generateManyMigrationStepsSql(
         diffSchema(
-          databaseTables.filter((item) => !isSystemTable(item)),
-          convertManyJsonSchemasToDatabaseSchema(
-            schemas.map((schema) =>
-              schema.json ? JSON.parse(schema.json) : undefined
-            )
-          )
+          databaseTables.filter((item) => isUserTable(item)),
+          target.result
         )
       );
 
       return { updateDump, schema: databaseTables };
     },
     {
-      key: "overall-database-status",
+      key: 'overall-database-status',
     }
   );
 
@@ -95,16 +100,18 @@ const SchemaPage = () => {
 
       const databaseTables = await getDatabaseTables();
 
-      const schemas = await orm.find<SchemaTable>("_schemas");
+      const schemas = await orm.find<SchemaTable>('_schemas');
+
+      const target = safeParseJsonSchemaTables(schemas);
+
+      if (target.errors.length >= 1) {
+        console.warn(target.errors.join('\n'));
+      }
 
       const lines = generateManyMigrationStepsSql(
         diffSchema(
-          databaseTables.filter((item) => !isSystemTable(item)),
-          convertManyJsonSchemasToDatabaseSchema(
-            schemas.map((schema) =>
-              schema.json ? JSON.parse(schema.json) : undefined
-            )
-          )
+          databaseTables.filter((item) => isUserTable(item)),
+          target.result
         )
       );
 
@@ -117,8 +124,8 @@ const SchemaPage = () => {
     {
       onSettled() {
         queryClient.invalidateQueries([
-          "overall-database-status",
-          "available-entities",
+          'overall-database-status',
+          'available-entities',
         ]);
       },
     }
@@ -135,14 +142,14 @@ const SchemaPage = () => {
           <p>No pending changes.</p>
         ) : (
           <button
-            className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1"
+            className="btn btn-warning"
             onClick={() => syncDatabaseSchema.mutate()}
           >
             Apply changes
           </button>
         )}
         {query.data.updateDump.map((line) => (
-          <pre key={line}>{line || "None"}</pre>
+          <pre key={line}>{line || 'None'}</pre>
         ))}
       </div>
 
@@ -156,8 +163,8 @@ const SchemaPage = () => {
                 {item.columns.map((column) => {
                   const { name, ...remaining } = column;
                   return (
-                    <div>
-                      <strong>{name}</strong>{" "}
+                    <div key={column.name}>
+                      <strong>{name}</strong>{' '}
                       <pre className="inline">{JSON.stringify(remaining)}</pre>
                     </div>
                   );
@@ -210,8 +217,8 @@ const AdminTools = () => {
     {
       onSettled() {
         queryClient.invalidateQueries([
-          "overall-database-status",
-          "available-entities",
+          'overall-database-status',
+          'available-entities',
         ]);
       },
     }
@@ -224,7 +231,7 @@ const AdminTools = () => {
       // TODO: support insert in batch
       await Promise.allSettled(
         Object.values(defaultEntities).map(async (entity) => {
-          await insertItem(context, "_schemas", {
+          await insertItem(context, '_schemas', {
             json: JSON.stringify(entity), // , undefined, 2
           });
         })
@@ -233,8 +240,8 @@ const AdminTools = () => {
     {
       onSettled() {
         queryClient.invalidateQueries([
-          "overall-database-status",
-          "available-entities",
+          'overall-database-status',
+          'available-entities',
         ]);
       },
     }
@@ -247,14 +254,14 @@ const AdminTools = () => {
         <button
           type="button"
           onClick={() => deleteAllTables.mutate()}
-          className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1 rounded"
+          className="btn btn-warning"
         >
           Delete all tables
         </button>
         <button
           type="button"
           onClick={() => setUpDefaultSchemas.mutate()}
-          className="btn btn-danger transition bg-orange-300 hover:bg-orange-400 p-1 rounded"
+          className="btn btn-warning"
         >
           Set up default schemas
         </button>

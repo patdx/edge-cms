@@ -9,44 +9,44 @@ const CHARS_ESCAPE_MAP = {
 
 export const escapeId = function escapeId(val: string, forbidQualified?: any) {
   if (Array.isArray(val)) {
-    let sql = "";
+    let sql = '';
 
     for (let i = 0; i < val.length; i++) {
-      sql += (i === 0 ? "" : ", ") + escapeId(val[i], forbidQualified);
+      sql += (i === 0 ? '' : ', ') + escapeId(val[i], forbidQualified);
     }
 
     return sql;
   } else if (forbidQualified) {
-    return "`" + String(val).replace(ID_GLOBAL_REGEXP, "``") + "`";
+    return '`' + String(val).replace(ID_GLOBAL_REGEXP, '``') + '`';
   } else {
     return (
-      "`" +
+      '`' +
       String(val)
-        .replace(ID_GLOBAL_REGEXP, "``")
-        .replace(QUAL_GLOBAL_REGEXP, "`.`") +
-      "`"
+        .replace(ID_GLOBAL_REGEXP, '``')
+        .replace(QUAL_GLOBAL_REGEXP, '`.`') +
+      '`'
     );
   }
 };
 
 export const escape = function escape(val, stringifyObjects, timeZone) {
   if (val === undefined || val === null) {
-    return "NULL";
+    return 'NULL';
   }
 
   switch (typeof val) {
-    case "boolean":
-      return val ? "true" : "false";
-    case "number":
-      return val + "";
-    case "object":
+    case 'boolean':
+      return val ? 'true' : 'false';
+    case 'number':
+      return val + '';
+    case 'object':
       if (val instanceof Date) {
-        return dateToString(val, timeZone || "local");
+        return dateToString(val, timeZone || 'local');
       } else if (Array.isArray(val)) {
         return arrayToList(val, timeZone);
       } else if (Buffer.isBuffer(val)) {
         return bufferToString(val);
-      } else if (typeof val.toSqlString === "function") {
+      } else if (typeof val.toSqlString === 'function') {
         return String(val.toSqlString());
       } else if (stringifyObjects) {
         return escapeString(val.toString());
@@ -59,15 +59,15 @@ export const escape = function escape(val, stringifyObjects, timeZone) {
 };
 
 export const arrayToList = function arrayToList(array, timeZone) {
-  let sql = "";
+  let sql = '';
 
   for (let i = 0; i < array.length; i++) {
     const val = array[i];
 
     if (Array.isArray(val)) {
-      sql += (i === 0 ? "" : ", ") + "(" + arrayToList(val, timeZone) + ")";
+      sql += (i === 0 ? '' : ', ') + '(' + arrayToList(val, timeZone) + ')';
     } else {
-      sql += (i === 0 ? "" : ", ") + escape(val, true, timeZone);
+      sql += (i === 0 ? '' : ', ') + escape(val, true, timeZone);
     }
   }
 
@@ -85,7 +85,7 @@ export const format = function format(sql, values, stringifyObjects, timeZone) {
 
   let chunkIndex = 0;
   const placeholdersRegex = /\?+/g;
-  let result = "";
+  let result = '';
   let valuesIndex = 0;
   let match;
 
@@ -122,7 +122,7 @@ export const dateToString = function dateToString(date, timeZone) {
   const dt = new Date(date);
 
   if (isNaN(dt.getTime())) {
-    return "NULL";
+    return 'NULL';
   }
 
   let year;
@@ -133,7 +133,7 @@ export const dateToString = function dateToString(date, timeZone) {
   let second;
   let millisecond;
 
-  if (timeZone === "local") {
+  if (timeZone === 'local') {
     year = dt.getFullYear();
     month = dt.getMonth() + 1;
     day = dt.getDate();
@@ -160,40 +160,40 @@ export const dateToString = function dateToString(date, timeZone) {
   // YYYY-MM-DD HH:mm:ss.mmm
   const str =
     zeroPad(year, 4) +
-    "-" +
+    '-' +
     zeroPad(month, 2) +
-    "-" +
+    '-' +
     zeroPad(day, 2) +
-    " " +
+    ' ' +
     zeroPad(hour, 2) +
-    ":" +
+    ':' +
     zeroPad(minute, 2) +
-    ":" +
+    ':' +
     zeroPad(second, 2) +
-    "." +
+    '.' +
     zeroPad(millisecond, 3);
 
   return escapeString(str);
 };
 
 export const bufferToString = function bufferToString(buffer) {
-  return "X" + escapeString(buffer.toString("hex"));
+  return 'X' + escapeString(buffer.toString('hex'));
 };
 
 export const objectToValues = function objectToValues(object, timeZone) {
-  let sql = "";
+  let sql = '';
 
   for (const key in object) {
     const val = object[key];
 
-    if (typeof val === "function") {
+    if (typeof val === 'function') {
       continue;
     }
 
     sql +=
-      (sql.length === 0 ? "" : ", ") +
+      (sql.length === 0 ? '' : ', ') +
       escapeId(key) +
-      " = " +
+      ' = ' +
       escape(val, true, timeZone);
   }
 
@@ -201,8 +201,8 @@ export const objectToValues = function objectToValues(object, timeZone) {
 };
 
 export const raw = function raw(sql) {
-  if (typeof sql !== "string") {
-    throw new TypeError("argument sql must be a string");
+  if (typeof sql !== 'string') {
+    throw new TypeError('argument sql must be a string');
   }
 
   return {
@@ -214,7 +214,7 @@ export const raw = function raw(sql) {
 
 function escapeString(val) {
   let chunkIndex = (CHARS_GLOBAL_REGEXP.lastIndex = 0);
-  let escapedVal = "";
+  let escapedVal = '';
   let match;
 
   while ((match = CHARS_GLOBAL_REGEXP.exec(val))) {
@@ -238,21 +238,21 @@ function escapeString(val) {
 function zeroPad(number, length) {
   number = number.toString();
   while (number.length < length) {
-    number = "0" + number;
+    number = '0' + number;
   }
 
   return number;
 }
 
 function convertTimezone(tz) {
-  if (tz === "Z") {
+  if (tz === 'Z') {
     return 0;
   }
 
   const m = tz.match(/([\+\-\s])(\d\d):?(\d\d)?/);
   if (m) {
     return (
-      (m[1] === "-" ? -1 : 1) *
+      (m[1] === '-' ? -1 : 1) *
       (parseInt(m[2], 10) + (m[3] ? parseInt(m[3], 10) : 0) / 60) *
       60
     );

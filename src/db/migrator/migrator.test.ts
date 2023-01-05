@@ -1,15 +1,15 @@
-import { Type } from "@sinclair/typebox";
-import Database from "better-sqlite3";
-import { describe, expect, test } from "vitest";
-import { defaultEntities } from "../entities";
+import { Type } from '@sinclair/typebox';
+import Database from 'better-sqlite3';
+import { describe, expect, test } from 'vitest';
+import { defaultEntities } from '../entities';
 import {
   convertJsonSchemaToDatabaseSchema,
   convertManyJsonSchemasToDatabaseSchema,
-} from "./convert-schema";
-import { getCreateTableQuery } from "./create-table";
-import { diffSchema, generateMigrationStepSql } from "./diff-schema";
-import { introspectDatabase } from "./introspect-database";
-import { SqliteTableSchema } from "./types";
+} from './convert-schema';
+import { getCreateTableQuery } from './create-table';
+import { diffSchema, generateMigrationStepSql } from './diff-schema';
+import { introspectDatabase } from './introspect-database';
+import { SqliteTableSchema } from './types';
 
 // How migration works
 // 1. convert desired schema to entity format
@@ -17,8 +17,8 @@ import { SqliteTableSchema } from "./types";
 // 3. diff these and figure out the SQL steps to
 /// solve this mystery
 
-describe("migrator", () => {
-  test("convert json schema to entity format", () => {
+describe('migrator', () => {
+  test('convert json schema to entity format', () => {
     const dbSchema = convertJsonSchemaToDatabaseSchema(
       defaultEntities.categories
     );
@@ -51,8 +51,8 @@ describe("migrator", () => {
     `);
   });
 
-  test("introspect format from datbase", async () => {
-    const db = new Database(":memory:");
+  test('introspect format from datbase', async () => {
+    const db = new Database(':memory:');
     try {
       const migration = getCreateTableQuery(defaultEntities.categories);
 
@@ -71,8 +71,8 @@ describe("migrator", () => {
   });
 });
 
-describe("can create table", () => {
-  test("post table", () => {
+describe('can create table', () => {
+  test('post table', () => {
     expect(getCreateTableQuery(defaultEntities.posts)).toMatchInlineSnapshot(
       '"CREATE TABLE posts (id INTEGER PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL) STRICT;"'
     );
@@ -87,7 +87,7 @@ const Categories1 = Type.Object(
     name: Type.String(),
   },
   {
-    title: "categories",
+    title: 'categories',
   }
 );
 
@@ -97,16 +97,16 @@ const Categories2 = Type.Object(
     type: Type.String(),
   },
   {
-    title: "categories",
+    title: 'categories',
   }
 );
 
-describe("diff tables", () => {
-  test("diff empty to empty", () => {
+describe('diff tables', () => {
+  test('diff empty to empty', () => {
     expect(diffSchema([], [])).toEqual([]);
   });
 
-  test("diff for creating one table", () => {
+  test('diff for creating one table', () => {
     const steps = diffSchema(
       [],
       [convertJsonSchemaToDatabaseSchema(defaultEntities.categories)]
@@ -148,7 +148,7 @@ describe("diff tables", () => {
     `);
   });
 
-  test("diff for removing one table", () => {
+  test('diff for removing one table', () => {
     const steps = diffSchema(
       [convertJsonSchemaToDatabaseSchema(defaultEntities.categories)],
       []
@@ -171,7 +171,7 @@ describe("diff tables", () => {
     `);
   });
 
-  test("diff for adding one column", () => {
+  test('diff for adding one column', () => {
     const current = convertManyJsonSchemasToDatabaseSchema([Categories1]);
     const target = convertManyJsonSchemasToDatabaseSchema([Categories2]);
 
@@ -218,22 +218,22 @@ describe("diff tables", () => {
       `);
   });
 
-  test("will handle system tables", () => {
+  test('will handle system tables', () => {
     const result = diffSchema(
       [],
       [
         {
-          name: "_migrations",
+          name: '_migrations',
           columns: [
-            { name: "id", type: "TEXT", notnull: 1, pk: 1 },
-            { name: "sql", type: "TEXT", notnull: 1, pk: 0 },
+            { name: 'id', type: 'TEXT', notnull: 1, pk: 1 },
+            { name: 'sql', type: 'TEXT', notnull: 1, pk: 0 },
           ],
         },
         {
-          name: "_migrations",
+          name: '_migrations',
           columns: [
-            { name: "id", type: "TEXT", notnull: 1, pk: 1 },
-            { name: "json", type: "TEXT", notnull: 1, pk: 0 },
+            { name: 'id', type: 'TEXT', notnull: 1, pk: 1 },
+            { name: 'json', type: 'TEXT', notnull: 1, pk: 0 },
           ],
         },
       ]
