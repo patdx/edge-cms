@@ -5,8 +5,11 @@ import { Head, Layout, Link, StyledLink, useServerSideQuery } from 'rakkasjs';
 import { SYSTEM_TABLES } from 'src/db/migrator/shared';
 import { getOrm } from 'src/db/orm';
 import 'tailwindcss/tailwind.css';
+import clsx from 'clsx';
+import { IconMenu, IconX } from 'src/components/icons';
+import { useSidebar } from 'src/shared/sidebar';
 
-const MainLayout: Layout = ({ children }) => {
+const Sidebar = () => {
   const { data } = useServerSideQuery(
     async (context) => {
       const DB = getOrm(context).DB;
@@ -20,6 +23,65 @@ const MainLayout: Layout = ({ children }) => {
     { key: 'available-entities' }
   );
 
+  const isOpen = useSidebar((s) => s.isOpen);
+
+  // if (!isOpen) return null;
+
+  return (
+    <>
+      <div
+        className={clsx(
+          'fixed inset-0 bg-black z-20 transition',
+          isOpen ? 'opacity-30' : 'opacity-0 pointer-events-none touch-none'
+        )}
+        onClick={useSidebar.getState().close}
+      ></div>
+      <div
+        className={clsx(
+          'fixed left-0 top-0 bottom-0 w-64 bg-gray-100 shadow z-30 transition',
+          isOpen
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 pointer-events-none touch-none -translate-x-64'
+        )}
+      >
+        <div className="navbar">
+          <div className="flex-none">
+            <button
+              className="btn btn-square btn-ghost"
+              onClick={useSidebar.getState().close}
+            >
+              <IconX />
+            </button>
+          </div>
+        </div>
+
+        <div className="p-2 flex flex-col gap-2">
+          <StyledLink
+            href="/database"
+            className="btn btn-ghost w-full"
+            activeClass="bg-[#ddd]"
+          >
+            Database
+          </StyledLink>
+
+          {data.map((name) => (
+            <StyledLink
+              key={name}
+              href={`/${name}`}
+              className="btn btn-ghost w-full"
+              activeClass="bg-[#ddd]"
+              onClick={useSidebar.getState().close}
+            >
+              {name}
+            </StyledLink>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const MainLayout: Layout = ({ children }) => {
   return (
     <>
       {/* Rakkas relies on react-helmet-async for managing the document head */}
@@ -46,27 +108,23 @@ const MainLayout: Layout = ({ children }) => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <header className="flex p-2 gap-2 shadow items-center bg-gray-200 flex-wrap">
-        {/* <Link /> is like <a /> but it provides client-side navigation without full page reload. */}
-        <Link href="/">Edge CMS</Link>
-
-        <div className="hidden sm:block flex-1"></div>
-
-        <StyledLink href="/database" activeClass="bg-[#ddd]">
-          Database
-        </StyledLink>
-
-        {data.map((name) => (
-          <StyledLink
-            key={name}
-            href={`/${name}`}
-            className="capitalize"
-            activeClass="bg-[#ddd]"
+      {/* flex p-2 gap-2 shadow items-center bg-gray-200 flex-wrap */}
+      <header className="navbar bg-base-300 sticky top-0 shadow z-10">
+        <div className="flex-none">
+          <button
+            className="btn btn-square btn-ghost"
+            onClick={useSidebar.getState().open}
           >
-            {name}
-          </StyledLink>
-        ))}
+            <IconMenu />
+          </button>
+        </div>
+        {/* <Link /> is like <a /> but it provides client-side navigation without full page reload. */}
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
+          Edge CMS
+        </Link>
       </header>
+
+      <Sidebar />
 
       {children}
     </>
