@@ -165,7 +165,9 @@ const SchemaPage = () => {
                   return (
                     <div key={column.name}>
                       <strong>{name}</strong>{' '}
-                      <pre className="inline">{JSON.stringify(remaining)}</pre>
+                      <pre className="inline whitespace-pre-wrap break-all">
+                        {JSON.stringify(remaining)}
+                      </pre>
                     </div>
                   );
                 })}
@@ -250,7 +252,7 @@ const AdminTools = () => {
   return (
     <div className="p-2 rounded border shadow">
       <h2>Tools</h2>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         <button
           type="button"
           onClick={() => deleteAllTables.mutate()}
