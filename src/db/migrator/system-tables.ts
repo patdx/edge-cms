@@ -21,4 +21,4 @@ export const systemTables = {
   ),
 };
 
-export type SchemaTable = Static<typeof systemTables['_schemas']>;
+export type SchemaTable = Static<(typeof systemTables)['_schemas']>;
