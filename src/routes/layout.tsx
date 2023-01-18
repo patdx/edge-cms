@@ -31,21 +31,21 @@ const Sidebar = () => {
     <>
       <div
         className={clsx(
-          'fixed inset-0 bg-black z-20 transition',
+          'fixed inset-0 bg-black z-20 transition sm:hidden',
           isOpen ? 'opacity-30' : 'opacity-0 pointer-events-none touch-none'
         )}
         onClick={useSidebar.getState().close}
-      ></div>
+      />
       <div
         className={clsx(
-          'fixed left-0 top-0 bottom-0 w-64 bg-gray-100 shadow z-30 transition',
+          'fixed left-0 top-0 bottom-0 w-64 bg-gray-100 shadow z-30 transition sm:transition-none sm:translate-x-0 sm:opacity-100',
           isOpen
             ? 'opacity-100 translate-x-0'
-            : 'opacity-0 pointer-events-none touch-none -translate-x-64'
+            : 'opacity-0 pointer-events-none sm:pointer-events-auto touch-none sm:touch-auto -translate-x-64'
         )}
       >
         <div className="navbar">
-          <div className="flex-none">
+          <div className="flex-none sm:hidden">
             <button
               className="btn btn-square btn-ghost"
               onClick={useSidebar.getState().close}
@@ -109,8 +109,9 @@ const MainLayout: Layout = ({ children }) => {
       </Head>
 
       {/* flex p-2 gap-2 shadow items-center bg-gray-200 flex-wrap */}
-      <header className="navbar bg-base-300 sticky top-0 shadow z-10">
-        <div className="flex-none">
+      <header className="navbar bg-base-300 sticky top-0 shadow z-10 sm:z-40">
+        <div className="hidden sm:block sm:w-64" />
+        <div className="flex-none sm:hidden">
           <button
             className="btn btn-square btn-ghost"
             onClick={useSidebar.getState().open}
@@ -125,8 +126,7 @@ const MainLayout: Layout = ({ children }) => {
       </header>
 
       <Sidebar />
-
-      {children}
+      <div className="sm:pl-64">{children}</div>
     </>
   );
 };
