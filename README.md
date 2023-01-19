@@ -2,24 +2,37 @@
 
 Goal: Build a simple CMS that could be hosted on cloudflare workers/pages.
 
-- Schema defined in typeorm format(?)
-- Convert to database
+# Secrets & wrangler.toml
 
-### node compat
+Some deployment secrets are encrypted with sops and age.
+
+## Encrypt
+
+New secrets can be encrypted using just the public key:
 
 ```
-            "path": require.resolve("path-browserify"),
-            "crypto": require.resolve("crypto-browserify"),
-            "domain": require.resolve("domain-browser"),
-            "stream": require.resolve("stream-browserify"),
-            "os": require.resolve("os-browserify/browser"),
-            "constants": require.resolve("constants-browserify"),
-            "timers": require.resolve("timers-browserify"),
-
-            //Some modules that don't have browser versions are replaced with a blank file.
-            //This, of course, breaks some functionality; fortunately for my project this
-            //wasn't an issue
-            "module": require.resolve("./blank.js"),
-            "fs": require.resolve("./blank-fs.js"),
-            "tty": require.resolve("./blank.js"),
+sops --encrypt --age age1hwkvcnxc5220y0tzkw5esfm8p4fz5nacmhs6n8g5thsrvk49ddqqqxw3xy secrets.json
 ```
+
+## Decrypt
+
+Copy your private key `keys.txt` to `~/.config/sops/age/keys.txt`.
+
+Then run:
+
+```
+sops --decrypt secrets.json
+```
+
+## Generate wrangler.toml
+
+Make sure you install sops and add the private key such that the
+`sops --decrypt secrets.json` command runs successfully.
+
+Then run the generate command:
+
+```
+node scripts/generate-wrangler.js
+```
+
+If you run without sops set up it will still work but some values will be undefined.

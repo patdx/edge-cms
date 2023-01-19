@@ -17,6 +17,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "4.20221111.1",
     "@hattip/adapter-cloudflare-workers": "0.0.26",
+    "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.11.0",
     "@miniflare/shared": "2.11.0",
     "@rakkasjs/eslint-config": "0.6.12",
