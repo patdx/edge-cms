@@ -13,8 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install sops
+        run: gh release download -R mozilla/sops --pattern "*.linux.amd64" --output sops --clobber && chmod +x sops
+
       - name: Install packages
-        run: sudo apt install -y sops age
+        run: sudo apt install -y age
 
       - name: Generate wrangler config
         run: node scripts/generate-wrangler.js
