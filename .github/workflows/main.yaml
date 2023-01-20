@@ -3,6 +3,7 @@ on:
   - pull_request
 
 env:
+  GH_TOKEN: ${{ github.token }}
   SOPS_AGE_KEY: ${{ vars.SOPS_AGE_KEY }}
 
 jobs:
