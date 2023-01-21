@@ -14,14 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install sops
-        run: gh release download -R mozilla/sops --pattern "*.linux.amd64" --output sops --clobber && chmod +x sops
-
       - name: Install packages
         run: sudo apt install -y age
-
-      - name: Generate wrangler config
-        run: node scripts/generate-wrangler.js
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -50,4 +44,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm Install
+
+      - name: Install sops
+        run: |
+          gh release download -R mozilla/sops --pattern "*.linux.amd64" --output bin/sops --clobber
+          chmod +x bin/sops
+          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+
+      - name: Generate wrangler config
+        run: node scripts/generate-wrangler.js
