@@ -54,3 +54,9 @@ jobs:
 
       - name: Generate wrangler config
         run: node scripts/generate-wrangler.js
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy
+        run: pnpm wrangler publish
