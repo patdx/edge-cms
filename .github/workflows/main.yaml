@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm Install
+        run: pnpm install
 
       - name: Install sops
         run: |
