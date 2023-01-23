@@ -39,7 +39,7 @@ const EntityPage = ({ params }: PageProps) => {
 
   const { entities, ...remaining } = data ?? {};
 
-  const schema = data?.schema ?? ({} as JSONSchema6);
+  const schema = data?.schema;
 
   // we just pass the whole thing through for now, to
   // make it easy to pass properties inside one
@@ -58,7 +58,7 @@ const EntityPage = ({ params }: PageProps) => {
       </div>
 
       <Details summary="JSON Schema">
-        <pre>{JSON.stringify(schema, undefined, 2)}</pre>
+        <pre>{compactStringify(schema)}</pre>
       </Details>
 
       <div className="card card-bordered card-compact shadow">

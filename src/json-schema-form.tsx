@@ -15,20 +15,19 @@ import {
 import validator from '@rjsf/validator-ajv8';
 import dirtyJSON from 'dirty-json';
 import type { JSONSchema6 } from 'json-schema';
-import { useRef, useCallback, forwardRef } from 'react';
+import { useRef, useCallback, forwardRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Details } from './components/details';
 import { ThemeProps, withTheme } from '@rjsf/core';
 import clsx from 'clsx';
+import MonacoEditor from '@monaco-editor/react';
+import jsonSchemaDraft7 from './json-schema-draft-7.json'; // https://github.com/json-schema-org/json-schema-spec/issues/1007
 
-const tryParseJson = (maybeJson?: string): JSONSchema6 => {
-  if (typeof maybeJson !== 'string') {
-    return {};
-  }
+const tryParseJson = (maybeJson?: string): JSONSchema6 | undefined => {
   try {
     return dirtyJSON.parse(maybeJson);
   } catch (err) {
-    return {};
+    return undefined;
   }
 };
 
@@ -61,17 +60,53 @@ const JsonTextEdit = function (props: WidgetProps) {
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
+  const [useMonaco, setUseMonaco] = useState(false);
+
   return (
     <div className="flex flex-col gap-2">
-      <textarea
-        className="textarea textarea-bordered"
-        ref={textAreaRef}
-        id={props.id}
-        rows={10}
-        onChange={(event) => props.onChange(tryCompactJson(event.target.value))}
-        onBlur={(event) => (event.target.value = defaultValue)}
-        defaultValue={defaultValue}
-      />
+      <div className="flex-none">
+        <div className="btn btn-xs" onClick={() => setUseMonaco(!useMonaco)}>
+          Toggle editor
+        </div>
+      </div>
+      {useMonaco ? (
+        <MonacoEditor
+          height="50vh"
+          width="100%"
+          language="json"
+          wrapperProps={{ className: 'rounded border p-2' }}
+          options={{
+            tabSize: 2,
+          }}
+          beforeMount={(monaco) => {
+            monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+              validate: true,
+              schemas: [
+                {
+                  uri: 'https://json-schema.org/draft/2019-09/schema',
+                  fileMatch: ['*'],
+                  schema: jsonSchemaDraft7,
+                },
+              ],
+            });
+          }}
+          onChange={(value) => props.onChange(tryCompactJson(value))}
+          defaultValue={props.value}
+        />
+      ) : (
+        <textarea
+          className="textarea textarea-bordered"
+          ref={textAreaRef}
+          id={props.id}
+          rows={10}
+          onChange={(event) =>
+            props.onChange(tryCompactJson(event.target.value))
+          }
+          onBlur={(event) => (event.target.value = defaultValue)}
+          defaultValue={defaultValue}
+        />
+      )}
+
       <Details summary="JSON Preview">
         <pre className="whitespace-pre-wrap p-4 text-sm">
           {tryFormatJson(props.value)}
@@ -80,6 +115,7 @@ const JsonTextEdit = function (props: WidgetProps) {
 
       <Details summary="Form Preview">
         <ErrorBoundary
+          key={props.value}
           fallbackRender={(props) => <p>Error: {String(props.error)}</p>}
         >
           <MyForm schema={tryParseJson(props.value)} />
@@ -280,7 +316,7 @@ function SubmitButton<
 }
 
 const theme: ThemeProps = {
-  widgets: { test: () => <div>test</div> },
+  widgets,
   templates: {
     BaseInputTemplate,
     FieldTemplate,
@@ -300,10 +336,7 @@ const theme: ThemeProps = {
 
 const InternalDaisyForm = withTheme(theme);
 
-export const MyForm = (props: FormProps) => (
-  <InternalDaisyForm
-    validator={validator}
-    widgets={widgets}
-    {...(props as any)}
-  />
-);
+export const MyForm = (props: FormProps) => {
+  if (!props.schema) return null;
+  return <InternalDaisyForm validator={validator} {...(props as any)} />;
+};

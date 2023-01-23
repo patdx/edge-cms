@@ -54,7 +54,7 @@ const DetailPage = ({ params }: PageProps) => {
     }
   );
 
-  const schema: JSONSchema6 = data?.schema ?? {};
+  const schema: JSONSchema6 = data?.schema;
 
   // we just pass the whole thing through for now, to
   // make it easy to pass properties inside one
