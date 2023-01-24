@@ -7,7 +7,7 @@ import {
   useServerSideQuery,
 } from 'rakkasjs';
 import { loadEntityData, updateItem } from 'src/db/load-entity-data';
-import { MyForm, widgets } from 'src/json-schema-form';
+import { MyForm } from 'src/json-schema-form';
 import { compactStringify } from 'src/utils/compact-stringify';
 
 const flattenJson = (schema: JSONSchema6, data?: Record<string, any>) => {
@@ -95,7 +95,6 @@ const DetailPage = ({ params }: PageProps) => {
               },
             }}
             formData={flattenJson(schema, data?.entity)}
-            widgets={widgets}
             onSubmit={async (data) => {
               const formData = data.formData;
               console.log(formData);

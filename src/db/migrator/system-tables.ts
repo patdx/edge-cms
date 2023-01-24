@@ -13,7 +13,10 @@ export const systemTables = {
   _schemas: Type.Object(
     {
       id: Type.Optional(Type.Integer()),
-      json: Type.String({ 'ui:widget': 'json' }),
+      json: Type.String({
+        'ui:widget': 'json',
+        // 'ui:widget': 'textarea',
+      }),
     },
     {
       title: '_schemas',

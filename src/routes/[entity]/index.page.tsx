@@ -1,5 +1,4 @@
 import validator from '@rjsf/validator-ajv8';
-import type { JSONSchema6 } from 'json-schema';
 import {
   Link,
   PageProps,
@@ -8,7 +7,7 @@ import {
 } from 'rakkasjs';
 import { Details } from 'src/components/details';
 import { insertItem, loadEntityData } from 'src/db/load-entity-data';
-import { MyForm, widgets } from 'src/json-schema-form';
+import { MyForm } from 'src/json-schema-form';
 import { compactStringify } from 'src/utils/compact-stringify';
 
 const EntityPage = ({ params }: PageProps) => {
@@ -71,7 +70,6 @@ const EntityPage = ({ params }: PageProps) => {
               console.log(formData);
               await mutation.mutateAsync({ data: formData });
             }}
-            widgets={widgets}
             uiSchema={{
               ...uiSchema,
               'ui:submitButtonOptions': {

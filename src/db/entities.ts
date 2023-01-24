@@ -8,6 +8,14 @@ export const defaultEntities = defineEntities({
     {
       id: Type.Optional(Type.Integer()),
       name: Type.String(),
+      description: Type.Optional(
+        Type.String({
+          'ui:widget': 'textarea',
+          'ui:options': {
+            rows: 4,
+          },
+        })
+      ),
     },
     {
       title: 'categories',
@@ -17,7 +25,14 @@ export const defaultEntities = defineEntities({
     {
       id: Type.Optional(Type.Integer()),
       title: Type.String(),
-      text: Type.String(),
+      text: Type.Optional(
+        Type.String({
+          'ui:widget': 'textarea',
+          'ui:options': {
+            rows: 4,
+          },
+        })
+      ),
     },
     {
       title: 'posts',

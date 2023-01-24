@@ -126,6 +126,7 @@ const SchemaPage = () => {
         queryClient.invalidateQueries([
           'overall-database-status',
           'available-entities',
+          'database-counts',
         ]);
       },
     }
@@ -221,6 +222,7 @@ const AdminTools = () => {
         queryClient.invalidateQueries([
           'overall-database-status',
           'available-entities',
+          'database-counts',
         ]);
       },
     }
@@ -244,6 +246,7 @@ const AdminTools = () => {
         queryClient.invalidateQueries([
           'overall-database-status',
           'available-entities',
+          'database-counts',
         ]);
       },
     }
