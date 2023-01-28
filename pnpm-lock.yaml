@@ -11,7 +11,7 @@ specifiers:
   '@miniflare/shared': 2.11.0
   '@monaco-editor/react': ^4.4.6
   '@rakkasjs/eslint-config': 0.6.13
-  '@rjsf/core': 5.0.0-beta.17
+  '@rjsf/core': 5.0.0-beta.20
   '@rjsf/utils': 5.0.0-beta.17
   '@rjsf/validator-ajv8': 5.0.0-beta.17
   '@sinclair/typebox': 0.25.21
@@ -54,7 +54,7 @@ specifiers:
 
 dependencies:
   '@monaco-editor/react': 4.4.6_6vrjaj6ridxbohi43n7zt4gn7q
-  '@rjsf/core': 5.0.0-beta.17_6wrevuffeg2dtjc46vrpuo64q4
+  '@rjsf/core': 5.0.0-beta.20_6wrevuffeg2dtjc46vrpuo64q4
   '@rjsf/utils': 5.0.0-beta.17_react@18.2.0
   '@rjsf/validator-ajv8': 5.0.0-beta.17_@rjsf+utils@5.0.0-beta.17
   '@sinclair/typebox': 0.25.21
@@ -1122,8 +1122,8 @@ packages:
       - supports-color
     dev: true
 
-  /@rjsf/core/5.0.0-beta.17_6wrevuffeg2dtjc46vrpuo64q4:
-    resolution: {integrity: sha512-lzHtxgY53KjJBUalv7oXhepacHw7x8Ae+3i1n7dIqcU1TGPMBm5yhJF/8LIZsd09n5nmok0xGYujvRbGKmorXw==}
+  /@rjsf/core/5.0.0-beta.20_6wrevuffeg2dtjc46vrpuo64q4:
+    resolution: {integrity: sha512-dPm7Wbm5ZT9y5frr0vtcr0MvpitbO6ApITmavIGN2tIdQveVVzavSJ4kZR7T17R6aw71TMtD3UOobwIh8IslLQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.0.0-beta.1
