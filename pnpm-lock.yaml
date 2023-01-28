@@ -38,7 +38,7 @@ specifiers:
   react-dom: 18.2.0
   react-error-boundary: 3.1.4
   sql-format: 2.3.2
-  sql-formatter: 12.0.6
+  sql-formatter: 12.1.0
   sql-template-tag: 5.0.3
   sqlstring-sqlite: 0.1.1
   tailwindcss: 3.2.4
@@ -93,7 +93,7 @@ devDependencies:
   prettier: 2.8.3
   rakkasjs: 0.6.13_35wsvkmaa5yi6ecom5ikerfvm4
   sql-format: 2.3.2
-  sql-formatter: 12.0.6
+  sql-formatter: 12.1.0
   tailwindcss: 3.2.4_postcss@8.4.21
   typescript: 4.9.4
   vite: 4.0.4
@@ -4476,8 +4476,8 @@ packages:
       lodash-es: 4.17.21
     dev: true
 
-  /sql-formatter/12.0.6:
-    resolution: {integrity: sha512-aCbpsa5FKZmjwZ6ETkdf8RkaYN28p73WM/rshz9NLtOz0X/NWs2ariFzCEQ+OFdmlT5AUHGTJPhXuzRYjyWiBg==}
+  /sql-formatter/12.1.0:
+    resolution: {integrity: sha512-XwbFwdes2SuETEj/a0WY2MjweFFzgn5phDum4WOdWjk+aay84xXPUl9BzevB89PLykx+4d9GRdXRaiY1VHzytg==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
