@@ -33,7 +33,7 @@ specifiers:
   only-allow: ^1.1.1
   postcss: 8.4.21
   prettier: 2.8.3
-  rakkasjs: 0.6.13
+  rakkasjs: 0.6.14
   react: 18.2.0
   react-dom: 18.2.0
   react-error-boundary: 3.1.4
@@ -91,7 +91,7 @@ devDependencies:
   only-allow: 1.1.1
   postcss: 8.4.21
   prettier: 2.8.3
-  rakkasjs: 0.6.13_o7mnb6zevj5uwfzvcyigifwshy
+  rakkasjs: 0.6.14_o7mnb6zevj5uwfzvcyigifwshy
   sql-format: 2.3.2
   sql-formatter: 12.1.0
   tailwindcss: 3.2.4_postcss@8.4.21
@@ -4097,8 +4097,8 @@ packages:
     resolution: {integrity: sha512-cz93DjNeLY0idrCNOH6PviZGRN9GJhsdm9hpn1YCS879fj4W+x5IFJhhkRZcwVgMmFF7R82UA/7Oh+R8lLZg6A==}
     dev: true
 
-  /rakkasjs/0.6.13_o7mnb6zevj5uwfzvcyigifwshy:
-    resolution: {integrity: sha512-VxtKaY7LFXM3nlvVBwQdwrGscoe7YcoLA8NlMvSDoazrrwgiECfw0HoMtC4346izNMX9tmRn7/s/e01+p19J/A==}
+  /rakkasjs/0.6.14_o7mnb6zevj5uwfzvcyigifwshy:
+    resolution: {integrity: sha512-FJdRDoxtLIAMHmLPlPQhKBRazxYZ37PY6AeO1lsBWQKAUZNpo9fUB/BcuVV396eyY+/vJOXdOX/bqdrgGiaA7A==}
     hasBin: true
     peerDependencies:
       react: '18'
