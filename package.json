@@ -21,7 +21,7 @@
     "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.11.0",
     "@miniflare/shared": "2.11.0",
-    "@rakkasjs/eslint-config": "0.6.13",
+    "@rakkasjs/eslint-config": "0.6.14",
     "@tailwindcss/forms": "0.5.3",
     "@types/better-sqlite3": "7.6.3",
     "@types/gensync": "1.0.0",
