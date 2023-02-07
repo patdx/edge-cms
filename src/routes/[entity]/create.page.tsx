@@ -3,14 +3,14 @@ import {
   Link,
   PageProps,
   useServerSideMutation,
-  useServerSideQuery,
+  useServerSideQuery
 } from 'rakkasjs';
 import { Details } from 'src/components/details';
 import { insertItem, loadEntityData } from 'src/db/load-entity-data';
 import { MyForm } from 'src/json-schema-form';
 import { compactStringify } from 'src/utils/compact-stringify';
 
-const EntityPage = ({ params }: PageProps) => {
+const CreatePage = ({ params }: PageProps) => {
   const entityName = params.entity;
 
   // TODO: figure out how to filter out default urls like favicon.ico
@@ -18,6 +18,22 @@ const EntityPage = ({ params }: PageProps) => {
 
   const { data, refetch } = useServerSideQuery((context) =>
     loadEntityData({ context, entityName, withEntities: true })
+  );
+
+  const mutation = useServerSideMutation<
+    any,
+    {
+      data: any;
+    }
+  >(
+    async (context, vars) => {
+      await insertItem(context, entityName, vars.data);
+    },
+    {
+      onSettled() {
+        refetch();
+      },
+    }
   );
 
   const { entities, ...remaining } = data ?? {};
@@ -37,36 +53,38 @@ const EntityPage = ({ params }: PageProps) => {
           <li>
             <Link href={`/${entityName}`}>{entityName}</Link>
           </li>
+          <li>
+            Create
+          </li>
         </ul>
       </div>
 
-      {/* <Details summary="JSON Schema">
+      <Details summary="JSON Schema">
         <pre>{compactStringify(schema)}</pre>
-      </Details> */}
+      </Details>
 
-      <div className="flex gap-2">
-        <Link href={`/${entityName}/create`} className="btn btn-primary">
-          Create
-        </Link>
-
-        <Link href={`/_schemas`} className="btn  btn-outline btn-secondary">
-          Schema
-        </Link>
+      <div className="card card-bordered card-compact shadow">
+        <div className="card-body">
+          <h2 className="card-title">Create</h2>
+          <MyForm
+            schema={schema}
+            onSubmit={async (data) => {
+              const formData = data.formData;
+              console.log(formData);
+              await mutation.mutateAsync({ data: formData });
+            }}
+            uiSchema={{
+              ...uiSchema,
+              'ui:submitButtonOptions': {
+                submitText: 'Create',
+              },
+            }}
+            validator={validator}
+          />
+        </div>
       </div>
-
-      {entities?.map((entity) => (
-        <Link
-          key={entity.id}
-          href={`/${entityName}/${entity.id}`}
-          className="card card-bordered card-compact shadow"
-        >
-          <div className="card-body whitespace-pre-wrap hover:opacity-75">
-            {compactStringify(entity)}
-          </div>
-        </Link>
-      ))}
     </div>
   );
 };
 
-export default EntityPage;
+export default CreatePage;
