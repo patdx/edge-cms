@@ -4,7 +4,13 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import monacoEditorPlugin from 'vite-plugin-monaco-editor';
 // import { cloudflareWorkersCustomAdapter } from './build-tools/cloudflare-workers-adapter';
 
-console.log(monacoEditorPlugin);
+// console.log(monacoEditorPlugin);
+// {
+//   resolveMonacoPath: [Function: resolveMonacoPath],
+//   getWorks: [Function: getWorks],
+//   isCDN: [Function: isCDN],
+//   default: [Function: monacoEditorPlugin]
+// }
 
 export default defineConfig({
   plugins: [
