@@ -1,6 +1,7 @@
 import type { D1Database } from '@cloudflare/workers-types';
 import type { JSONSchema6 } from 'json-schema';
 import type { RequestContext } from 'rakkasjs';
+import sql, { join, raw } from 'sql-template-tag';
 
 export const getOrm = (context: RequestContext) => {
   const DB = (context.platform as any).env.CLOUDFLARE_DB as D1Database;
@@ -13,17 +14,26 @@ export const getOrm = (context: RequestContext) => {
       if (schema) {
         const properties = Object.entries(schema.properties ?? []);
 
-        const query = `SELECT json_object(${properties
-          .map(([propName, propOptions]) => {
+        const query = sql`SELECT json_object(${join(
+          properties.map(([propName, propOptions]) => {
             const isJson = propOptions['ui:widget'] === 'json';
 
-            return `'${propName}', ${isJson ? `json(${propName})` : propName}`;
-          })
-          .join(', ')}) AS json_str FROM ${entityName}`;
+            const identifier = raw(propName);
 
-        console.log(query);
+            return sql`${propName}, ${
+              isJson ? sql`json(${identifier})` : identifier
+            }`;
+          }),
+          ', '
+        )}) AS json_str FROM ${raw(entityName)}`;
 
-        const found = await DB.prepare(query).all<{ json_str: string }>();
+        // const query = `SELECT json_object(${}) AS json_str FROM ${entityName}`;
+
+        console.log(query.sql, query.values);
+
+        const found = await DB.prepare(query.sql)
+          .bind(...query.values)
+          .all<{ json_str: string }>();
 
         return found.results?.map((item) => JSON.parse(item.json_str)) ?? [];
 
@@ -66,25 +76,38 @@ export const getOrm = (context: RequestContext) => {
 
         const properties = Object.entries(schema.properties ?? []);
 
-        const query = `SELECT json_object(${properties
-          .map(([propName, propOptions]) => {
+        const query = sql`SELECT json_object(${join(
+          properties.map(([propName, propOptions]) => {
             const isJson = propOptions['ui:widget'] === 'json';
 
-            return `'${propName}', ${isJson ? `json(${propName})` : propName}`;
-          })
-          .join(
-            ', '
-          )}) AS json_str FROM ${entityName} WHERE id = ${id} LIMIT 1`;
+            const identifier = raw(propName);
 
-        console.log(query);
+            return sql`${propName}, ${
+              isJson ? sql`json(${identifier})` : identifier
+            }`;
+          }),
+          ', '
+        )}) AS json_str FROM ${raw(entityName)} WHERE id = ${id} LIMIT 1`;
 
-        const found = await DB.prepare(query).first('json_str');
+        console.log(query.sql, query.values);
 
-        return typeof found === 'string' ? JSON.parse(found) : undefined;
+        const found = await DB.prepare(query.sql)
+          .bind(...query.values)
+          .first<{ json_str: string | undefined }>();
+
+        const json_str = found?.json_str;
+
+        return typeof json_str === 'string' ? JSON.parse(json_str) : undefined;
       } else {
-        const found = await DB.prepare(
-          `SELECT * FROM ${entityName} WHERE id = ${id} LIMIT 1`
-        ).first();
+        const query = sql`SELECT * FROM ${raw(
+          entityName
+        )} WHERE id = ${id} LIMIT 1`;
+
+        console.log(query.sql, query.values);
+
+        const found = await DB.prepare(query.sql)
+          .bind(...query.values)
+          .first();
 
         return found as any;
       }

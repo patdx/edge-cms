@@ -1,9 +1,10 @@
 import validator from '@rjsf/validator-ajv8';
 import {
   Link,
+  navigate,
   PageProps,
   useServerSideMutation,
-  useServerSideQuery
+  useServerSideQuery,
 } from 'rakkasjs';
 import { Details } from 'src/components/details';
 import { insertItem, loadEntityData } from 'src/db/load-entity-data';
@@ -21,17 +22,22 @@ const CreatePage = ({ params }: PageProps) => {
   );
 
   const mutation = useServerSideMutation<
-    any,
+    { id: string | number },
     {
       data: any;
     }
   >(
     async (context, vars) => {
-      await insertItem(context, entityName, vars.data);
+      const { id } = await insertItem(context, entityName, vars.data);
+
+      return { id };
     },
     {
       onSettled() {
-        refetch();
+        // refetch();
+      },
+      onSuccess(data) {
+        navigate(`/${entityName}/${data.id}`);
       },
     }
   );
@@ -53,9 +59,7 @@ const CreatePage = ({ params }: PageProps) => {
           <li>
             <Link href={`/${entityName}`}>{entityName}</Link>
           </li>
-          <li>
-            Create
-          </li>
+          <li>Create</li>
         </ul>
       </div>
 

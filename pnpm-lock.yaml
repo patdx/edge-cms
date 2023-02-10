@@ -29,19 +29,20 @@ specifiers:
   eslint: 8.33.0
   gensync: 1.0.0-beta.2
   miniflare: 2.11.0
-  monaco-editor: ^0.34.1
+  monaco-editor: ^0.35.0
   only-allow: ^1.1.1
   postcss: 8.4.21
-  prettier: 2.8.3
+  prettier: 2.8.4
   rakkasjs: 0.6.15
   react: 18.2.0
   react-dom: 18.2.0
   react-error-boundary: 3.1.4
+  react-loops: 1.3.0
   sql-format: 2.3.2
   sql-formatter: 12.1.0
   sql-template-tag: 5.0.3
   sqlstring-sqlite: 0.1.1
-  tailwindcss: 3.2.4
+  tailwindcss: 3.2.6
   typescript: 4.9.5
   vite: 4.1.1
   vite-node: 0.28.4
@@ -49,11 +50,11 @@ specifiers:
   vite-tsconfig-paths: 4.0.5
   vitest: 0.28.4
   wrangler: 2.9.1
-  zod: 3.20.2
-  zustand: 4.3.2
+  zod: 3.20.6
+  zustand: 4.3.3
 
 dependencies:
-  '@monaco-editor/react': 4.4.6_6vrjaj6ridxbohi43n7zt4gn7q
+  '@monaco-editor/react': 4.4.6_3vguicescx7w3divwtpzvtv5wy
   '@rjsf/core': 5.1.0_plrwb7h75pmk6rtzsnzeg6bvdm
   '@rjsf/utils': 5.1.0_react@18.2.0
   '@rjsf/validator-ajv8': 5.1.0_@rjsf+utils@5.1.0
@@ -62,14 +63,15 @@ dependencies:
   clsx: 1.2.1
   dirty-json: 0.9.2
   gensync: 1.0.0-beta.2
-  monaco-editor: 0.34.1
+  monaco-editor: 0.35.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0
+  react-loops: 1.3.0_react@18.2.0
   sql-template-tag: 5.0.3
   sqlstring-sqlite: 0.1.1
-  zod: 3.20.2
-  zustand: 4.3.2_react@18.2.0
+  zod: 3.20.6
+  zustand: 4.3.3_react@18.2.0
 
 devDependencies:
   '@cloudflare/workers-types': 4.20230115.0
@@ -78,7 +80,7 @@ devDependencies:
   '@miniflare/d1': 2.11.0
   '@miniflare/shared': 2.11.0
   '@rakkasjs/eslint-config': 0.6.15_4vsywjlpuriuw3tl5oq6zy5a64
-  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.6
   '@types/better-sqlite3': 7.6.3
   '@types/gensync': 1.0.0
   '@types/react': 18.0.27
@@ -90,15 +92,15 @@ devDependencies:
   miniflare: 2.11.0
   only-allow: 1.1.1
   postcss: 8.4.21
-  prettier: 2.8.3
+  prettier: 2.8.4
   rakkasjs: 0.6.15_o7mnb6zevj5uwfzvcyigifwshy
   sql-format: 2.3.2
   sql-formatter: 12.1.0
-  tailwindcss: 3.2.4_postcss@8.4.21
+  tailwindcss: 3.2.6_postcss@8.4.21
   typescript: 4.9.5
   vite: 4.1.1
   vite-node: 0.28.4
-  vite-plugin-monaco-editor: 1.1.0_monaco-editor@0.34.1
+  vite-plugin-monaco-editor: 1.1.0_monaco-editor@0.35.0
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
   vitest: 0.28.4
   wrangler: 2.9.1
@@ -1214,24 +1216,24 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@monaco-editor/loader/1.3.2_monaco-editor@0.34.1:
+  /@monaco-editor/loader/1.3.2_monaco-editor@0.35.0:
     resolution: {integrity: sha512-BTDbpHl3e47r3AAtpfVFTlAi7WXv4UQ/xZmz8atKl4q7epQV5e7+JbigFDViWF71VBi4IIBdcWP57Hj+OWuc9g==}
     peerDependencies:
       monaco-editor: '>= 0.21.0 < 1'
     dependencies:
-      monaco-editor: 0.34.1
+      monaco-editor: 0.35.0
       state-local: 1.0.7
     dev: false
 
-  /@monaco-editor/react/4.4.6_6vrjaj6ridxbohi43n7zt4gn7q:
+  /@monaco-editor/react/4.4.6_3vguicescx7w3divwtpzvtv5wy:
     resolution: {integrity: sha512-Gr3uz3LYf33wlFE3eRnta4RxP5FSNxiIV9ENn2D2/rN8KgGAD8ecvcITRtsbbyuOuNkwbuHYxfeaz2Vr+CtyFA==}
     peerDependencies:
       monaco-editor: '>= 0.25.0 < 1'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@monaco-editor/loader': 1.3.2_monaco-editor@0.34.1
-      monaco-editor: 0.34.1
+      '@monaco-editor/loader': 1.3.2_monaco-editor@0.35.0
+      monaco-editor: 0.35.0
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1348,13 +1350,13 @@ packages:
     resolution: {integrity: sha512-gFukHN4t8K4+wVC+ECqeqwzBDeFeTzBXroBTqE6vcWrQGbEUpHO7LYdG0f4xnvYq4VOEwITSlHlp0JBAIFMS/g==}
     dev: false
 
-  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.4:
+  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.6:
     resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.4_postcss@8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     dev: true
 
   /@types/better-sqlite3/7.6.3:
@@ -2150,7 +2152,7 @@ packages:
     hasBin: true
     dependencies:
       graceful-fs: 4.2.10
-      minimist: 1.2.7
+      minimist: 1.2.8
       mkdirp: 0.5.6
       rimraf: 2.7.1
     dev: true
@@ -2211,7 +2213,7 @@ packages:
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.21
       postcss-js: 4.0.0_postcss@8.4.21
-      tailwindcss: 3.2.4_postcss@8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -2291,7 +2293,7 @@ packages:
     dependencies:
       acorn-node: 1.8.2
       defined: 1.0.1
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /devalue/4.2.3:
@@ -3420,6 +3422,10 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /iterall/1.3.0:
+    resolution: {integrity: sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==}
+    dev: false
+
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
     dev: true
@@ -3471,7 +3477,7 @@ packages:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /json5/2.2.3:
@@ -3670,6 +3676,10 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+    dev: true
+
   /mkdirp-classic/0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
     dev: true
@@ -3678,7 +3688,7 @@ packages:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /mlly/1.1.0:
@@ -3690,8 +3700,8 @@ packages:
       ufo: 1.0.1
     dev: true
 
-  /monaco-editor/0.34.1:
-    resolution: {integrity: sha512-FKc80TyiMaruhJKKPz5SpJPIjL+dflGvz4CpuThaPMc94AyN7SeC9HQ8hrvaxX7EyHdJcUY5i4D0gNyJj1vSZQ==}
+  /monaco-editor/0.35.0:
+    resolution: {integrity: sha512-BJfkAZ0EJ7JgrgWzqjfBNP9hPSS8NlfECEDMEIIiozV2UaPq22yeuOjgbd3TwMh3anH0krWZirXZfn8KUSxiOA==}
 
   /moo/0.5.2:
     resolution: {integrity: sha512-iSAJLHYKnX41mKcJKjqvnAN9sf0LMDTXDEvFv+ffuRR9a1MIuXLjMNL6EsnDHSkKLTWNqQQ5uo61P4EbU4NU+Q==}
@@ -4032,6 +4042,16 @@ packages:
       postcss: 8.4.21
     dev: true
 
+  /postcss-js/4.0.1_postcss@8.4.21:
+    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
+    engines: {node: ^12 || ^14 || >= 16}
+    peerDependencies:
+      postcss: ^8.4.21
+    dependencies:
+      camelcase-css: 2.0.1
+      postcss: 8.4.21
+    dev: true
+
   /postcss-load-config/3.1.4_postcss@8.4.21:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -4104,8 +4124,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.8.3:
-    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
+  /prettier/2.8.4:
+    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -4236,6 +4256,15 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-loops/1.3.0_react@18.2.0:
+    resolution: {integrity: sha512-jWMmq75y4llq3jIIiEynGfp26wGTpVxAXHnp44XJotaySrJuD65lU3pAs67j/lfXlERtRcCAst2ca7bpsDWJhA==}
+    peerDependencies:
+      react: '>= 15.0.0'
+    dependencies:
+      iterall: 1.3.0
+      react: 18.2.0
     dev: false
 
   /react-refresh/0.14.0:
@@ -4692,8 +4721,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss/3.2.4_postcss@8.4.21:
-    resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
+  /tailwindcss/3.2.6_postcss@8.4.21:
+    resolution: {integrity: sha512-BfgQWZrtqowOQMC2bwaSNe7xcIjdDEgixWGYOd6AL0CbKHJlvhfdbINeAW76l1sO+1ov/MJ93ODJ9yluRituIw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
@@ -4715,7 +4744,7 @@ packages:
       picocolors: 1.0.0
       postcss: 8.4.21
       postcss-import: 14.1.0_postcss@8.4.21
-      postcss-js: 4.0.0_postcss@8.4.21
+      postcss-js: 4.0.1_postcss@8.4.21
       postcss-load-config: 3.1.4_postcss@8.4.21
       postcss-nested: 6.0.0_postcss@8.4.21
       postcss-selector-parser: 6.0.11
@@ -4816,7 +4845,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-bom: 3.0.0
     dev: true
 
@@ -5029,12 +5058,12 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-monaco-editor/1.1.0_monaco-editor@0.34.1:
+  /vite-plugin-monaco-editor/1.1.0_monaco-editor@0.35.0:
     resolution: {integrity: sha512-IvtUqZotrRoVqwT0PBBDIZPNraya3BxN/bfcNfnxZ5rkJiGcNtO5eAOWWSgT7zullIAEqQwxMU83yL9J5k7gww==}
     peerDependencies:
       monaco-editor: '>=0.33.0'
     dependencies:
-      monaco-editor: 0.34.1
+      monaco-editor: 0.35.0
     dev: true
 
   /vite-tsconfig-paths/4.0.5_typescript@4.9.5:
@@ -5314,12 +5343,12 @@ packages:
       stack-trace: 0.0.10
     dev: true
 
-  /zod/3.20.2:
-    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+  /zod/3.20.6:
+    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
     dev: false
 
-  /zustand/4.3.2_react@18.2.0:
-    resolution: {integrity: sha512-rd4haDmlwMTVWVqwvgy00ny8rtti/klRoZjFbL/MAcDnmD5qSw/RZc+Vddstdv90M5Lv6RPgWvm1Hivyn0QgJw==}
+  /zustand/4.3.3_react@18.2.0:
+    resolution: {integrity: sha512-x2jXq8S0kfLGNwGh87nhRfEc2eZy37tSatpSoSIN+O6HIaBhgQHSONV/F9VNrNcBcKQu/E80K1DeHDYQC/zCrQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       immer: '>=9.0'

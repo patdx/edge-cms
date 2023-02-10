@@ -1,7 +1,7 @@
 import type { JSONSchema6 } from 'json-schema';
 import type { RequestContext } from 'rakkasjs';
 import sql, { join, raw } from 'sql-template-tag';
-import { SchemaTable, systemTables } from './migrator/system-tables';
+import { getSystemTable, isSystemTable } from './migrator/system-tables';
 import { getOrm } from './orm';
 
 export const loadEntityData = async ({
@@ -15,29 +15,60 @@ export const loadEntityData = async ({
   withEntities?: boolean;
   byId?: string | number;
 }) => {
-  console.log('loadEntityData');
+  console.log(`loadEntityData for ${entityName} byId=${byId}`);
 
   const orm = getOrm(context);
 
-  const schema = entityName.startsWith('_')
-    ? JSON.parse(
-        JSON.stringify(
-          (systemTables as Record<string, JSONSchema6>)[entityName]
-        )
-      )
+  const { schema, schemaId } = isSystemTable(entityName)
+    ? {
+        schemaId: entityName,
+        schema: getSystemTable(entityName),
+      }
     : await orm.DB.prepare(
-        `SELECT json FROM _schemas WHERE json_extract(json, '$.title') = ?`
+        `SELECT id, json FROM _schemas WHERE json_extract(json, '$.title') = ?`
       )
         .bind(entityName)
-        .first('json')
+        .all<{ id: string | number; json: string | null }>()
         .then((res) => {
-          return typeof res === 'string' ? JSON.parse(res) : undefined;
+          const { id, json } = res.results?.[0] ?? {};
+
+          return {
+            schemaId: id,
+            schema: typeof json === 'string' ? JSON.parse(json) : undefined,
+          };
         });
 
+  // viewing the metadata of the _schemas
+  // is a special case. for completeness, trying
+  // to provide the schema of _schemas and _migrations
+  // even though they are hardcorded into the application
+  // and MUST be hardcoded
+
+  const { readOnly, entity } = byId
+    ? entityName === '_schemas' &&
+      typeof byId === 'string' &&
+      isSystemTable(byId)
+      ? {
+          readOnly: true,
+          entity: {
+            id: byId,
+            json: getSystemTable(byId),
+          },
+        }
+      : { readOnly: false, entity: await orm.findOne(entityName, byId, schema) }
+    : { readOnly: true, entity: undefined };
+
   return {
+    /**
+     * if true, this entity cannot be edited
+     * generally only true for metadata of system tables
+     * inside of _schemas
+     */
+    readOnly,
     entities: withEntities ? await orm.find(entityName, schema) : [],
-    entity: byId ? await orm.findOne(entityName, byId, schema) : undefined,
-    schema,
+    entity,
+    schema: schema as JSONSchema6,
+    schemaId,
   };
 };
 
@@ -55,14 +86,16 @@ export const insertItem = async (
   )}) VALUES (${join(
     dataPairs.map((pair) => pair[1]),
     ', '
-  )})`;
+  )}) RETURNING id`;
 
   console.log(query.sql, query.values);
 
-  await getOrm(context)
+  const result = await getOrm(context)
     .DB.prepare(query.sql)
     .bind(...query.values)
-    .run();
+    .first<{ id: string | number }>();
+
+  return result;
 };
 
 export const updateItem = async (

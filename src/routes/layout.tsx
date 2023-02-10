@@ -110,7 +110,7 @@ const MainLayout: Layout = ({ children }) => {
 
       {/* flex p-2 gap-2 shadow items-center bg-gray-200 flex-wrap */}
       <header className="navbar bg-base-300 sticky top-0 shadow z-10 sm:z-40">
-        <div className="hidden sm:block sm:w-64" />
+        {/* <div className="hidden sm:block sm:w-64" /> */}
         <div className="flex-none sm:hidden">
           <button
             className="btn btn-square btn-ghost"

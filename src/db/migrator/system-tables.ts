@@ -1,4 +1,5 @@
 import { Static, Type } from '@sinclair/typebox';
+import type { JSONSchema6 } from 'json-schema';
 
 export const systemTables = {
   _migrations: Type.Object(
@@ -25,3 +26,11 @@ export const systemTables = {
 };
 
 export type SchemaTable = Static<(typeof systemTables)['_schemas']>;
+
+export const isSystemTable = (name: string) => name.startsWith('_');
+
+export const getSystemTable = (name: string) => {
+  return JSON.parse(
+    JSON.stringify((systemTables as Record<string, JSONSchema6>)[name])
+  );
+};

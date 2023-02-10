@@ -1,14 +1,8 @@
-import validator from '@rjsf/validator-ajv8';
-import {
-  Link,
-  PageProps,
-  useServerSideMutation,
-  useServerSideQuery,
-} from 'rakkasjs';
-import { Details } from 'src/components/details';
-import { insertItem, loadEntityData } from 'src/db/load-entity-data';
-import { MyForm } from 'src/json-schema-form';
+import { Link, PageProps, useServerSideQuery } from 'rakkasjs';
+import { For } from 'react-loops';
+import { loadEntityData } from 'src/db/load-entity-data';
 import { compactStringify } from 'src/utils/compact-stringify';
+import { ViewEntity } from '../../components/view-entity';
 
 const EntityPage = ({ params }: PageProps) => {
   const entityName = params.entity;
@@ -20,15 +14,7 @@ const EntityPage = ({ params }: PageProps) => {
     loadEntityData({ context, entityName, withEntities: true })
   );
 
-  const { entities, ...remaining } = data ?? {};
-
-  const schema = data?.schema;
-
-  // we just pass the whole thing through for now, to
-  // make it easy to pass properties inside one
-  // schema
-
-  const uiSchema = schema.properties ?? {};
+  const { entities, schema, schemaId } = data ?? {};
 
   return (
     <div className="p-2 flex flex-col gap-2">
@@ -49,22 +35,31 @@ const EntityPage = ({ params }: PageProps) => {
           Create
         </Link>
 
-        <Link href={`/_schemas`} className="btn  btn-outline btn-secondary">
+        <Link
+          href={`/_schemas/${encodeURIComponent(schemaId)}`}
+          className="btn  btn-outline btn-secondary"
+        >
           Schema
         </Link>
       </div>
 
-      {entities?.map((entity) => (
-        <Link
-          key={entity.id}
-          href={`/${entityName}/${entity.id}`}
-          className="card card-bordered card-compact shadow"
-        >
-          <div className="card-body whitespace-pre-wrap hover:opacity-75">
-            {compactStringify(entity)}
-          </div>
-        </Link>
-      ))}
+      <For
+        of={entities}
+        as={(row) => {
+          return (
+            <Link
+              key={row.id}
+              href={`/${entityName}/${row.id}`}
+              className="card card-bordered card-compact shadow"
+            >
+              <div className="card-body whitespace-pre-wrap hover:opacity-75">
+                <ViewEntity data={row} schema={data?.schema} />
+              </div>
+            </Link>
+          );
+        }}
+        ifEmpty={<div className="p-4">No items yet.</div>}
+      />
     </div>
   );
 };

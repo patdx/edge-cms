@@ -95,7 +95,7 @@ const JsonTextEdit = function (props: WidgetProps) {
         />
       ) : (
         <textarea
-          className="textarea textarea-bordered"
+          className="textarea textarea-bordered text-[16px]"
           ref={textAreaRef}
           id={props.id}
           rows={10}
@@ -262,7 +262,7 @@ function TextareaWidget<
     <textarea
       id={id}
       name={id}
-      className="textarea textarea-bordered"
+      className="textarea textarea-bordered text-[16px]"
       value={value ? value : ''}
       placeholder={placeholder}
       required={required}
