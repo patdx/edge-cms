@@ -10,8 +10,11 @@ const EntityPage = ({ params }: PageProps) => {
   // TODO: figure out how to filter out default urls like favicon.ico
   // more effectively to avoid error messagesq
 
-  const { data, refetch } = useServerSideQuery((context) =>
-    loadEntityData({ context, entityName, withEntities: true })
+  const { data, refetch } = useServerSideQuery(
+    (context) => loadEntityData({ context, entityName, withEntities: true }),
+    {
+      key: `view-all-${entityName}`,
+    }
   );
 
   const { entities, schema, schemaId } = data ?? {};
@@ -53,7 +56,7 @@ const EntityPage = ({ params }: PageProps) => {
               className="card card-bordered card-compact shadow"
             >
               <div className="card-body whitespace-pre-wrap hover:opacity-75">
-                <ViewEntity data={row} schema={data?.schema} />
+                <ViewEntity data={row} schema={schema} />
               </div>
             </Link>
           );

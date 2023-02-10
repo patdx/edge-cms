@@ -98,22 +98,37 @@ export const insertItem = async (
   return result;
 };
 
-export const updateItem = async (
-  context: RequestContext,
-  entityName: string,
-  data: Record<string, any>
-) => {
-  const { id, ...remaining } = data;
+export const updateItem = async ({
+  context,
+  entityName,
+  id,
+  data,
+}: {
+  context: RequestContext;
+  entityName: string;
+  // NOTE: id must be passed separately to account for the case
+  // where id is changed inside the update
+  id: string | number;
+  data: Record<string, any>;
+}) => {
+  // const { id, ...remaining } = data;
+  const remaining = data;
 
   const query = sql`UPDATE ${raw(entityName)} SET ${join(
     Object.entries(remaining).map((item) => sql`${raw(item[0])} = ${item[1]}`),
     ', '
-  )} WHERE id = ${id}`;
+  )} WHERE id = ${id} RETURNING id`;
 
   console.log(query.sql, query.values);
 
-  await getOrm(context)
+  const result = await getOrm(context)
     .DB.prepare(query.sql)
     .bind(...query.values)
-    .run();
+    .first<{ id: string | number }>();
+
+  const newId = result?.id;
+
+  return {
+    newId,
+  };
 };

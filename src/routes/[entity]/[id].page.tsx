@@ -2,14 +2,20 @@ import clsx from 'clsx';
 import { Link, PageProps, useServerSideQuery } from 'rakkasjs';
 import { ViewEntity } from 'src/components/view-entity';
 import { loadEntityData } from 'src/db/load-entity-data';
+import { useDeleteMutation } from 'src/db/use-delete-mutation';
 
 const DetailPage = ({ params }: PageProps) => {
   const entityName = params.entity;
   const id = params.id;
 
-  const { data, refetch } = useServerSideQuery((context) =>
-    loadEntityData({ context, entityName, byId: id })
+  const { data, refetch } = useServerSideQuery(
+    (context) => loadEntityData({ context, entityName, byId: id }),
+    {
+      key: `${entityName}-by-id-${id}`,
+    }
   );
+
+  const deleteMutation = useDeleteMutation();
 
   const readOnly = data?.readOnly;
 
@@ -33,14 +39,30 @@ const DetailPage = ({ params }: PageProps) => {
         >
           {readOnly ? 'Edit (This item is not editable)' : 'Edit'}
         </Link>
+
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={() =>
+            deleteMutation.mutateAsync({
+              entityName,
+              id,
+            })
+          }
+        >
+          Delete
+        </button>
       </div>
 
-      <div className="card card-bordered card-compact shadow">
+      <div className="flex flex-col gap-2 p-2">
+        <ViewEntity data={data?.entity} schema={data?.schema} />
+      </div>
+      {/* <div className="card card-bordered card-compact shadow">
         <div className="card-body">
           <h2 className="card-title">Data</h2>
           <ViewEntity data={data?.entity} schema={data?.schema} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

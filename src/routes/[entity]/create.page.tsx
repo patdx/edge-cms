@@ -3,6 +3,7 @@ import {
   Link,
   navigate,
   PageProps,
+  useQueryClient,
   useServerSideMutation,
   useServerSideQuery,
 } from 'rakkasjs';
@@ -18,8 +19,10 @@ const CreatePage = ({ params }: PageProps) => {
   // more effectively to avoid error messagesq
 
   const { data, refetch } = useServerSideQuery((context) =>
-    loadEntityData({ context, entityName, withEntities: true })
+    loadEntityData({ context, entityName })
   );
+
+  const queryClient = useQueryClient();
 
   const mutation = useServerSideMutation<
     { id: string | number },
@@ -34,6 +37,7 @@ const CreatePage = ({ params }: PageProps) => {
     },
     {
       onSettled() {
+        queryClient.invalidateQueries(`view-all-${entityName}`);
         // refetch();
       },
       onSuccess(data) {
@@ -41,8 +45,6 @@ const CreatePage = ({ params }: PageProps) => {
       },
     }
   );
-
-  const { entities, ...remaining } = data ?? {};
 
   const schema = data?.schema;
 

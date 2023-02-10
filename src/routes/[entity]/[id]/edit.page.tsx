@@ -1,40 +1,62 @@
 import validator from '@rjsf/validator-ajv8';
-import type { JSONSchema6 } from 'json-schema';
 import {
   Link,
+  navigate,
   PageProps,
+  useQueryClient,
   useServerSideMutation,
   useServerSideQuery,
 } from 'rakkasjs';
+import sql, { raw } from 'sql-template-tag';
 import { Show } from 'src/components/show';
-import { ViewEntity } from 'src/components/view-entity';
 import { loadEntityData, updateItem } from 'src/db/load-entity-data';
+import { getOrm } from 'src/db/orm';
+import { useDeleteMutation } from 'src/db/use-delete-mutation';
 import { MyForm } from 'src/json-schema-form';
 import { flattenJson } from 'src/utils/flatten-json';
 
-const DetailPage = ({ params }: PageProps) => {
+const EditPage = ({ params }: PageProps) => {
   const entityName = params.entity;
   const id = params.id;
 
-  const { data, refetch } = useServerSideQuery((context) =>
-    loadEntityData({ context, entityName, byId: id })
+  const { data, refetch } = useServerSideQuery(
+    (context) => loadEntityData({ context, entityName, byId: id }),
+    {
+      key: `${entityName}-by-id-${id}`,
+    }
   );
 
-  const mutation = useServerSideMutation<
-    any,
+  const queryClient = useQueryClient();
+
+  const editMutation = useServerSideMutation<
+    { newId: string | number },
     {
       data: any;
     }
   >(
     async (context, vars) => {
-      await updateItem(context, entityName, vars.data);
+      const { newId } = await updateItem({
+        context,
+        entityName,
+        id,
+        data: vars.data,
+      });
+
+      return { newId };
     },
     {
       onSettled() {
-        refetch();
+        // refetch();
+        queryClient.invalidateQueries(`view-all-${entityName}`);
+        queryClient.invalidateQueries(`${entityName}-by-id-${id}`);
+      },
+      onSuccess(data) {
+        navigate(`/${entityName}/${data.newId}`);
       },
     }
   );
+
+  const deleteMutation = useDeleteMutation();
 
   const schema = data?.schema;
 
@@ -64,6 +86,19 @@ const DetailPage = ({ params }: PageProps) => {
         <Link href={`/${entityName}/${id}`} className="btn btn-primary">
           Cancel
         </Link>
+
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={() =>
+            deleteMutation.mutateAsync({
+              entityName,
+              id,
+            })
+          }
+        >
+          Delete
+        </button>
       </div>
 
       <Show
@@ -74,30 +109,27 @@ const DetailPage = ({ params }: PageProps) => {
           </div>
         }
       >
-        <div className="card card-bordered card-compact shadow">
-          <div className="card-body">
-            <h2 className="card-title">Edit</h2>
-            <MyForm
-              schema={schema as any}
-              uiSchema={{
-                ...uiSchema,
-                'ui:submitButtonOptions': {
-                  submitText: 'Save',
-                },
-              }}
-              formData={flattenJson(schema, data?.entity)}
-              onSubmit={async (data) => {
-                const formData = data.formData;
-                console.log(formData);
-                await mutation.mutateAsync({ data: formData });
-              }}
-              validator={validator}
-            />
-          </div>
+        <div className="p-2">
+          <MyForm
+            schema={schema as any}
+            uiSchema={{
+              ...uiSchema,
+              'ui:submitButtonOptions': {
+                submitText: 'Save',
+              },
+            }}
+            formData={flattenJson(schema, data?.entity)}
+            onSubmit={async (data) => {
+              const formData = data.formData;
+              console.log(formData);
+              await editMutation.mutateAsync({ data: formData });
+            }}
+            validator={validator}
+          />
         </div>
       </Show>
     </div>
   );
 };
 
-export default DetailPage;
+export default EditPage;
