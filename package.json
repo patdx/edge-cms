@@ -25,7 +25,7 @@
     "@tailwindcss/forms": "0.5.3",
     "@types/better-sqlite3": "7.6.3",
     "@types/gensync": "1.0.0",
-    "@types/react": "18.0.27",
+    "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
     "autoprefixer": "10.4.13",
     "better-sqlite3": "8.1.0",
