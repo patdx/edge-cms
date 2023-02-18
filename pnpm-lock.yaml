@@ -24,7 +24,7 @@ specifiers:
   autoprefixer: 10.4.13
   better-sqlite3: 8.1.0
   clsx: 1.2.1
-  daisyui: 2.50.0
+  daisyui: 2.50.1
   dirty-json: 0.9.2
   eslint: 8.34.0
   gensync: 1.0.0-beta.2
@@ -87,7 +87,7 @@ devDependencies:
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.13_postcss@8.4.21
   better-sqlite3: 8.1.0
-  daisyui: 2.50.0_gbtt6ss3tbiz4yjtvdr6fbrj44
+  daisyui: 2.50.1_gbtt6ss3tbiz4yjtvdr6fbrj44
   eslint: 8.34.0
   miniflare: 2.11.0
   only-allow: 1.1.1
@@ -2202,8 +2202,8 @@ packages:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
     dev: true
 
-  /daisyui/2.50.0_gbtt6ss3tbiz4yjtvdr6fbrj44:
-    resolution: {integrity: sha512-KiqRvqMXi9rgoH84M8D69gXPg6x+cbdiaHqm8pFHOsXXN1rTl/+OcCKkSnkEwTtIge9VJVDGU6l4B8/n+Juc5g==}
+  /daisyui/2.50.1_gbtt6ss3tbiz4yjtvdr6fbrj44:
+    resolution: {integrity: sha512-Z4GuU/ZknYoHt7qfDQSC5rrxMJ6ffNV9baQfCSbo5J/clC1DBppfrqLJXS8A3NPBRo2GbbpKwdA1ZdThWdpBtQ==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
@@ -2212,7 +2212,7 @@ packages:
       color: 4.2.3
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.21
-      postcss-js: 4.0.0_postcss@8.4.21
+      postcss-js: 4.0.1_postcss@8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
     transitivePeerDependencies:
       - ts-node
@@ -4023,16 +4023,6 @@ packages:
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.1
-    dev: true
-
-  /postcss-js/4.0.0_postcss@8.4.21:
-    resolution: {integrity: sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==}
-    engines: {node: ^12 || ^14 || >= 16}
-    peerDependencies:
-      postcss: ^8.3.3
-    dependencies:
-      camelcase-css: 2.0.1
-      postcss: 8.4.21
     dev: true
 
   /postcss-js/4.0.1_postcss@8.4.21:
