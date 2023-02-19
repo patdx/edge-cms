@@ -4,7 +4,7 @@ onlyBuiltDependencies:
   - better-sqlite3
 
 specifiers:
-  '@cloudflare/workers-types': 4.20230115.0
+  '@cloudflare/workers-types': 4.20230215.0
   '@hattip/adapter-cloudflare-workers': 0.0.27
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.11.0
@@ -74,7 +74,7 @@ dependencies:
   zustand: 4.3.3_react@18.2.0
 
 devDependencies:
-  '@cloudflare/workers-types': 4.20230115.0
+  '@cloudflare/workers-types': 4.20230215.0
   '@hattip/adapter-cloudflare-workers': 0.0.27
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.11.0
@@ -347,8 +347,8 @@ packages:
       mime: 3.0.0
     dev: true
 
-  /@cloudflare/workers-types/4.20230115.0:
-    resolution: {integrity: sha512-GPJEiO8AFN+jUpA+DHJ1qdVmk4s/hq8JYKjOV/+U7avGquQbVnj905+Kg6uAEfrq16muwmRKl+XJGqsvlBlDNg==}
+  /@cloudflare/workers-types/4.20230215.0:
+    resolution: {integrity: sha512-s71gaGwtEIxjSu6l0cekbXm9AwjrmrFVcHPNx9tHidG2dnqamYf5Nms/KgMYZf7gnjdKOp/ZChYFeJJkNv3QfA==}
     dev: true
 
   /@esbuild-plugins/node-globals-polyfill/0.1.1_esbuild@0.16.3:
