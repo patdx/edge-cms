@@ -42,7 +42,7 @@ specifiers:
   sql-formatter: 12.1.2
   sql-template-tag: 5.0.3
   sqlstring-sqlite: 0.1.1
-  tailwindcss: 3.2.6
+  tailwindcss: 3.2.7
   typescript: 4.9.5
   vite: 4.1.1
   vite-node: 0.28.4
@@ -80,7 +80,7 @@ devDependencies:
   '@miniflare/d1': 2.11.0
   '@miniflare/shared': 2.11.0
   '@rakkasjs/eslint-config': 0.6.16_7kw3g6rralp5ps6mg3uyzz6azm
-  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.6
+  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@types/better-sqlite3': 7.6.3
   '@types/gensync': 1.0.0
   '@types/react': 18.0.28
@@ -96,7 +96,7 @@ devDependencies:
   rakkasjs: 0.6.16_o7mnb6zevj5uwfzvcyigifwshy
   sql-format: 2.3.2
   sql-formatter: 12.1.2
-  tailwindcss: 3.2.6_postcss@8.4.21
+  tailwindcss: 3.2.7_postcss@8.4.21
   typescript: 4.9.5
   vite: 4.1.1
   vite-node: 0.28.4
@@ -1350,13 +1350,13 @@ packages:
     resolution: {integrity: sha512-VEB8ygeP42CFLWyAJhN5OklpxUliqdNEUcXb4xZ/CINqtYGTjL5ukluKdKzQ0iWdUxyQ7B0539PAUhHKrCNWSQ==}
     dev: false
 
-  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.6:
+  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.7:
     resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.6_postcss@8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
     dev: true
 
   /@types/better-sqlite3/7.6.3:
@@ -2213,7 +2213,7 @@ packages:
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.21
       postcss-js: 4.0.1_postcss@8.4.21
-      tailwindcss: 3.2.6_postcss@8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -4704,8 +4704,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss/3.2.6_postcss@8.4.21:
-    resolution: {integrity: sha512-BfgQWZrtqowOQMC2bwaSNe7xcIjdDEgixWGYOd6AL0CbKHJlvhfdbINeAW76l1sO+1ov/MJ93ODJ9yluRituIw==}
+  /tailwindcss/3.2.7_postcss@8.4.21:
+    resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
