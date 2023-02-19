@@ -8,7 +8,7 @@ specifiers:
   '@hattip/adapter-cloudflare-workers': 0.0.27
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.12.0
-  '@miniflare/shared': 2.11.0
+  '@miniflare/shared': 2.12.0
   '@monaco-editor/react': ^4.4.6
   '@rakkasjs/eslint-config': 0.6.16
   '@rjsf/core': 5.1.0
@@ -78,7 +78,7 @@ devDependencies:
   '@hattip/adapter-cloudflare-workers': 0.0.27
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.12.0
-  '@miniflare/shared': 2.11.0
+  '@miniflare/shared': 2.12.0
   '@rakkasjs/eslint-config': 0.6.16_7kw3g6rralp5ps6mg3uyzz6azm
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@types/better-sqlite3': 7.6.3
