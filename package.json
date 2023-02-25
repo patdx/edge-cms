@@ -16,7 +16,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20230215.0",
+    "@cloudflare/workers-types": "4.20230221.0",
     "@hattip/adapter-cloudflare-workers": "0.0.29",
     "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.12.1",
