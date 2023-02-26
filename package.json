@@ -45,7 +45,7 @@
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.0.5",
     "vitest": "0.28.5",
-    "wrangler": "2.10.0"
+    "wrangler": "2.11.1"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
