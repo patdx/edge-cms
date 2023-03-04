@@ -51,7 +51,7 @@ specifiers:
   vitest: 0.29.1
   wrangler: 2.11.1
   zod: 3.20.6
-  zustand: 4.3.3
+  zustand: 4.3.5
 
 dependencies:
   '@monaco-editor/react': 4.4.6_7pqy4hbxfi3nllat5cyr464kqi
@@ -71,7 +71,7 @@ dependencies:
   sql-template-tag: 5.0.3
   sqlstring-sqlite: 0.1.1
   zod: 3.20.6
-  zustand: 4.3.3_react@18.2.0
+  zustand: 4.3.5_react@18.2.0
 
 devDependencies:
   '@cloudflare/workers-types': 4.20230221.0
@@ -5525,8 +5525,8 @@ packages:
     resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
     dev: false
 
-  /zustand/4.3.3_react@18.2.0:
-    resolution: {integrity: sha512-x2jXq8S0kfLGNwGh87nhRfEc2eZy37tSatpSoSIN+O6HIaBhgQHSONV/F9VNrNcBcKQu/E80K1DeHDYQC/zCrQ==}
+  /zustand/4.3.5_react@18.2.0:
+    resolution: {integrity: sha512-2iPUzfwx+g3f0PagOMz2vDO9mZzEp2puFpNe7vrAymVPOEIEUjCPkC4/zy84eAscxIWmTU4j9g6upXYkJdzEFQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       immer: '>=9.0'
