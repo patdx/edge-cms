@@ -24,7 +24,7 @@ specifiers:
   autoprefixer: 10.4.13
   better-sqlite3: 8.1.0
   clsx: 1.2.1
-  daisyui: 2.51.1
+  daisyui: 2.51.3
   dirty-json: 0.9.2
   eslint: 8.35.0
   gensync: 1.0.0-beta.2
@@ -87,7 +87,7 @@ devDependencies:
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.13_postcss@8.4.21
   better-sqlite3: 8.1.0
-  daisyui: 2.51.1_gbtt6ss3tbiz4yjtvdr6fbrj44
+  daisyui: 2.51.3_gbtt6ss3tbiz4yjtvdr6fbrj44
   eslint: 8.35.0
   miniflare: 2.12.1
   only-allow: 1.1.1
@@ -2325,8 +2325,8 @@ packages:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
     dev: true
 
-  /daisyui/2.51.1_gbtt6ss3tbiz4yjtvdr6fbrj44:
-    resolution: {integrity: sha512-rMtdB8Rh8Ghd3+FDlMe63Caw+IopKIf7tviJGEx8gkjj5H+RCvU1bEbjx6DHsMsu477Gv5aafrLIdoUL+iMRrw==}
+  /daisyui/2.51.3_gbtt6ss3tbiz4yjtvdr6fbrj44:
+    resolution: {integrity: sha512-AQa9exq/DsnvjyDi6bwOqHExQr9LJJag0iKRXNvRRtHXPo1gaAQ3ASJWylUB8J8KMH2M9zIpr7cvPHc7yGckyQ==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
