@@ -13,7 +13,7 @@ specifiers:
   '@rakkasjs/eslint-config': 0.6.18
   '@rjsf/core': 5.2.0
   '@rjsf/utils': 5.2.0
-  '@rjsf/validator-ajv8': 5.1.0
+  '@rjsf/validator-ajv8': 5.2.0
   '@sinclair/typebox': 0.25.24
   '@tailwindcss/forms': 0.5.3
   '@types/better-sqlite3': 7.6.3
@@ -57,7 +57,7 @@ dependencies:
   '@monaco-editor/react': 4.4.6_7pqy4hbxfi3nllat5cyr464kqi
   '@rjsf/core': 5.2.0_ck46qicuvnteyqo5nyq22t3sxq
   '@rjsf/utils': 5.2.0_react@18.2.0
-  '@rjsf/validator-ajv8': 5.1.0_@rjsf+utils@5.2.0
+  '@rjsf/validator-ajv8': 5.2.0_@rjsf+utils@5.2.0
   '@sinclair/typebox': 0.25.24
   '@types/json-schema': 7.0.11
   clsx: 1.2.1
@@ -1435,8 +1435,8 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@rjsf/validator-ajv8/5.1.0_@rjsf+utils@5.2.0:
-    resolution: {integrity: sha512-J3+cPT+saU2i4nOe8EDIMAWfrM4T48J8kgFL5O2mAObzlOI6O1UOSc0Rt82ag5zHhyAON0B6t0nG54/eDiCWfA==}
+  /@rjsf/validator-ajv8/5.2.0_@rjsf+utils@5.2.0:
+    resolution: {integrity: sha512-MW5pxdH+qhs2iQEfnT4kiJYXei0OMQedpd0/U4/uPIV79gRhmWHTONy4t1pylnifc/fXbX7I6N2yvKrDjuq+zg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.0.0
