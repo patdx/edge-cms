@@ -10,7 +10,7 @@ specifiers:
   '@miniflare/d1': 2.12.1
   '@miniflare/shared': 2.12.1
   '@monaco-editor/react': ^4.4.6
-  '@rakkasjs/eslint-config': 0.6.18
+  '@rakkasjs/eslint-config': 0.6.19
   '@rjsf/core': 5.2.0
   '@rjsf/utils': 5.2.0
   '@rjsf/validator-ajv8': 5.2.0
@@ -79,7 +79,7 @@ devDependencies:
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.12.1
   '@miniflare/shared': 2.12.1
-  '@rakkasjs/eslint-config': 0.6.18_ycpbpc6yetojsgtrx3mwntkhsu
+  '@rakkasjs/eslint-config': 0.6.19_ycpbpc6yetojsgtrx3mwntkhsu
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@types/better-sqlite3': 7.6.3
   '@types/gensync': 1.0.0
@@ -1381,8 +1381,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@rakkasjs/eslint-config/0.6.18_ycpbpc6yetojsgtrx3mwntkhsu:
-    resolution: {integrity: sha512-A3s47RQst1G3BJWLSJyUbhQSUYC4nYp800g4iYNmRosf5sFkIhwwOLdPJ0VBh++6LdIMieVm7gZp2AWmgQCSFg==}
+  /@rakkasjs/eslint-config/0.6.19_ycpbpc6yetojsgtrx3mwntkhsu:
+    resolution: {integrity: sha512-PszFnNmU8A5csmshYUPpy/4PiLs3pOvAyKWv7YdAr6RjIQ8O8PA2T0cR7oMyW8lW38qADBwVmCEpnAUlnF2Rag==}
     peerDependencies:
       eslint: ^8.7.0
       typescript: ^4.5.4
