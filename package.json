@@ -50,7 +50,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
     "@rjsf/core": "5.1.0",
-    "@rjsf/utils": "5.1.0",
+    "@rjsf/utils": "5.2.0",
     "@rjsf/validator-ajv8": "5.1.0",
     "@sinclair/typebox": "0.25.24",
     "@types/json-schema": "7.0.11",
