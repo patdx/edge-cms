@@ -11,7 +11,7 @@ specifiers:
   '@miniflare/shared': 2.12.1
   '@monaco-editor/react': ^4.4.6
   '@rakkasjs/eslint-config': 0.6.18
-  '@rjsf/core': 5.1.0
+  '@rjsf/core': 5.2.0
   '@rjsf/utils': 5.2.0
   '@rjsf/validator-ajv8': 5.1.0
   '@sinclair/typebox': 0.25.24
@@ -55,7 +55,7 @@ specifiers:
 
 dependencies:
   '@monaco-editor/react': 4.4.6_7pqy4hbxfi3nllat5cyr464kqi
-  '@rjsf/core': 5.1.0_ck46qicuvnteyqo5nyq22t3sxq
+  '@rjsf/core': 5.2.0_ck46qicuvnteyqo5nyq22t3sxq
   '@rjsf/utils': 5.2.0_react@18.2.0
   '@rjsf/validator-ajv8': 5.1.0_@rjsf+utils@5.2.0
   '@sinclair/typebox': 0.25.24
@@ -1405,8 +1405,8 @@ packages:
       - supports-color
     dev: true
 
-  /@rjsf/core/5.1.0_ck46qicuvnteyqo5nyq22t3sxq:
-    resolution: {integrity: sha512-n2FeSk9iDuCF+Zo6nMLPuWsGsHCRiWnfohLNoyl1ll/tv6Ac5Oh0W3cwClIUEmJwaUFPaU/2O4ihFvSCdXwHlw==}
+  /@rjsf/core/5.2.0_ck46qicuvnteyqo5nyq22t3sxq:
+    resolution: {integrity: sha512-Kj9NBD3Fu5hk1czB7ZreORHvmbOwFH2+3xnfJWERW/+MupV2RsMIyiah2Aa7UQsxymLmvLPaUIWpgx5IAW+dsQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.0.0
@@ -1415,6 +1415,7 @@ packages:
       '@rjsf/utils': 5.2.0_react@18.2.0
       lodash: 4.17.21
       lodash-es: 4.17.21
+      markdown-to-jsx: 7.1.9_react@18.2.0
       nanoid: 3.3.4
       prop-types: 15.8.1
       react: 18.2.0
@@ -3711,6 +3712,15 @@ packages:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /markdown-to-jsx/7.1.9_react@18.2.0:
+    resolution: {integrity: sha512-x4STVIKIJR0mGgZIZ5RyAeQD7FEZd5tS8m/htbcVGlex32J+hlSLj+ExrHCxP6nRKF1EKbcO7i6WhC1GtOpBlA==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      react: '>= 0.14.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /matcher/4.0.0:
     resolution: {integrity: sha512-S6x5wmcDmsDRRU/c2dkccDwQPXoFczc5+HpQ2lON8pnvHlnvHAHj5WlLVvw6n6vNyHuVugYrFohYxbS+pvFpKQ==}
