@@ -56,9 +56,13 @@ const SchemaPage = () => {
           `Initialization script: ${JSON.stringify(lines, undefined, 2)}`
         );
 
-        await getOrm(context).DB.batch(
-          lines.map((line) => getOrm(context).DB.prepare(line))
-        );
+        if (lines.length >= 1) {
+          // WARNING: be sure to check for lines first, otherwise this could cause a mysterious error
+          await getOrm(context).DB.batch(
+            lines.map((line) => getOrm(context).DB.prepare(line))
+          );
+        }
+
         // finish sync
 
         const databaseTables = await getDatabaseStatus();
