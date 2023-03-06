@@ -1,6 +1,6 @@
 import { createMiddleware } from 'rakkasjs/node-adapter';
 import hattipHandler from './entry-hattip';
-import { BetaDatabase } from '@miniflare/d1';
+import { D1Database, D1DatabaseAPI } from '@miniflare/d1';
 import { createSQLiteDB } from '@miniflare/shared';
 import fs from 'fs';
 
@@ -9,7 +9,7 @@ fs.mkdirSync('./data', { recursive: true });
 const dbPromise = Promise.resolve()
   // .then(() => createSQLiteDB(":memory:"))
   .then(() => createSQLiteDB('./data/data.db'))
-  .then((db) => new BetaDatabase(db))
+  .then((db) => new D1Database(new D1DatabaseAPI(db)))
   .then(async (db) => {
     // simulate the extra system tables of the real cloudflare d1 database
     await db.exec(
