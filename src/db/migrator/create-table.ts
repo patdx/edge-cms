@@ -1,7 +1,9 @@
 import type { JSONSchema6 } from 'json-schema';
-import { formatDialect, sqlite } from 'sql-formatter';
+import { formatSql } from 'src/utils/format-sqlite';
 import { convertJsonSchemaToDatabaseSchema } from './convert-schema';
 import { generateMigrationStepCreateTable } from './diff-schema';
+
+// NOTE: not being used yet
 
 export const getCreateTableQuery = (
   jsonSchema: JSONSchema6,
@@ -21,10 +23,7 @@ export const getCreateTableQuery = (
   });
 
   if (options?.format) {
-    return formatDialect(query, {
-      dialect: sqlite,
-      keywordCase: 'upper',
-    });
+    return formatSql(query);
   } else {
     return query;
   }

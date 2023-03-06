@@ -1,3 +1,4 @@
+import { formatSql } from 'src/utils/format-sqlite';
 import { escapeIdIfNeeded } from './shared';
 import type {
   MigrationStep,
@@ -109,9 +110,19 @@ export const generateMigrationStepSql = (step: MigrationStep): string => {
   }
 };
 
-export const generateManyMigrationStepsSql = (
-  steps: MigrationStep[]
-): string[] => steps.map((step) => generateMigrationStepSql(step));
+export function generateManyMigrationStepsSql(
+  steps: MigrationStep[],
+  options?: { format?: boolean }
+): string[] {
+  return steps.map((step) => {
+    const sql = generateMigrationStepSql(step);
+    if (options?.format) {
+      return formatSql(sql);
+    } else {
+      return sql;
+    }
+  });
+}
 
 const getColumnDef = (column: SqliteColumnSchema) => {
   return [

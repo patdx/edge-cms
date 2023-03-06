@@ -3,6 +3,7 @@ import {
   useServerSideMutation,
   useServerSideQuery,
 } from 'rakkasjs';
+import { Show } from 'src/components/show';
 import { defaultEntities } from 'src/db/entities';
 import { insertItem } from 'src/db/load-entity-data';
 import {
@@ -17,67 +18,71 @@ import { introspectDatabase } from 'src/db/migrator/introspect-database';
 import { isUserTable } from 'src/db/migrator/shared';
 import { SchemaTable, systemTables } from 'src/db/migrator/system-tables';
 import { getOrm } from 'src/db/orm';
+import ErrorPage from 'src/routes/$error';
+import { wrapServerQuery } from 'src/utils/wrap-server-query';
 
 const SchemaPage = () => {
   const query = useServerSideQuery(
-    async (context) => {
-      const orm = getOrm(context);
+    (context) =>
+      wrapServerQuery(async () => {
+        const orm = getOrm(context);
 
-      const getDatabaseStatus = () =>
-        introspectDatabase((sql) =>
-          getOrm(context)
-            .DB.prepare(sql)
-            .all()
-            .then((result) => result.results!)
+        const getDatabaseStatus = () =>
+          introspectDatabase((sql) =>
+            getOrm(context)
+              .DB.prepare(sql)
+              .all()
+              .then((result) => result.results!)
+          );
+
+        const databaseStatus = await getDatabaseStatus();
+
+        console.log(`current db status`, databaseStatus);
+
+        const oldStatus = databaseStatus.filter((table) =>
+          table.name?.startsWith('_')
+        ); // system table starts with "_"
+
+        const targetStatus = convertManyJsonSchemasToDatabaseSchema(
+          Object.values(systemTables)
         );
 
-      const databaseStatus = await getDatabaseStatus();
+        // sync system tables
+        const systemTableMigrationSteps = diffSchema(oldStatus, targetStatus);
 
-      console.log(`current db status`, databaseStatus);
+        const lines = generateManyMigrationStepsSql(systemTableMigrationSteps);
 
-      const oldStatus = databaseStatus.filter((table) =>
-        table.name?.startsWith('_')
-      ); // system table starts with "_"
+        console.log(
+          `Initialization script: ${JSON.stringify(lines, undefined, 2)}`
+        );
 
-      const targetStatus = convertManyJsonSchemasToDatabaseSchema(
-        Object.values(systemTables)
-      );
+        await getOrm(context).DB.batch(
+          lines.map((line) => getOrm(context).DB.prepare(line))
+        );
+        // finish sync
 
-      // sync system tables
-      const systemTableMigrationSteps = diffSchema(oldStatus, targetStatus);
+        const databaseTables = await getDatabaseStatus();
 
-      const lines = generateManyMigrationStepsSql(systemTableMigrationSteps);
+        const schemas = await orm.find<SchemaTable>('_schemas');
 
-      console.log(
-        `Initialization script: ${JSON.stringify(lines, undefined, 2)}`
-      );
+        console.log(schemas);
 
-      await getOrm(context).DB.batch(
-        lines.map((line) => getOrm(context).DB.prepare(line))
-      );
-      // finish sync
+        const target = safeParseJsonSchemaTables(schemas);
 
-      const databaseTables = await getDatabaseStatus();
+        if (target.errors.length >= 1) {
+          console.warn(target.errors.join('\n'));
+        }
 
-      const schemas = await orm.find<SchemaTable>('_schemas');
+        const updateDump = generateManyMigrationStepsSql(
+          diffSchema(
+            databaseTables.filter((item) => isUserTable(item)),
+            target.result
+          ),
+          { format: true }
+        );
 
-      console.log(schemas);
-
-      const target = safeParseJsonSchemaTables(schemas);
-
-      if (target.errors.length >= 1) {
-        console.warn(target.errors.join('\n'));
-      }
-
-      const updateDump = generateManyMigrationStepsSql(
-        diffSchema(
-          databaseTables.filter((item) => isUserTable(item)),
-          target.result
-        )
-      );
-
-      return { updateDump, schema: databaseTables };
-    },
+        return { updateDump, schema: databaseTables };
+      }),
     {
       key: 'overall-database-status',
     }
@@ -132,6 +137,14 @@ const SchemaPage = () => {
     }
   );
 
+  const data = query.data;
+
+  if (data.status === 'rejected') {
+    return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
+  }
+
+  const result = data.value;
+
   return (
     <div className="p-2 flex flex-col gap-2">
       <AdminTools />
@@ -139,26 +152,34 @@ const SchemaPage = () => {
       <div className="p-2 rounded border shadow">
         {/* TODO: make sure this automatically invalidates when updating _schemas table */}
         <h2>Pending schema changes:</h2>
-        {query.data.updateDump.length === 0 ? (
-          <p>No pending changes.</p>
-        ) : (
+        <Show
+          when={result.updateDump.length >= 1}
+          fallback={<p>No pending changes.</p>}
+        >
           <button
-            className="btn btn-warning"
+            className="btn btn-warning mb-2"
             onClick={() => syncDatabaseSchema.mutate()}
           >
             Apply changes
           </button>
-        )}
-        {query.data.updateDump.map((line) => (
-          <pre key={line}>{line || 'None'}</pre>
-        ))}
+          <div className="">
+            {result.updateDump.map((line) => (
+              <pre
+                key={line}
+                className="whitespace-pre-wrap p-2 hover:bg-gray-200 active:bg-gray-200 transition"
+              >
+                {line}
+              </pre>
+            ))}
+          </div>
+        </Show>
       </div>
 
       <div className="p-2 rounded border shadow">
         <h2>Current database schema</h2>
         <div className="flex flex-col gap-2">
-          {Array.isArray(query.data.schema) && query.data.schema.length >= 1 ? (
-            query.data.schema.map((item) => (
+          {Array.isArray(result.schema) && result.schema.length >= 1 ? (
+            result.schema.map((item) => (
               <div key={item.name} className="p-2 rounded border shadow">
                 <h4>{item.name}</h4>
                 {item.columns.map((column) => {

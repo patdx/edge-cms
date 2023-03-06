@@ -7,20 +7,21 @@ import {
   useServerSideMutation,
   useServerSideQuery,
 } from 'rakkasjs';
-import sql, { raw } from 'sql-template-tag';
 import { Show } from 'src/components/show';
 import { loadEntityData, updateItem } from 'src/db/load-entity-data';
-import { getOrm } from 'src/db/orm';
 import { useDeleteMutation } from 'src/db/use-delete-mutation';
 import { MyForm } from 'src/json-schema-form';
+import ErrorPage from 'src/routes/$error';
 import { flattenJson } from 'src/utils/flatten-json';
+import { wrapServerQuery } from 'src/utils/wrap-server-query';
 
 const EditPage = ({ params }: PageProps) => {
   const entityName = params.entity;
   const id = params.id;
 
   const { data, refetch } = useServerSideQuery(
-    (context) => loadEntityData({ context, entityName, byId: id }),
+    (context) =>
+      wrapServerQuery(() => loadEntityData({ context, entityName, byId: id })),
     {
       key: `${entityName}-by-id-${id}`,
     }
@@ -58,7 +59,13 @@ const EditPage = ({ params }: PageProps) => {
 
   const deleteMutation = useDeleteMutation();
 
-  const schema = data?.schema;
+  if (data.status === 'rejected') {
+    return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
+  }
+
+  const result = data.value;
+
+  const schema = result?.schema;
 
   // we just pass the whole thing through for now, to
   // make it easy to pass properties inside one
@@ -102,7 +109,7 @@ const EditPage = ({ params }: PageProps) => {
       </div>
 
       <Show
-        when={data.readOnly === false}
+        when={result.readOnly === false}
         fallback={
           <div className="p-4">
             This item is read only and cannot be edited.
@@ -118,7 +125,7 @@ const EditPage = ({ params }: PageProps) => {
                 submitText: 'Save',
               },
             }}
-            formData={flattenJson(schema, data?.entity)}
+            formData={flattenJson(schema, result?.entity)}
             onSubmit={async (data) => {
               const formData = data.formData;
               console.log(formData);
