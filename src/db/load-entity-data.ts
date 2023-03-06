@@ -67,7 +67,7 @@ export const loadEntityData = async ({
     readOnly,
     entities: withEntities ? await orm.find(entityName, schema) : [],
     entity,
-    schema: schema as JSONSchema6,
+    schema: schema as JSONSchema6 | undefined,
     schemaId,
   };
 };

@@ -1,5 +1,6 @@
 import { Link, PageProps, useServerSideQuery } from 'rakkasjs';
 import { For } from 'react-loops';
+import { Show } from 'src/components/show';
 import { loadEntityData } from 'src/db/load-entity-data';
 import { compactStringify } from 'src/utils/compact-stringify';
 import { ViewEntity } from '../../components/view-entity';
@@ -39,6 +40,9 @@ const EntityPage = ({ params }: PageProps) => {
         </Link>
 
         <Link
+          // TODO: allow linking by the actual schema id instead of the database table id
+          // entityName
+          // Probably need to support different primary key schemes or something first
           href={`/_schemas/${encodeURIComponent(schemaId)}`}
           className="btn  btn-outline btn-secondary"
         >
@@ -46,23 +50,33 @@ const EntityPage = ({ params }: PageProps) => {
         </Link>
       </div>
 
-      <For
-        of={entities}
-        as={(row) => {
-          return (
-            <Link
-              key={row.id}
-              href={`/${entityName}/${row.id}`}
-              className="card card-bordered card-compact shadow"
-            >
-              <div className="card-body whitespace-pre-wrap hover:opacity-75">
-                <ViewEntity data={row} schema={schema} />
-              </div>
-            </Link>
-          );
-        }}
-        ifEmpty={<div className="p-4">No items yet.</div>}
-      />
+      <Show
+        when={schema}
+        fallback={
+          <div>
+            Could not find the schema for this table. Please make sure to sync
+            the database to the latest schema first.
+          </div>
+        }
+      >
+        <For
+          of={entities}
+          as={(row) => {
+            return (
+              <Link
+                key={row.id}
+                href={`/${entityName}/${row.id}`}
+                className="card card-bordered card-compact shadow"
+              >
+                <div className="card-body whitespace-pre-wrap hover:opacity-75">
+                  <ViewEntity data={row} schema={schema} />
+                </div>
+              </Link>
+            );
+          }}
+          ifEmpty={<div className="p-4">No items yet.</div>}
+        />
+      </Show>
     </div>
   );
 };
