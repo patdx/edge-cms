@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20230228.0",
-    "@hattip/adapter-cloudflare-workers": "0.0.29",
+    "@hattip/adapter-cloudflare-workers": "0.0.30",
     "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.12.1",
     "@miniflare/shared": "2.12.1",

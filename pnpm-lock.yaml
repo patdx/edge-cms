@@ -5,7 +5,7 @@ onlyBuiltDependencies:
 
 specifiers:
   '@cloudflare/workers-types': 4.20230228.0
-  '@hattip/adapter-cloudflare-workers': 0.0.29
+  '@hattip/adapter-cloudflare-workers': 0.0.30
   '@hattip/response': 0.0.29
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.12.1
@@ -79,7 +79,7 @@ dependencies:
 
 devDependencies:
   '@cloudflare/workers-types': 4.20230228.0
-  '@hattip/adapter-cloudflare-workers': 0.0.29
+  '@hattip/adapter-cloudflare-workers': 0.0.30
   '@ltd/j-toml': 1.38.0
   '@miniflare/d1': 2.12.1
   '@miniflare/shared': 2.12.1
@@ -924,10 +924,10 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@hattip/adapter-cloudflare-workers/0.0.29:
-    resolution: {integrity: sha512-UB1XU6gVDkbKpDEa+aiDZEC8z/9hEy0VpvElqvSNB/+pzyj3wbrH3nv+2t6PNgk8aGavpVn7MUEkXDShmEF8Dw==}
+  /@hattip/adapter-cloudflare-workers/0.0.30:
+    resolution: {integrity: sha512-D7cE3IgH6p2WHskxJpfLElRObVOWwXePVxvXMFhEZ9r1HoXkwFGKON0W87GxoVJrzNpX4yUTN+M5vqh6T+tM5w==}
     dependencies:
-      '@hattip/core': 0.0.29
+      '@hattip/core': 0.0.30
     dev: true
 
   /@hattip/adapter-node/0.0.29:
@@ -980,6 +980,10 @@ packages:
 
   /@hattip/core/0.0.29:
     resolution: {integrity: sha512-o7F66TYn7LUn5EfY7evz9BVfHD9q0nLSuunGk5ez6dhTpPX0XCgBhc6e/PbythnbM/dDdqcQQ30dYOiC/4MnFw==}
+
+  /@hattip/core/0.0.30:
+    resolution: {integrity: sha512-/UA3Lmb8JvHz0XpjSEquPWKXbLzA1NwFSITRuoFisRkKvg5ZFinUINMEPkkfH1JfSueE3ZCQMCTxi4410fviMg==}
+    dev: true
 
   /@hattip/polyfills/0.0.29:
     resolution: {integrity: sha512-6B7YODR25O16BXkjRy6emfJ8xyTZSLdw+36F8NIvLCQMbcLfErb7y5jdV6hphrYTMOvEMC/BjP2cIVdPdDQGpg==}
