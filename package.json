@@ -25,7 +25,7 @@
     "@tailwindcss/forms": "0.5.3",
     "@types/better-sqlite3": "7.6.3",
     "@types/gensync": "1.0.0",
-    "@types/lodash-es": "4.17.6",
+    "@types/lodash-es": "4.17.7",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
@@ -43,7 +43,7 @@
     "vite": "4.1.4",
     "vite-node": "0.29.2",
     "vite-plugin-monaco-editor": "^1.1.0",
-    "vite-tsconfig-paths": "4.0.5",
+    "vite-tsconfig-paths": "4.0.7",
     "vitest": "0.29.2",
     "wrangler": "2.12.3"
   },

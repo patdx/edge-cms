@@ -20,7 +20,7 @@ specifiers:
   '@types/better-sqlite3': 7.6.3
   '@types/gensync': 1.0.0
   '@types/json-schema': 7.0.11
-  '@types/lodash-es': 4.17.6
+  '@types/lodash-es': 4.17.7
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.14
@@ -49,7 +49,7 @@ specifiers:
   vite: 4.1.4
   vite-node: 0.29.2
   vite-plugin-monaco-editor: ^1.1.0
-  vite-tsconfig-paths: 4.0.5
+  vite-tsconfig-paths: 4.0.7
   vitest: 0.29.2
   wrangler: 2.12.3
   zod: 3.21.4
@@ -87,7 +87,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@types/better-sqlite3': 7.6.3
   '@types/gensync': 1.0.0
-  '@types/lodash-es': 4.17.6
+  '@types/lodash-es': 4.17.7
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.14_postcss@8.4.21
@@ -105,7 +105,7 @@ devDependencies:
   vite: 4.1.4
   vite-node: 0.29.2
   vite-plugin-monaco-editor: 1.1.0_monaco-editor@0.36.1
-  vite-tsconfig-paths: 4.0.5_typescript@4.9.5
+  vite-tsconfig-paths: 4.0.7_vwvfc4ezh6jlf6pa67auy3eulu
   vitest: 0.29.2
   wrangler: 2.12.3
 
@@ -1425,8 +1425,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+  /@types/lodash-es/4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
@@ -5061,12 +5061,18 @@ packages:
       monaco-editor: 0.36.1
     dev: true
 
-  /vite-tsconfig-paths/4.0.5_typescript@4.9.5:
-    resolution: {integrity: sha512-/L/eHwySFYjwxoYt1WRJniuK/jPv+WGwgRGBYx3leciR5wBeqntQpUE6Js6+TJemChc+ter7fDBKieyEWDx4yQ==}
+  /vite-tsconfig-paths/4.0.7_vwvfc4ezh6jlf6pa67auy3eulu:
+    resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.0.2_typescript@4.9.5
+      vite: 4.1.4
     transitivePeerDependencies:
       - supports-color
       - typescript
