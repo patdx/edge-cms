@@ -51,7 +51,7 @@ specifiers:
   vite-plugin-monaco-editor: ^1.1.0
   vite-tsconfig-paths: 4.0.5
   vitest: 0.29.2
-  wrangler: 2.12.2
+  wrangler: 2.12.3
   zod: 3.21.4
   zustand: 4.3.6
 
@@ -107,7 +107,7 @@ devDependencies:
   vite-plugin-monaco-editor: 1.1.0_monaco-editor@0.36.1
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
   vitest: 0.29.2
-  wrangler: 2.12.2
+  wrangler: 2.12.3
 
 packages:
 
@@ -5250,8 +5250,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /wrangler/2.12.2:
-    resolution: {integrity: sha512-pjdZvcjiFD6mI3Nncsw3hBv3rxjMx0n4Mtp+Tsql/hvr0LpOmHKlW/aMeYx/fVUmjEKfWBSULc1vgM02O2UTWQ==}
+  /wrangler/2.12.3:
+    resolution: {integrity: sha512-0skqT9qBbchiVY57YwQKFCFnuUo2Lg7e0vCChJ9FWcWZ/CXsPXeBMeVA8N/p72LuhrtZlqTFN7TsNOd8jm8KcQ==}
     engines: {node: '>=16.13.0'}
     hasBin: true
     dependencies:
