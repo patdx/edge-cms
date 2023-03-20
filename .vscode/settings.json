@@ -6,5 +6,8 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": ["clsx"]
+  "cSpell.words": [
+    "clsx"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

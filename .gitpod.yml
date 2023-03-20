@@ -8,4 +8,7 @@ tasks:
   - init: pnpm install && pnpm run build
     command: pnpm run start
 
-
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode

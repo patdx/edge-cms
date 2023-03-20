@@ -2,29 +2,37 @@ import { defineConfig } from 'vite';
 import rakkas from 'rakkasjs/vite-plugin';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import monacoEditorPlugin from 'vite-plugin-monaco-editor';
-// import { cloudflareWorkersCustomAdapter } from './build-tools/cloudflare-workers-adapter';
+import { adapterCloudflarePages } from './src/adapter-cloudflare-pages/adapter-cloudflare-pages';
 
-// console.log(monacoEditorPlugin);
-// {
-//   resolveMonacoPath: [Function: resolveMonacoPath],
-//   getWorks: [Function: getWorks],
-//   isCDN: [Function: isCDN],
-//   default: [Function: monacoEditorPlugin]
-// }
-
-export default defineConfig({
+export default defineConfig(({ ssrBuild }) => ({
   plugins: [
     tsconfigPaths(),
     rakkas({
-      adapter: 'cloudflare-workers',
-      // adapter: cloudflareWorkersCustomAdapter,
+      adapter: adapterCloudflarePages,
+      // adapter: 'cloudflare-workers',
     }),
-    monacoEditorPlugin.default({
-      languageWorkers: ['editorWorkerService', 'json'],
-    }),
+    ...(ssrBuild
+      ? []
+      : [
+          monacoEditorPlugin.default({
+            languageWorkers: ['editorWorkerService', 'json'],
+          }),
+        ]),
+    {
+      name: 'disable-public-files',
+      config(config, env) {
+        if (env.ssrBuild) {
+          return {
+            build: {
+              copyPublicDir: false,
+            },
+          };
+        }
+      },
+    },
   ],
   // ssr: {
   //   format: "esm",
   //   target: "webworker",
   // },
-});
+}));

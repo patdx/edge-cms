@@ -13,14 +13,18 @@
     "test:format": "prettier --check --ignore-unknown src",
     "test:lint": "eslint . --ignore-pattern dist",
     "test:unit": "vitest run",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "pages-deploy": "wrangler pages publish dist/client/ --project-name edge-cms",
+    "pages-preview": "wrangler pages dev dist/client/"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20230307.0",
     "@hattip/adapter-cloudflare-workers": "0.0.32",
+    "@hattip/bundler-cloudflare-workers": "0.0.32",
     "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.12.1",
     "@miniflare/shared": "2.12.1",
+    "@miniflare/tre": "3.0.0-next.12",
     "@rakkasjs/eslint-config": "0.6.19",
     "@tailwindcss/forms": "0.5.3",
     "@types/better-sqlite3": "7.6.3",
