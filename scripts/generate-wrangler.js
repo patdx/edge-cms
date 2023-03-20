@@ -37,7 +37,7 @@ const config = {
 };
 
 fs.writeFileSync(
-  new URL('../wrangler.toml', import.meta.url),
+  new URL('../wrangler-old.toml', import.meta.url),
   // @ts-ignore
   TOML.stringify(config, {
     newline: '\n',

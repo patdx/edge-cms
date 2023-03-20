@@ -8,23 +8,31 @@ import 'tailwindcss/tailwind.css';
 import clsx from 'clsx';
 import { IconMenu, IconX } from 'src/components/icons';
 import { useSidebar } from 'src/shared/sidebar';
+import { wrapServerQuery } from 'src/utils/wrap-server-query';
+import ErrorPage from 'src/routes/$error';
 
 const Sidebar = () => {
   const { data } = useServerSideQuery(
-    async (context) => {
-      const DB = getOrm(context).DB;
-      const tables = await DB.prepare(
-        `SELECT name FROM sqlite_schema WHERE type = 'table' AND name NOT IN (${SYSTEM_TABLES.map(
-          (name) => `'${name}'`
-        ).join(', ')}) ORDER BY name`
-      ).all<{ name: string }>();
-      return tables.results?.map((table) => table.name) ?? [];
-    },
+    (context) =>
+      wrapServerQuery(async () => {
+        const DB = getOrm(context).DB;
+        const tables = await DB.prepare(
+          `SELECT name FROM sqlite_schema WHERE type = 'table' AND name NOT IN (${SYSTEM_TABLES.map(
+            (name) => `'${name}'`
+          ).join(', ')}) ORDER BY name`
+        ).all<{ name: string }>();
+        return tables.results?.map((table) => table.name) ?? [];
+      }),
     { key: 'available-entities' }
   );
 
   const isOpen = useSidebar((s) => s.isOpen);
 
+  if (data.status === 'rejected') {
+    return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
+  }
+
+  const tables = data.value;
   // if (!isOpen) return null;
 
   return (
@@ -64,7 +72,7 @@ const Sidebar = () => {
             Database
           </StyledLink>
 
-          {data.map((name) => (
+          {tables.map((name) => (
             <StyledLink
               key={name}
               href={`/${name}`}
