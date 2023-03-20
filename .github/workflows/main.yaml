@@ -1,26 +1,19 @@
 on:
   - push
-  - pull_request
-
-env:
-  GH_TOKEN: ${{ github.token }}
-  SOPS_AGE_KEY: ${{ vars.SOPS_AGE_KEY }}
+  # - pull_request
 
 jobs:
-  cache-and-install:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install packages
-        run: sudo apt install -y age
-
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -46,19 +39,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install sops
-        run: |
-          gh release download -R mozilla/sops --pattern "*.linux.amd64" --output bin/sops --clobber
-          chmod +x bin/sops
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
-
-      - name: Generate wrangler config
-        run: node scripts/generate-wrangler.js
-
       - name: Build
         run: pnpm build
 
-      - name: Deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-        run: pnpm wrangler publish
+      - name: Publish
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: edge-cms # e.g. 'my-project'
+          directory: dist/client # e.g. 'dist'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
