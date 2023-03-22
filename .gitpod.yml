@@ -5,8 +5,20 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: pnpm install && pnpm run build
-    command: pnpm run start
+  - before: |
+      nvm deactivate
+      nvm uninstall default
+      nvm install 18
+      nvm use 18
+      nvm alias default 18
+      corepack enable
+      pnpm install -g nx
+    init: |
+      pnpm --version
+      pnpm install
+      pnpm build
+    command: |
+      pnpm start
 
 vscode:
   extensions:
