@@ -1,4 +1,4 @@
-import { Link, PageProps, useServerSideQuery } from 'rakkasjs';
+import { Link, type PageProps, useServerSideQuery } from 'rakkasjs';
 import { For } from 'react-loops';
 import { Show } from 'src/components/show';
 import { loadEntityData } from 'src/db/load-entity-data';
@@ -23,7 +23,9 @@ const EntityPage = ({ params }: PageProps) => {
     }
   );
 
-  const { entities, schema, schemaId } = data ?? {};
+  const results = data.status === 'fulfilled' ? data.value : undefined;
+
+  const { entities, schema, schemaId } = results ?? {};
 
   return (
     <div className="p-2 flex flex-col gap-2">

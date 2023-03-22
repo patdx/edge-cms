@@ -31,17 +31,24 @@ describe('migrator', () => {
       {
         "columns": [
           {
-            "dflt_value": undefined,
+            "defaultValue": undefined,
             "name": "id",
-            "notnull": 0,
-            "pk": 1,
+            "notNull": false,
+            "primaryKey": true,
             "type": "INTEGER",
           },
           {
-            "dflt_value": undefined,
+            "defaultValue": undefined,
             "name": "name",
-            "notnull": 1,
-            "pk": 0,
+            "notNull": true,
+            "primaryKey": false,
+            "type": "TEXT",
+          },
+          {
+            "defaultValue": undefined,
+            "name": "description",
+            "notNull": false,
+            "primaryKey": false,
             "type": "TEXT",
           },
           {
@@ -124,17 +131,24 @@ describe('diff tables', () => {
           "table": {
             "columns": [
               {
-                "dflt_value": undefined,
+                "defaultValue": undefined,
                 "name": "id",
-                "notnull": 0,
-                "pk": 1,
+                "notNull": false,
+                "primaryKey": true,
                 "type": "INTEGER",
               },
               {
-                "dflt_value": undefined,
+                "defaultValue": undefined,
                 "name": "name",
-                "notnull": 1,
-                "pk": 0,
+                "notNull": true,
+                "primaryKey": false,
+                "type": "TEXT",
+              },
+              {
+                "defaultValue": undefined,
+                "name": "description",
+                "notNull": false,
+                "primaryKey": false,
                 "type": "TEXT",
               },
               {
@@ -204,10 +218,10 @@ describe('diff tables', () => {
       [
         {
           "column": {
-            "dflt_value": undefined,
+            "defaultValue": undefined,
             "name": "type",
-            "notnull": 1,
-            "pk": 0,
+            "notNull": true,
+            "primaryKey": false,
             "type": "TEXT",
           },
           "tableName": "categories",
@@ -237,15 +251,15 @@ describe('diff tables', () => {
         {
           name: '_migrations',
           columns: [
-            { name: 'id', type: 'TEXT', notnull: 1, pk: 1 },
-            { name: 'sql', type: 'TEXT', notnull: 1, pk: 0 },
+            { name: 'id', type: 'TEXT', notNull: true, primaryKey: true },
+            { name: 'sql', type: 'TEXT', notNull: true },
           ],
         },
         {
           name: '_migrations',
           columns: [
-            { name: 'id', type: 'TEXT', notnull: 1, pk: 1 },
-            { name: 'json', type: 'TEXT', notnull: 1, pk: 0 },
+            { name: 'id', type: 'TEXT', notNull: true, primaryKey: true },
+            { name: 'json', type: 'TEXT', notNull: true },
           ],
         },
       ]

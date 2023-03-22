@@ -1,4 +1,4 @@
-import { Link, Page, useServerSideQuery } from 'rakkasjs';
+import { Link, type Page, useServerSideQuery } from 'rakkasjs';
 import { SYSTEM_TABLES } from 'src/db/migrator/shared';
 import { getOrm } from 'src/db/orm';
 import { For } from 'react-loops';

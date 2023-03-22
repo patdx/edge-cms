@@ -1,14 +1,18 @@
 import type { ExportedHandler } from '@cloudflare/workers-types';
+import type * as CFW from '@cloudflare/workers-types';
 import cloudflareWorkersAdapter from '@hattip/adapter-cloudflare-workers/no-static';
+
+// @ts-expect-error file does not exist
 import hattipHandler from './hattip.js';
 
 const handler = cloudflareWorkersAdapter(hattipHandler);
 
-console.log('Hello world');
+const createResponse = (body?: CFW.BodyInit | null, init?: CFW.ResponseInit) =>
+  new Response(body as any, init as any) as any as CFW.Response;
 
 const exportedHandler: ExportedHandler<{
   ASSETS: {
-    fetch: typeof fetch;
+    fetch: typeof CFW.fetch;
   };
   [key: string | symbol]: any;
 }> = {
@@ -28,7 +32,7 @@ const exportedHandler: ExportedHandler<{
       );
     }
 
-    let response: Response | undefined;
+    let response: CFW.Response | undefined;
 
     // According to these PRs, it seems that env.ASSETS.fetch may actually
     // include more than just GET or HEAD requests, especially when a
@@ -41,7 +45,7 @@ const exportedHandler: ExportedHandler<{
       response = await env.ASSETS.fetch(request.url, request.clone() as any);
       response =
         response && response.status >= 200 && response.status < 400
-          ? new Response(response.body, response)
+          ? createResponse(response.body, response)
           : undefined;
     } catch {}
 

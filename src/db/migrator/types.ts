@@ -25,24 +25,32 @@ const ColumnType = z.union([
 ]);
 type ColumnType = z.infer<typeof ColumnType>;
 
-// export const SqliteColumnSchema = z.object({
-//   cid: z.number().int().nullish(),
-//   name: z.string(),
-//   type: ColumnType,
-//   notnull: z.union([z.literal(0), z.literal(1)]),
-//   dflt_value: z.string().nullish(),
-//   pk: z.number().int(),
-// });
+export const SqliteColumnSchemaRaw = z.object({
+  cid: z.number().int().nullish(),
+  name: z.string(),
+  type: ColumnType,
+  notnull: z.union([z.literal(0), z.literal(1)]),
+  dflt_value: z.string().nullish(),
+  pk: z.union([z.literal(0), z.literal(1)]),
+});
+export type SqliteColumnSchemaRaw = z.infer<typeof SqliteColumnSchemaRaw>;
 
-/** TODO: rename the variables like this */
 export const SqliteColumnSchema = z.object({
   cid: z.number().int().nullish(),
   name: z.string(),
   type: ColumnType,
-  notNull: z.boolean().default(false),
+  /** default false */
+  notNull: z.boolean().nullish(),
   defaultValue: z.string().nullish(),
-  primaryKey: z.boolean().default(false),
+  /** default false */
+  primaryKey: z.boolean().nullish(),
 });
+
+export const SqliteTableSchemaRaw = z.object({
+  name: z.string(),
+  columns: z.array(SqliteColumnSchemaRaw),
+});
+export type SqliteTableSchemaRaw = z.infer<typeof SqliteTableSchemaRaw>;
 
 export const SqliteTableSchema = z.object({
   // type: z.literal("table").optional(),
@@ -52,7 +60,6 @@ export const SqliteTableSchema = z.object({
   // rootpage: number;
   // sql: string;
 });
-
 export type SqliteTableSchema = z.infer<typeof SqliteTableSchema>;
 
 export type SqliteColumnSchema = z.infer<typeof SqliteColumnSchema>;
