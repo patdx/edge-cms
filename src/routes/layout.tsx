@@ -28,11 +28,11 @@ const Sidebar = () => {
 
   const isOpen = useSidebar((s) => s.isOpen);
 
-  if (data.status === 'rejected') {
-    return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
-  }
+  // if (data.status === 'rejected') {
+  //   return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
+  // }
 
-  const tables = data.value;
+  const tables = data.status === 'fulfilled' ? data.value : [];
   // if (!isOpen) return null;
 
   return (

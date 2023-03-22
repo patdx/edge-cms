@@ -3,16 +3,21 @@ import { For } from 'react-loops';
 import { Show } from 'src/components/show';
 import { loadEntityData } from 'src/db/load-entity-data';
 import { compactStringify } from 'src/utils/compact-stringify';
+import { wrapServerQuery } from 'src/utils/wrap-server-query';
 import { ViewEntity } from '../../components/view-entity';
 
 const EntityPage = ({ params }: PageProps) => {
+  console.log('EntityPage');
   const entityName = params.entity;
 
   // TODO: figure out how to filter out default urls like favicon.ico
   // more effectively to avoid error messagesq
 
   const { data, refetch } = useServerSideQuery(
-    (context) => loadEntityData({ context, entityName, withEntities: true }),
+    (context) =>
+      wrapServerQuery(() =>
+        loadEntityData({ context, entityName, withEntities: true })
+      ),
     {
       key: `view-all-${entityName}`,
     }
