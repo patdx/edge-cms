@@ -51,13 +51,6 @@ describe('migrator', () => {
             "primaryKey": false,
             "type": "TEXT",
           },
-          {
-            "dflt_value": undefined,
-            "name": "description",
-            "notnull": 0,
-            "pk": 0,
-            "type": "TEXT",
-          },
         ],
         "name": "categories",
       }
@@ -149,13 +142,6 @@ describe('diff tables', () => {
                 "name": "description",
                 "notNull": false,
                 "primaryKey": false,
-                "type": "TEXT",
-              },
-              {
-                "dflt_value": undefined,
-                "name": "description",
-                "notnull": 0,
-                "pk": 0,
                 "type": "TEXT",
               },
             ],
