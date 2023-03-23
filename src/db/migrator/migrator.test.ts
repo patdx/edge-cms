@@ -44,9 +44,15 @@ describe('migrator', () => {
             "pk": 0,
             "type": "TEXT",
           },
+          {
+            "dflt_value": undefined,
+            "name": "description",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT",
+          },
         ],
         "name": "categories",
-        "type": "table",
       }
     `);
   });
@@ -74,7 +80,7 @@ describe('migrator', () => {
 describe('can create table', () => {
   test('post table', () => {
     expect(getCreateTableQuery(defaultEntities.posts)).toMatchInlineSnapshot(
-      '"CREATE TABLE posts (id INTEGER PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL) STRICT;"'
+      '"CREATE TABLE posts (id INTEGER PRIMARY KEY, title TEXT NOT NULL, text TEXT) STRICT;"'
     );
   });
 
@@ -131,9 +137,15 @@ describe('diff tables', () => {
                 "pk": 0,
                 "type": "TEXT",
               },
+              {
+                "dflt_value": undefined,
+                "name": "description",
+                "notnull": 0,
+                "pk": 0,
+                "type": "TEXT",
+              },
             ],
             "name": "categories",
-            "type": "table",
           },
           "type": "create-table",
         },
@@ -142,10 +154,10 @@ describe('diff tables', () => {
 
     expect(steps.map((step) => generateMigrationStepSql(step)))
       .toMatchInlineSnapshot(`
-      [
-        "CREATE TABLE categories (id INTEGER PRIMARY KEY, name TEXT NOT NULL) STRICT;",
-      ]
-    `);
+        [
+          "CREATE TABLE categories (id INTEGER PRIMARY KEY, name TEXT NOT NULL, description TEXT) STRICT;",
+        ]
+      `);
   });
 
   test('diff for removing one table', () => {
