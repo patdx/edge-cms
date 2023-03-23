@@ -16,7 +16,7 @@ import {
 } from 'src/db/migrator/diff-schema';
 import { introspectDatabase } from 'src/db/migrator/introspect-database';
 import { isUserTable } from 'src/db/migrator/shared';
-import { SchemaTable, systemTables } from 'src/db/migrator/system-tables';
+import { type SchemaTable, systemTables } from 'src/db/migrator/system-tables';
 import { getOrm } from 'src/db/orm';
 import ErrorPage from 'src/routes/$error';
 import { wrapServerQuery } from 'src/utils/wrap-server-query';

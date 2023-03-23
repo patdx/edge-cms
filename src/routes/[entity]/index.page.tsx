@@ -1,24 +1,31 @@
-import { Link, PageProps, useServerSideQuery } from 'rakkasjs';
+import { Link, type PageProps, useServerSideQuery } from 'rakkasjs';
 import { For } from 'react-loops';
 import { Show } from 'src/components/show';
 import { loadEntityData } from 'src/db/load-entity-data';
 import { compactStringify } from 'src/utils/compact-stringify';
+import { wrapServerQuery } from 'src/utils/wrap-server-query';
 import { ViewEntity } from '../../components/view-entity';
 
 const EntityPage = ({ params }: PageProps) => {
+  console.log('EntityPage');
   const entityName = params.entity;
 
   // TODO: figure out how to filter out default urls like favicon.ico
   // more effectively to avoid error messagesq
 
   const { data, refetch } = useServerSideQuery(
-    (context) => loadEntityData({ context, entityName, withEntities: true }),
+    (context) =>
+      wrapServerQuery(() =>
+        loadEntityData({ context, entityName, withEntities: true })
+      ),
     {
       key: `view-all-${entityName}`,
     }
   );
 
-  const { entities, schema, schemaId } = data ?? {};
+  const results = data.status === 'fulfilled' ? data.value : undefined;
+
+  const { entities, schema, schemaId } = results ?? {};
 
   return (
     <div className="p-2 flex flex-col gap-2">

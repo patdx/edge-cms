@@ -128,7 +128,7 @@ const getColumnDef = (column: SqliteColumnSchema) => {
   return [
     escapeIdIfNeeded(column.name),
     column.type,
-    ...(column.pk === 1 ? ['PRIMARY KEY'] : []),
-    ...(column.notnull ? ['NOT NULL'] : []),
+    ...(column.primaryKey ? ['PRIMARY KEY'] : []),
+    ...(column.notNull ? ['NOT NULL'] : []),
   ].join(' ');
 };

@@ -2,7 +2,7 @@ import validator from '@rjsf/validator-ajv8';
 import {
   Link,
   navigate,
-  PageProps,
+  type PageProps,
   useQueryClient,
   useServerSideMutation,
   useServerSideQuery,

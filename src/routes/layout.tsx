@@ -1,15 +1,17 @@
-// This is the main layout of our app. It renders the header and the footer.
-
-import { Head, Layout, Link, StyledLink, useServerSideQuery } from 'rakkasjs';
-
+import clsx from 'clsx';
+import {
+  Head,
+  type Layout,
+  Link,
+  StyledLink,
+  useServerSideQuery,
+} from 'rakkasjs';
+import { IconMenu, IconX } from 'src/components/icons';
 import { SYSTEM_TABLES } from 'src/db/migrator/shared';
 import { getOrm } from 'src/db/orm';
-import 'tailwindcss/tailwind.css';
-import clsx from 'clsx';
-import { IconMenu, IconX } from 'src/components/icons';
 import { useSidebar } from 'src/shared/sidebar';
 import { wrapServerQuery } from 'src/utils/wrap-server-query';
-import ErrorPage from 'src/routes/$error';
+import 'tailwindcss/tailwind.css';
 
 const Sidebar = () => {
   const { data } = useServerSideQuery(
@@ -28,11 +30,11 @@ const Sidebar = () => {
 
   const isOpen = useSidebar((s) => s.isOpen);
 
-  if (data.status === 'rejected') {
-    return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
-  }
+  // if (data.status === 'rejected') {
+  //   return <ErrorPage error={data.reason} resetErrorBoundary={() => {}} />;
+  // }
 
-  const tables = data.value;
+  const tables = data.status === 'fulfilled' ? data.value : [];
   // if (!isOpen) return null;
 
   return (

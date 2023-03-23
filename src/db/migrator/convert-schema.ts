@@ -23,9 +23,9 @@ export const convertJsonSchemaToDatabaseSchema = (
       rootTable.columns.push({
         name: key,
         type: getSqlType(prop.type),
-        notnull: jsonSchema.required?.includes(key) ? 1 : 0,
-        dflt_value: prop.default as any,
-        pk: key === 'id' ? 1 : 0,
+        notNull: jsonSchema.required?.includes(key),
+        defaultValue: prop.default as any,
+        primaryKey: key === 'id' ,
       });
     } else {
       console.warn(`property of type ${typeof prop} not supported`);
