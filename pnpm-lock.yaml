@@ -14,9 +14,9 @@ specifiers:
   '@miniflare/tre': 3.0.0-next.12
   '@monaco-editor/react': ^4.4.6
   '@rakkasjs/eslint-config': 0.6.19
-  '@rjsf/core': 5.3.1
-  '@rjsf/utils': 5.3.1
-  '@rjsf/validator-ajv8': 5.3.1
+  '@rjsf/core': 5.4.0
+  '@rjsf/utils': 5.4.0
+  '@rjsf/validator-ajv8': 5.4.0
   '@sinclair/typebox': 0.25.24
   '@tailwindcss/forms': 0.5.3
   '@types/better-sqlite3': 7.6.3
@@ -60,9 +60,9 @@ specifiers:
 dependencies:
   '@hattip/response': 0.0.33
   '@monaco-editor/react': 4.4.6_waewrrayshn643ztij6zbniufy
-  '@rjsf/core': 5.3.1_2w5amvop2wxppmh6srvbgcqs2i
-  '@rjsf/utils': 5.3.1_react@18.2.0
-  '@rjsf/validator-ajv8': 5.3.1_@rjsf+utils@5.3.1
+  '@rjsf/core': 5.4.0_enhfnsef354qejmp537gnsavoi
+  '@rjsf/utils': 5.4.0_react@18.2.0
+  '@rjsf/validator-ajv8': 5.4.0_@rjsf+utils@5.4.0
   '@sinclair/typebox': 0.25.24
   '@types/json-schema': 7.0.11
   clsx: 1.2.1
@@ -1408,24 +1408,24 @@ packages:
       - supports-color
     dev: true
 
-  /@rjsf/core/5.3.1_2w5amvop2wxppmh6srvbgcqs2i:
-    resolution: {integrity: sha512-AejBNI5XBmfirubZ2L/f7Hx9hga4E3w777UB4ZvzAPwNygxKS3p/4nUKuP4Ho53aktsArdva0mdmgdBNn8phCw==}
+  /@rjsf/core/5.4.0_enhfnsef354qejmp537gnsavoi:
+    resolution: {integrity: sha512-0DmEmTCkpnGYju3HycEJb0MoYCp7Swd/R1abllmUg0sqCeffdtYSI4pWL3M1gwyMFT+JWgZWDYQ2CqJUZ9n0NA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.0.0
       react: ^16.14.0 || >=17
     dependencies:
-      '@rjsf/utils': 5.3.1_react@18.2.0
+      '@rjsf/utils': 5.4.0_react@18.2.0
       lodash: 4.17.21
       lodash-es: 4.17.21
-      markdown-to-jsx: 7.1.9_react@18.2.0
+      markdown-to-jsx: 7.2.0_react@18.2.0
       nanoid: 3.3.4
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@rjsf/utils/5.3.1_react@18.2.0:
-    resolution: {integrity: sha512-bpqq1c8nivNaynGgQa/ZOTxZaD8RYo1YYF/cHpmTqGGO+qwNhimJdFCxu6uOJ5dRP59nsJ3nYbhzK1cLtxFXfQ==}
+  /@rjsf/utils/5.4.0_react@18.2.0:
+    resolution: {integrity: sha512-R9vgwqFrPV7+6JzTzHzYeULIH4FEdp10zixTxhgh4WSEbTP9L9leei9O4fa924EFGHuBFgtZeH2cwL20pr5cUw==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
@@ -1438,13 +1438,13 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@rjsf/validator-ajv8/5.3.1_@rjsf+utils@5.3.1:
-    resolution: {integrity: sha512-nl0mcUqbCZWZsjrPy7n0rdJtc0QprIl35rfu6YltCQxFuiCpVzl3CVo99grUg9kO5X6i4be8JbXkuUMaE73DXg==}
+  /@rjsf/validator-ajv8/5.4.0_@rjsf+utils@5.4.0:
+    resolution: {integrity: sha512-OjWPQGU2tu+KzOgZqqsyhdiamyZPLXsChgdIQJ2sz4gMuedL2LgfNfOc6STcf01kXMXft2MoDZ9lHGlAHlv2Vw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.0.0
     dependencies:
-      '@rjsf/utils': 5.3.1_react@18.2.0
+      '@rjsf/utils': 5.4.0_react@18.2.0
       ajv: 8.12.0
       ajv-formats: 2.1.1
       lodash: 4.17.21
@@ -3723,8 +3723,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /markdown-to-jsx/7.1.9_react@18.2.0:
-    resolution: {integrity: sha512-x4STVIKIJR0mGgZIZ5RyAeQD7FEZd5tS8m/htbcVGlex32J+hlSLj+ExrHCxP6nRKF1EKbcO7i6WhC1GtOpBlA==}
+  /markdown-to-jsx/7.2.0_react@18.2.0:
+    resolution: {integrity: sha512-3l4/Bigjm4bEqjCR6Xr+d4DtM1X6vvtGsMGSjJYyep8RjjIvcWtrXBS8Wbfe1/P+atKNMccpsraESIaWVplzVg==}
     engines: {node: '>= 10'}
     peerDependencies:
       react: '>= 0.14.0'
