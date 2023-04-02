@@ -103,8 +103,8 @@ devDependencies:
     specifier: 4.17.7
     version: 4.17.7
   '@types/react':
-    specifier: 18.0.31
-    version: 18.0.31
+    specifier: 18.0.32
+    version: 18.0.32
   '@types/react-dom':
     specifier: 18.0.11
     version: 18.0.11
@@ -1561,11 +1561,11 @@ packages:
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
-      '@types/react': 18.0.31
+      '@types/react': 18.0.32
     dev: true
 
-  /@types/react@18.0.31:
-    resolution: {integrity: sha512-EEG67of7DsvRDU6BLLI0p+k1GojDLz9+lZsnCpCRTa/lOokvyPBvp8S5x+A24hME3yyQuIipcP70KJ6H7Qupww==}
+  /@types/react@18.0.32:
+    resolution: {integrity: sha512-gYGXdtPQ9Cj0w2Fwqg5/ak6BcK3Z15YgjSqtyDizWUfx7mQ8drs0NBUzRRsAdoFVTO8kJ8L2TL8Skm7OFPnLUw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -4391,7 +4391,7 @@ packages:
       '@hattip/polyfills': 0.0.29
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
-      '@types/react': 18.0.31
+      '@types/react': 18.0.32
       '@types/react-dom': 18.0.11
       '@vavite/connect': 1.5.3(vite@4.2.1)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.2.1)
