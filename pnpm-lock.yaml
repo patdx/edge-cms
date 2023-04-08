@@ -88,8 +88,8 @@ devDependencies:
     specifier: 3.0.0-next.12
     version: 3.0.0-next.12
   '@rakkasjs/eslint-config':
-    specifier: 0.6.19
-    version: 0.6.19(eslint@8.37.0)(typescript@5.0.3)
+    specifier: 0.6.20
+    version: 0.6.20(eslint@8.37.0)(typescript@5.0.3)
   '@tailwindcss/forms':
     specifier: 0.5.3
     version: 0.5.3(tailwindcss@3.3.1)
@@ -133,8 +133,8 @@ devDependencies:
     specifier: 2.8.7
     version: 2.8.7
   rakkasjs:
-    specifier: 0.6.19
-    version: 0.6.19(react-dom@18.2.0)(react@18.2.0)(vite@4.2.1)
+    specifier: 0.6.20
+    version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.2.1)
   sql-formatter:
     specifier: 12.2.0
     version: 12.2.0
@@ -1429,8 +1429,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@rakkasjs/eslint-config@0.6.19(eslint@8.37.0)(typescript@5.0.3):
-    resolution: {integrity: sha512-PszFnNmU8A5csmshYUPpy/4PiLs3pOvAyKWv7YdAr6RjIQ8O8PA2T0cR7oMyW8lW38qADBwVmCEpnAUlnF2Rag==}
+  /@rakkasjs/eslint-config@0.6.20(eslint@8.37.0)(typescript@5.0.3):
+    resolution: {integrity: sha512-P5MqhZVwluRU45L2iRsotUVs4hblsYxKpMNxHei9/w05wth4Nq34zuYjJnJJFHcMhemw3jezZKJI9Vpo9jw1uQ==}
     peerDependencies:
       eslint: ^8.7.0
       typescript: ^4.5.4
@@ -4371,8 +4371,8 @@ packages:
     resolution: {integrity: sha512-cz93DjNeLY0idrCNOH6PviZGRN9GJhsdm9hpn1YCS879fj4W+x5IFJhhkRZcwVgMmFF7R82UA/7Oh+R8lLZg6A==}
     dev: true
 
-  /rakkasjs@0.6.19(react-dom@18.2.0)(react@18.2.0)(vite@4.2.1):
-    resolution: {integrity: sha512-dsSt/FUgHoJH9E8YcLvT2OnrlIt2WnMkw/rJbFLvwFXTs46dpQVPd44feLmN136xTUWOLG+eXgCA+3I/v6LUfA==}
+  /rakkasjs@0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.2.1):
+    resolution: {integrity: sha512-53i/0Q/95emu3nFnA8EbvpsoGm7cjx+HbiutlgW+OVTqh+WbbCZMrm5DngxCY9l3PDSMRJRDT7T0Xrt6Az4B0A==}
     hasBin: true
     peerDependencies:
       react: '18'
