@@ -45,10 +45,10 @@
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4",
     "vite": "4.2.1",
-    "vite-node": "0.29.8",
+    "vite-node": "0.30.0",
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.0.8",
-    "vitest": "0.29.8",
+    "vitest": "0.30.0",
     "wrangler": "2.14.0"
   },
   "dependencies": {
