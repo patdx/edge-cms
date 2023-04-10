@@ -1,9 +1,9 @@
 import { Link, type Page, useServerSideQuery } from 'rakkasjs';
 import { SYSTEM_TABLES } from 'src/db/migrator/shared';
 import { getOrm } from 'src/db/orm';
-import { For } from 'react-loops';
 import { wrapServerQuery } from 'src/utils/wrap-server-query';
 import ErrorPage from 'src/routes/$error';
+import { For } from 'src/components/for';
 
 const HomePage: Page = function HomePage() {
   const query = useServerSideQuery(
@@ -55,7 +55,7 @@ const HomePage: Page = function HomePage() {
     <main className="p-2">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <For
-          of={items}
+          each={items}
           as={(item) => {
             const row = item.results?.[0];
             const { name, count } = row ?? {};
@@ -68,7 +68,7 @@ const HomePage: Page = function HomePage() {
               </Link>
             );
           }}
-          ifEmpty={<div className="p-4">No tables yet.</div>}
+          fallback={<div className="p-4">No tables yet.</div>}
         />
       </div>
     </main>

@@ -1,10 +1,9 @@
-import { Link, type PageProps, useServerSideQuery } from 'rakkasjs';
-import { For } from 'react-loops';
+import { Link, useServerSideQuery, type PageProps } from 'rakkasjs';
 import { Show } from 'src/components/show';
 import { loadEntityData } from 'src/db/load-entity-data';
-import { compactStringify } from 'src/utils/compact-stringify';
 import { wrapServerQuery } from 'src/utils/wrap-server-query';
 import { ViewEntity } from '../../components/view-entity';
+import { For } from 'src/components/for';
 
 const EntityPage = ({ params }: PageProps) => {
   console.log('EntityPage');
@@ -67,7 +66,7 @@ const EntityPage = ({ params }: PageProps) => {
         }
       >
         <For
-          of={entities}
+          each={entities}
           as={(row) => {
             return (
               <Link
@@ -81,7 +80,7 @@ const EntityPage = ({ params }: PageProps) => {
               </Link>
             );
           }}
-          ifEmpty={<div className="p-4">No items yet.</div>}
+          fallback={<div className="p-4">No items yet.</div>}
         />
       </Show>
     </div>

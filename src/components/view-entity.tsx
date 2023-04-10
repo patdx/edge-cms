@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { JSONSchema6 } from 'json-schema';
 import type { FC } from 'react';
-import { For } from 'react-loops';
 import { compactStringify } from '../utils/compact-stringify';
+import { For } from 'src/components/for';
 
 export const ViewEntity: FC<{
   data: any;
@@ -21,7 +21,7 @@ export const ViewEntity: FC<{
   } else {
     return (
       <For
-        of={properties}
+        each={properties}
         as={({ key, value }) => (
           <Property
             key={key}
