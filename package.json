@@ -54,9 +54,9 @@
   "dependencies": {
     "@hattip/response": "0.0.33",
     "@monaco-editor/react": "^4.5.0",
-    "@rjsf/core": "5.6.0",
-    "@rjsf/utils": "5.6.0",
-    "@rjsf/validator-ajv8": "5.6.0",
+    "@rjsf/core": "5.6.2",
+    "@rjsf/utils": "5.6.2",
+    "@rjsf/validator-ajv8": "5.6.2",
     "@sinclair/typebox": "0.27.8",
     "@types/json-schema": "7.0.11",
     "clsx": "1.2.1",
