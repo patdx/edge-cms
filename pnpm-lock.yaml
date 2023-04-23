@@ -20,8 +20,8 @@ dependencies:
     specifier: 5.6.2
     version: 5.6.2(@rjsf/utils@5.6.2)
   '@sinclair/typebox':
-    specifier: 0.28.4
-    version: 0.28.4
+    specifier: 0.28.5
+    version: 0.28.5
   '@types/json-schema':
     specifier: 7.0.11
     version: 7.0.11
@@ -127,8 +127,8 @@ devDependencies:
     specifier: 8.4.23
     version: 8.4.23
   prettier:
-    specifier: 2.8.7
-    version: 2.8.7
+    specifier: 2.8.8
+    version: 2.8.8
   rakkasjs:
     specifier: 0.6.20
     version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.3.1)
@@ -1333,8 +1333,8 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
-  /@sinclair/typebox@0.28.4:
-    resolution: {integrity: sha512-Yqxz+dK/AFu9p03Q7XmajxDsNDLEfaQFFdEE4krqi+1otLkEgOrQD5IrWiq26Mbie5R6bPR6BljarufOdlCqQA==}
+  /@sinclair/typebox@0.28.5:
+    resolution: {integrity: sha512-3BjziLrALI2q+KpSKMwQdHP0MwmBpiu3oH0LM3mr7Aob9xO2z1hbGxjorTH7l5msuevXH7TU7YLt3Qs7U6Iokg==}
     dev: false
 
   /@tailwindcss/forms@0.5.3(tailwindcss@3.3.1):
@@ -4128,8 +4128,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@2.8.7:
-    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+  /prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
