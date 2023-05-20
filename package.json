@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20230511.0",
-    "@hattip/adapter-cloudflare-workers": "0.0.33",
-    "@hattip/bundler-cloudflare-workers": "0.0.33",
+    "@hattip/adapter-cloudflare-workers": "0.0.34",
+    "@hattip/bundler-cloudflare-workers": "0.0.34",
     "@ltd/j-toml": "1.38.0",
     "@miniflare/d1": "2.13.0",
     "@miniflare/shared": "2.13.0",
@@ -52,7 +52,7 @@
     "wrangler": "2.20.0"
   },
   "dependencies": {
-    "@hattip/response": "0.0.33",
+    "@hattip/response": "0.0.34",
     "@monaco-editor/react": "^4.5.0",
     "@rjsf/core": "5.7.2",
     "@rjsf/utils": "5.7.2",
