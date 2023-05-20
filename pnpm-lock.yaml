@@ -5,8 +5,8 @@ onlyBuiltDependencies:
 
 dependencies:
   '@hattip/response':
-    specifier: 0.0.33
-    version: 0.0.33
+    specifier: 0.0.34
+    version: 0.0.34
   '@monaco-editor/react':
     specifier: ^4.5.0
     version: 4.5.0(monaco-editor@0.38.0)(react-dom@18.2.0)(react@18.2.0)
@@ -67,11 +67,11 @@ devDependencies:
     specifier: 4.20230511.0
     version: 4.20230511.0
   '@hattip/adapter-cloudflare-workers':
-    specifier: 0.0.33
-    version: 0.0.33
+    specifier: 0.0.34
+    version: 0.0.34
   '@hattip/bundler-cloudflare-workers':
-    specifier: 0.0.33
-    version: 0.0.33
+    specifier: 0.0.34
+    version: 0.0.34
   '@ltd/j-toml':
     specifier: 1.38.0
     version: 1.38.0
@@ -859,10 +859,10 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@hattip/adapter-cloudflare-workers@0.0.33:
-    resolution: {integrity: sha512-Ep8txz+kTvjEIY/ipzox5FCzxizY1Qv2orfFaVAGrZaSY0tjzfHuKGkRtszRAFi9iAHItS0YwVozMsqGZLutyA==}
+  /@hattip/adapter-cloudflare-workers@0.0.34:
+    resolution: {integrity: sha512-2CXDvp/9MSbuckl5OtDb3Ijex+idqJGp3tiKVIQawMdxUcm1KIFc+ELqUxfELmBsBSgSAXz6G15lFjE+aEYBbQ==}
     dependencies:
-      '@hattip/core': 0.0.33
+      '@hattip/core': 0.0.34
     dev: true
 
   /@hattip/adapter-node@0.0.29:
@@ -880,8 +880,8 @@ packages:
       esbuild: 0.17.12
     dev: true
 
-  /@hattip/bundler-cloudflare-workers@0.0.33:
-    resolution: {integrity: sha512-lSJ89AuvBWa44JGBJzrwSJfzR/ezwa2SXgNKIvZlY8kwvjZZ/BphHPtQh8UH/wRFBkE8j5yzHspGrQ58UVFR5g==}
+  /@hattip/bundler-cloudflare-workers@0.0.34:
+    resolution: {integrity: sha512-WLzFIvBLcJAcDC22AJb5kyPWWV45k1iXrNa3WJBSaZTeNdcvg3/+jtUmsMkZ7OlkN7tPgPDvqZ8I8RCWAbuNQA==}
     hasBin: true
     dependencies:
       cac: 6.7.14
@@ -925,8 +925,8 @@ packages:
     resolution: {integrity: sha512-o7F66TYn7LUn5EfY7evz9BVfHD9q0nLSuunGk5ez6dhTpPX0XCgBhc6e/PbythnbM/dDdqcQQ30dYOiC/4MnFw==}
     dev: true
 
-  /@hattip/core@0.0.33:
-    resolution: {integrity: sha512-/3hhN1PYMwDDSF1zqVHEHgFHhwB2YxDPBByLZFPQG6euPTODxG9/RMpZ9YJ4cYatshSAGGwSfNXUVpflMLbJTg==}
+  /@hattip/core@0.0.34:
+    resolution: {integrity: sha512-L9MRB5fVgW8vd2wKDbD1pIhsM4UloRCdsXn3x9us2Xp1jeynS83T3gHGLdUvPclgGvQZapwBgUkkn9paS+bjDg==}
 
   /@hattip/polyfills@0.0.29:
     resolution: {integrity: sha512-6B7YODR25O16BXkjRy6emfJ8xyTZSLdw+36F8NIvLCQMbcLfErb7y5jdV6hphrYTMOvEMC/BjP2cIVdPdDQGpg==}
@@ -935,10 +935,10 @@ packages:
       node-fetch-native: 1.0.2
     dev: true
 
-  /@hattip/response@0.0.33:
-    resolution: {integrity: sha512-blwq1PJITeWwhx/Tyret8OYqTcrGEu/eTlSoC5U8b1uy6s+oNTJ/bhQUtfj8P5X+DSaKmbo1ymBKyCPpmPv6vg==}
+  /@hattip/response@0.0.34:
+    resolution: {integrity: sha512-CCLr6qriIKDswHTp5TW+bGlDeGzjmy3qBgSlp9CJLshXWoTNVvIMnLQUkmsnLnOMc1JSE+vrmdcMlZGKIs3Klw==}
     dependencies:
-      '@hattip/core': 0.0.33
+      '@hattip/core': 0.0.34
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
