@@ -2,7 +2,7 @@ import validator from '@rjsf/validator-ajv8';
 import {
   Link,
   navigate,
-  PageProps,
+  type PageProps,
   useQueryClient,
   useServerSideMutation,
   useServerSideQuery,
@@ -71,7 +71,7 @@ const EditPage = ({ params }: PageProps) => {
   // make it easy to pass properties inside one
   // schema
 
-  const uiSchema = schema.properties ?? {};
+  const uiSchema = schema?.properties ?? {};
 
   return (
     <div className="p-2 flex flex-col gap-2">
