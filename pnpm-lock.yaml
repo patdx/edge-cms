@@ -122,8 +122,8 @@ devDependencies:
     specifier: 8.43.0
     version: 8.43.0
   miniflare:
-    specifier: 3.0.1
-    version: 3.0.1
+    specifier: 3.0.2
+    version: 3.0.2
   only-allow:
     specifier: ^1.1.1
     version: 1.1.1
@@ -3544,11 +3544,11 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.0.1:
-    resolution: {integrity: sha512-aLOB8d26lOTn493GOv1LmpGHVLSxmeT4MixPG/k3Ze10j0wDKnMj8wsFgbZ6Q4cr1N4faf8O3IbNRJuQ+rLoJA==}
+  /miniflare@3.0.2:
+    resolution: {integrity: sha512-tSwmK+JPwHsV2KR7/dSZFGtTF/2M30OShjPDY7e5lAxyGE8SkHqXn/ckjg2TVltc9B8rXCSffMnCfYW1pH7R4A==}
     engines: {node: '>=16.13'}
     dependencies:
-      acorn: 8.8.2
+      acorn: 8.9.0
       acorn-walk: 8.2.0
       better-sqlite3: 8.4.0
       capnp-ts: 0.7.0
@@ -5139,7 +5139,7 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.5.3
       esbuild: 0.16.3
-      miniflare: 3.0.1
+      miniflare: 3.0.2
       nanoid: 3.3.6
       path-to-regexp: 6.2.1
       selfsigned: 2.1.1
