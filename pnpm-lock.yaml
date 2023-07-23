@@ -137,8 +137,8 @@ devDependencies:
     specifier: 0.6.20
     version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.4.6)
   sql-formatter:
-    specifier: 12.2.3
-    version: 12.2.3
+    specifier: 12.2.4
+    version: 12.2.4
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
@@ -3094,6 +3094,11 @@ packages:
       source-map: 0.6.1
     dev: true
 
+  /get-stdin@8.0.0:
+    resolution: {integrity: sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==}
+    engines: {node: '>=10'}
+    dev: true
+
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
@@ -4595,11 +4600,12 @@ packages:
     deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
-  /sql-formatter@12.2.3:
-    resolution: {integrity: sha512-sVRjEBTKJ5to2kfn11eDHcfVswz1//AL6HdGbPVN8ROWQ/XTv7E3z7rjgRxEimaBq5yDBE55JCljgcJ8a3+s7Q==}
+  /sql-formatter@12.2.4:
+    resolution: {integrity: sha512-Qj45LEHSfgrdYDOrAtIkR8SdS10SWcqCIM2WZwQwMKF2v9sM0K2dlThWPS7eYCUrhttZIrU1WwuIwHk7MjsWOw==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
+      get-stdin: 8.0.0
       nearley: 2.20.1
     dev: true
 
