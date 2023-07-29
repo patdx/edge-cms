@@ -31,13 +31,13 @@
     "@types/better-sqlite3": "7.6.4",
     "@types/gensync": "1.0.0",
     "@types/lodash-es": "4.17.8",
-    "@types/react": "18.2.15",
+    "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "better-sqlite3": "8.5.0",
-    "daisyui": "3.3.1",
-    "eslint": "8.45.0",
-    "miniflare": "3.20230717.0",
+    "daisyui": "3.5.0",
+    "eslint": "8.46.0",
+    "miniflare": "3.20230724.0",
     "only-allow": "^1.1.1",
     "postcss": "8.4.27",
     "prettier": "3.0.0",
@@ -45,7 +45,7 @@
     "sql-formatter": "12.2.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "vite": "4.4.6",
+    "vite": "4.4.7",
     "vite-node": "0.33.0",
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.2.0",
@@ -78,5 +78,5 @@
       "better-sqlite3"
     ]
   },
-  "packageManager": "pnpm@8.6.9"
+  "packageManager": "pnpm@8.6.10"
 }
