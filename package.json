@@ -19,7 +19,7 @@
     "pages-preview": "wrangler pages dev dist/client/"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20230724.0",
+    "@cloudflare/workers-types": "4.20230801.0",
     "@hattip/adapter-cloudflare-workers": "0.0.34",
     "@hattip/bundler-cloudflare-workers": "0.0.34",
     "@ltd/j-toml": "1.38.0",
