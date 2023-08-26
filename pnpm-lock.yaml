@@ -80,11 +80,11 @@ devDependencies:
     specifier: 1.38.0
     version: 1.38.0
   '@miniflare/d1':
-    specifier: 2.14.0
-    version: 2.14.0
+    specifier: 2.14.1
+    version: 2.14.1
   '@miniflare/shared':
-    specifier: 2.14.0
-    version: 2.14.0
+    specifier: 2.14.1
+    version: 2.14.1
   '@miniflare/tre':
     specifier: 3.0.0-next.13
     version: 3.0.0-next.13
@@ -1287,39 +1287,39 @@ packages:
     resolution: {integrity: sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==}
     dev: true
 
-  /@miniflare/core@2.14.0:
-    resolution: {integrity: sha512-BjmV/ZDwsKvXnJntYHt3AQgzVKp/5ZzWPpYWoOnUSNxq6nnRCQyvFvjvBZKnhubcmJCLSqegvz0yHejMA90CTA==}
+  /@miniflare/core@2.14.1:
+    resolution: {integrity: sha512-d+SGAda/VoXq+SKz04oq8ATUwQw5755L87fgPR8pTdR2YbWkxdbmEm1z2olOpDiUjcR86aN6NtCjY6tUC7fqaw==}
     engines: {node: '>=16.13'}
     dependencies:
       '@iarna/toml': 2.2.5
-      '@miniflare/queues': 2.14.0
-      '@miniflare/shared': 2.14.0
-      '@miniflare/watcher': 2.14.0
+      '@miniflare/queues': 2.14.1
+      '@miniflare/shared': 2.14.1
+      '@miniflare/watcher': 2.14.1
       busboy: 1.6.0
       dotenv: 10.0.0
       kleur: 4.1.5
-      set-cookie-parser: 2.5.1
+      set-cookie-parser: 2.6.0
       undici: 5.20.0
       urlpattern-polyfill: 4.0.3
     dev: true
 
-  /@miniflare/d1@2.14.0:
-    resolution: {integrity: sha512-9YoeLAkZuWGAu9BMsoctHoMue0xHzJYZigAJWGvWrqSFT1gBaT+RlUefQCHXggi8P7sOJ1+BKlsWAhkB5wfMWQ==}
+  /@miniflare/d1@2.14.1:
+    resolution: {integrity: sha512-MulDDBsDD8o5DwiqdMeJZy2vLoMji+NWnLcuibSag2mayA0LJcp0eHezseZNkW+knciWR1gMP8Xpa4Q1KwkbKA==}
     engines: {node: '>=16.7'}
     dependencies:
-      '@miniflare/core': 2.14.0
-      '@miniflare/shared': 2.14.0
+      '@miniflare/core': 2.14.1
+      '@miniflare/shared': 2.14.1
     dev: true
 
-  /@miniflare/queues@2.14.0:
-    resolution: {integrity: sha512-flS4MqlgBKyv6QBqKD0IofjmMDW9wP1prUNQy2wWPih9lA6bFKmml3VdFeDsPnWtE2J67K0vCTf5kj1Q0qdW1w==}
+  /@miniflare/queues@2.14.1:
+    resolution: {integrity: sha512-uBzrbBkIgtNoztDpmMMISg/brYtxLHRE7oTaN8OVnq3bG+3nF9kQC42HUz+Vg+sf65UlvhSaqkjllgx+fNtOxQ==}
     engines: {node: '>=16.7'}
     dependencies:
-      '@miniflare/shared': 2.14.0
+      '@miniflare/shared': 2.14.1
     dev: true
 
-  /@miniflare/shared@2.14.0:
-    resolution: {integrity: sha512-O0jAEdMkp8BzrdFCfMWZu76h4Cq+tt3/oDtcTFgzum3fRW5vUhIi/5f6bfndu6rkGbSlzxwor8CJWpzityXGug==}
+  /@miniflare/shared@2.14.1:
+    resolution: {integrity: sha512-73GnLtWn5iP936ctE6ZJrMqGu134KOoIIveq5Yd/B+NnbFfzpuzjCpkLrnqjkDdsxDbruXSb5eTR/SmAdpJxZQ==}
     engines: {node: '>=16.13'}
     dependencies:
       '@types/better-sqlite3': 7.6.4
@@ -1354,11 +1354,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@miniflare/watcher@2.14.0:
-    resolution: {integrity: sha512-O8Abg2eHpGmcZb8WyUaA6Av1Mqt5bSrorzz4CrWwsvJHBdekZPIX0GihC9vn327d/1pKRs81YTiSAfBoSZpVIw==}
+  /@miniflare/watcher@2.14.1:
+    resolution: {integrity: sha512-dkFvetm5wk6pwunlYb/UkI0yFNb3otLpRm5RDywMUzqObEf+rCiNNAbJe3HUspr2ncZVAaRWcEaDh82vYK5cmw==}
     engines: {node: '>=16.13'}
     dependencies:
-      '@miniflare/shared': 2.14.0
+      '@miniflare/shared': 2.14.1
     dev: true
 
   /@monaco-editor/loader@1.3.3(monaco-editor@0.41.0):
@@ -4588,10 +4588,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
-
-  /set-cookie-parser@2.5.1:
-    resolution: {integrity: sha512-1jeBGaKNGdEq4FgIrORu/N570dwoPYio8lSoYLWmX7sQ//0JY08Xh9o5pBcgmHQ/MbsYp/aZnOe1s1lIsbLprQ==}
     dev: true
 
   /set-cookie-parser@2.6.0:
