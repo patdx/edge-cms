@@ -68,8 +68,8 @@ dependencies:
 
 devDependencies:
   '@cloudflare/workers-types':
-    specifier: 4.20230814.0
-    version: 4.20230814.0
+    specifier: 4.20230821.0
+    version: 4.20230821.0
   '@hattip/adapter-cloudflare-workers':
     specifier: 0.0.34
     version: 0.0.34
@@ -161,8 +161,8 @@ devDependencies:
     specifier: 0.34.3
     version: 0.34.3
   wrangler:
-    specifier: 3.5.1
-    version: 3.5.1
+    specifier: 3.6.0
+    version: 3.6.0
 
 packages:
 
@@ -537,8 +537,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20230814.0:
-    resolution: {integrity: sha512-+jHiGjZg2UpULZSSHmHLqUG45TLg1s+uppSMlGvMn0u/xyFsRX9HX6b8Ydg/oHSp3jfSuPtX05GSvtgRAmrWTg==}
+  /@cloudflare/workers-types@4.20230821.0:
+    resolution: {integrity: sha512-lVQSyr5E4CEkQw7WIdsrMTj+kHjsm28mJ0B5AhNFByKR+16KTFsU/RW/nGLKHHW2jxT5lvYI+HjNQMzC9QR8Ng==}
     dev: true
 
   /@esbuild-plugins/node-globals-polyfill@0.1.1(esbuild@0.16.3):
@@ -3794,7 +3794,7 @@ packages:
       set-cookie-parser: 2.6.0
       source-map-support: 0.5.21
       stoppable: 1.1.0
-      undici: 5.20.0
+      undici: 5.23.0
       workerd: 1.20230814.1
       ws: 8.12.0
       youch: 3.2.3
@@ -5403,8 +5403,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20230821.0
     dev: true
 
-  /wrangler@3.5.1:
-    resolution: {integrity: sha512-CnrKId+pmjTfLSidM9Ut7lUDCFWEtJyY3JT3Dk+TgYHvu2zVmMgUeQQZHZfvpVN5eaEZifNQr90KEvMLy7MhHw==}
+  /wrangler@3.6.0:
+    resolution: {integrity: sha512-GWs4+gIUK+086svW/TgFhhxxrl/hdW2L7WASbdc10dJT7yFmCXse0SnHiqWUxbFu3ScP2t3a3LszJ08wwolWHg==}
     engines: {node: '>=16.13.0'}
     hasBin: true
     dependencies:
