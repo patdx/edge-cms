@@ -19,7 +19,7 @@
     "pages-preview": "wrangler pages dev dist/client/"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20230914.0",
+    "@cloudflare/workers-types": "4.20230922.0",
     "@hattip/adapter-cloudflare-workers": "0.0.35",
     "@hattip/bundler-cloudflare-workers": "0.0.35",
     "@ltd/j-toml": "1.38.0",
@@ -50,7 +50,7 @@
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.6",
-    "wrangler": "3.9.0"
+    "wrangler": "3.10.1"
   },
   "dependencies": {
     "@hattip/response": "0.0.35",
