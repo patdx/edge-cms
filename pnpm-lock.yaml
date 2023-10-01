@@ -64,7 +64,7 @@ dependencies:
     version: 3.22.2
   zustand:
     specifier: 4.4.1
-    version: 4.4.1(@types/react@18.2.23)(react@18.2.0)
+    version: 4.4.1(@types/react@18.2.24)(react@18.2.0)
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -104,8 +104,8 @@ devDependencies:
     specifier: 4.17.9
     version: 4.17.9
   '@types/react':
-    specifier: 18.2.23
-    version: 18.2.23
+    specifier: 18.2.24
+    version: 18.2.24
   '@types/react-dom':
     specifier: 18.2.8
     version: 18.2.8
@@ -1527,11 +1527,11 @@ packages:
   /@types/react-dom@18.2.8:
     resolution: {integrity: sha512-bAIvO5lN/U8sPGvs1Xm61rlRHHaq5rp5N3kp9C+NJ/Q41P8iqjkXSu0+/qu8POsjH9pNWb0OYabFez7taP7omw==}
     dependencies:
-      '@types/react': 18.2.23
+      '@types/react': 18.2.24
     dev: true
 
-  /@types/react@18.2.23:
-    resolution: {integrity: sha512-qHLW6n1q2+7KyBEYnrZpcsAmU/iiCh9WGCKgXvMxx89+TYdJWRjZohVIo9XTcoLhfX3+/hP0Pbulu3bCZQ9PSA==}
+  /@types/react@18.2.24:
+    resolution: {integrity: sha512-Ee0Jt4sbJxMu1iDcetZEIKQr99J1Zfb6D4F3qfUWoR1JpInkY1Wdg4WwCyBjL257D0+jGqSl1twBjV8iCaC0Aw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -4270,7 +4270,7 @@ packages:
       '@hattip/polyfills': 0.0.29
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
-      '@types/react': 18.2.23
+      '@types/react': 18.2.24
       '@types/react-dom': 18.2.8
       '@vavite/connect': 1.5.3(vite@4.4.9)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.4.9)
@@ -5370,7 +5370,7 @@ packages:
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
 
-  /zustand@4.4.1(@types/react@18.2.23)(react@18.2.0):
+  /zustand@4.4.1(@types/react@18.2.24)(react@18.2.0):
     resolution: {integrity: sha512-QCPfstAS4EBiTQzlaGP1gmorkh/UL1Leaj2tdj+zZCZ/9bm0WS7sI2wnfD5lpOszFqWJ1DcPnGoY8RDL61uokw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -5385,7 +5385,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.23
+      '@types/react': 18.2.24
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
