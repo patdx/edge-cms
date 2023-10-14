@@ -113,8 +113,8 @@ devDependencies:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
   better-sqlite3:
-    specifier: 8.7.0
-    version: 8.7.0
+    specifier: 9.0.0
+    version: 9.0.0
   daisyui:
     specifier: 3.9.2
     version: 3.9.2
@@ -1947,6 +1947,14 @@ packages:
 
   /better-sqlite3@8.7.0:
     resolution: {integrity: sha512-99jZU4le+f3G6aIl6PmmV0cxUIWqKieHxsiF7G34CVFiE+/UabpYqkU0NJIkY/96mQKikHeBjtR27vFfs5JpEw==}
+    requiresBuild: true
+    dependencies:
+      bindings: 1.5.0
+      prebuild-install: 7.1.1
+    dev: true
+
+  /better-sqlite3@9.0.0:
+    resolution: {integrity: sha512-lDxQ9qg/XuUHZG6xzrQaMHkNWl37t35/LPB/VJGV8DdScSuGFNfFSqgscXEd8UIuyk/d9wU8iaMxQa4If5Wqog==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
