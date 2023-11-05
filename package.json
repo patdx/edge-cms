@@ -31,7 +31,7 @@
     "@types/better-sqlite3": "7.6.6",
     "@types/gensync": "1.0.2",
     "@types/lodash-es": "4.17.10",
-    "@types/react": "18.2.34",
+    "@types/react": "18.2.35",
     "@types/react-dom": "18.2.14",
     "autoprefixer": "10.4.16",
     "better-sqlite3": "9.0.0",
