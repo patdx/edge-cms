@@ -24,11 +24,11 @@ dependencies:
     specifier: 5.13.6
     version: 5.13.6(@rjsf/utils@5.13.6)
   '@sinclair/typebox':
-    specifier: 0.31.22
-    version: 0.31.22
+    specifier: 0.31.23
+    version: 0.31.23
   '@types/json-schema':
-    specifier: 7.0.14
-    version: 7.0.14
+    specifier: 7.0.15
+    version: 7.0.15
   clsx:
     specifier: 2.0.0
     version: 2.0.0
@@ -64,7 +64,7 @@ dependencies:
     version: 3.22.4
   zustand:
     specifier: 4.4.6
-    version: 4.4.6(@types/react@18.2.35)(react@18.2.0)
+    version: 4.4.6(@types/react@18.2.37)(react@18.2.0)
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -92,29 +92,29 @@ devDependencies:
     specifier: 0.6.20
     version: 0.6.20(eslint@8.53.0)(typescript@5.2.2)
   '@tailwindcss/forms':
-    specifier: 0.5.6
-    version: 0.5.6(tailwindcss@3.3.5)
+    specifier: 0.5.7
+    version: 0.5.7(tailwindcss@3.3.5)
   '@types/better-sqlite3':
-    specifier: 7.6.6
-    version: 7.6.6
+    specifier: 7.6.7
+    version: 7.6.7
   '@types/gensync':
-    specifier: 1.0.2
-    version: 1.0.2
+    specifier: 1.0.3
+    version: 1.0.3
   '@types/lodash-es':
-    specifier: 4.17.10
-    version: 4.17.10
+    specifier: 4.17.11
+    version: 4.17.11
   '@types/react':
-    specifier: 18.2.35
-    version: 18.2.35
+    specifier: 18.2.37
+    version: 18.2.37
   '@types/react-dom':
-    specifier: 18.2.14
-    version: 18.2.14
+    specifier: 18.2.15
+    version: 18.2.15
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
   better-sqlite3:
-    specifier: 9.0.0
-    version: 9.0.0
+    specifier: 9.1.1
+    version: 9.1.1
   daisyui:
     specifier: 3.9.4
     version: 3.9.4
@@ -137,8 +137,8 @@ devDependencies:
     specifier: 0.6.20
     version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.0)
   sql-formatter:
-    specifier: 13.0.4
-    version: 13.0.4
+    specifier: 13.1.0
+    version: 13.1.0
   tailwindcss:
     specifier: 3.3.5
     version: 3.3.5
@@ -1290,7 +1290,7 @@ packages:
     resolution: {integrity: sha512-73GnLtWn5iP936ctE6ZJrMqGu134KOoIIveq5Yd/B+NnbFfzpuzjCpkLrnqjkDdsxDbruXSb5eTR/SmAdpJxZQ==}
     engines: {node: '>=16.13'}
     dependencies:
-      '@types/better-sqlite3': 7.6.6
+      '@types/better-sqlite3': 7.6.7
       kleur: 4.1.5
       npx-import: 1.1.4
       picomatch: 2.3.1
@@ -1463,12 +1463,12 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.31.22:
-    resolution: {integrity: sha512-CKviMgpcXd8q8IsQQD8cCleswe4/EkQRcOqtVQcP1e+XUyszjJYjgL5Dtf3XunWZc2zEGmQPqJEsq08NiW9xfw==}
+  /@sinclair/typebox@0.31.23:
+    resolution: {integrity: sha512-ZzrzE8yCrWWU4mcBstBgdlBMjB8My3ESY9nZ/v996GptIJb4+MU1p7s1Qxrc2xvZeOiDDnAheLLmdHjPgZV79g==}
     dev: false
 
-  /@tailwindcss/forms@0.5.6(tailwindcss@3.3.5):
-    resolution: {integrity: sha512-Fw+2BJ0tmAwK/w01tEFL5TiaJBX1NLT1/YbWgvm7ws3Qcn11kiXxzNTEQDMs5V3mQemhB56l3u0i9dwdzSQldA==}
+  /@tailwindcss/forms@0.5.7(tailwindcss@3.3.5):
+    resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
@@ -1476,8 +1476,8 @@ packages:
       tailwindcss: 3.3.5
     dev: true
 
-  /@types/better-sqlite3@7.6.6:
-    resolution: {integrity: sha512-nuFAptzt0hZYBvyLzKQCbuCCK+RN9PHH4ezar5EJLIg2qpVhwQ/uLvLO/K8A9O7N8DafawgFupiyXQSs0U48Ng==}
+  /@types/better-sqlite3@7.6.7:
+    resolution: {integrity: sha512-+c2YGPWY5831v3uj2/X0HRTK94u1GXU3sCnLqu7AKlxlSfawswnAiJR//TFzSL5azWsLQkG/uS+YnnqHtuZxPw==}
     dependencies:
       '@types/node': 20.3.1
     dev: true
@@ -1492,19 +1492,19 @@ packages:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: true
 
-  /@types/gensync@1.0.2:
-    resolution: {integrity: sha512-6FzAxO+odMlJm7ZZAdafsaluzH4pXCkj/rukH3whoJeaWQJILJ6i4Pn6fRuUDWIMu8MYOK7+Gn86jwr/8yGOhg==}
+  /@types/gensync@1.0.3:
+    resolution: {integrity: sha512-oDvbXfdZe5UcdOyZViC2FZEINJrro8JJ2PRGdF5WLE3FjKnjDcTl8OaM68eaeDM/R0hjqFlqG01nWaKG5ljOKA==}
     dev: true
 
-  /@types/json-schema@7.0.14:
-    resolution: {integrity: sha512-U3PUjAudAdJBeC2pgN8uTIKgxrb4nlDF3SF0++EldXQvQBGkpFZMSnwQiIoDU77tv45VgNkl/L4ouD+rEomujw==}
+  /@types/json-schema@7.0.15:
+    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/lodash-es@4.17.10:
-    resolution: {integrity: sha512-YJP+w/2khSBwbUSFdGsSqmDvmnN3cCKoPOL7Zjle6s30ZtemkkqhjVfFqGwPN7ASil5VyjE2GtyU/yqYY6mC0A==}
+  /@types/lodash-es@4.17.11:
+    resolution: {integrity: sha512-eCw8FYAWHt2DDl77s+AMLLzPn310LKohruumpucZI4oOFJkIgnlaJcy23OKMJxx4r9PeTF13Gv6w+jqjWQaYUg==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
@@ -1524,14 +1524,14 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.2.14:
-    resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
+  /@types/react-dom@18.2.15:
+    resolution: {integrity: sha512-HWMdW+7r7MR5+PZqJF6YFNSCtjz1T0dsvo/f1BV6HkV+6erD/nA7wd9NM00KVG83zf2nJ7uATPO9ttdIPvi3gg==}
     dependencies:
-      '@types/react': 18.2.35
+      '@types/react': 18.2.37
     dev: true
 
-  /@types/react@18.2.35:
-    resolution: {integrity: sha512-LG3xpFZ++rTndV+/XFyX5vUP7NI9yxyk+MQvBDq+CVs8I9DLSc3Ymwb1Vmw5YDoeNeHN4PDZa3HylMKJYT9PNQ==}
+  /@types/react@18.2.37:
+    resolution: {integrity: sha512-RGAYMi2bhRgEXT3f4B92WTohopH6bIXw05FuGlmJEnv/omEn190+QYEIYxIAuIBdKgboYYdVved2p1AxZVQnaw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -1652,7 +1652,7 @@ packages:
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      '@types/json-schema': 7.0.14
+      '@types/json-schema': 7.0.15
       '@types/semver': 7.3.13
       '@typescript-eslint/scope-manager': 5.53.0
       '@typescript-eslint/types': 5.53.0
@@ -1957,8 +1957,8 @@ packages:
       prebuild-install: 7.1.1
     dev: true
 
-  /better-sqlite3@9.0.0:
-    resolution: {integrity: sha512-lDxQ9qg/XuUHZG6xzrQaMHkNWl37t35/LPB/VJGV8DdScSuGFNfFSqgscXEd8UIuyk/d9wU8iaMxQa4If5Wqog==}
+  /better-sqlite3@9.1.1:
+    resolution: {integrity: sha512-FhW7bS7cXwkB2SFnPJrSGPmQerVSCzwBgmQ1cIRcYKxLsyiKjljzCbyEqqhYXo5TTBqt5BISiBj2YE2Sy2ynaA==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -4316,8 +4316,8 @@ packages:
       '@hattip/polyfills': 0.0.29
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
-      '@types/react': 18.2.35
-      '@types/react-dom': 18.2.14
+      '@types/react': 18.2.37
+      '@types/react-dom': 18.2.15
       '@vavite/connect': 1.5.3(vite@4.5.0)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.0)
       '@vavite/multibuild': 1.5.3(vite@4.5.0)
@@ -4644,8 +4644,8 @@ packages:
     deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
-  /sql-formatter@13.0.4:
-    resolution: {integrity: sha512-6pns27iQ5yT8jmle4cqvpfXNl29/AGOT4KtmzhtI2zgH1J0RbpZdduqTRzem7UCta+gvrj4HC1O9l6mTSUHoRg==}
+  /sql-formatter@13.1.0:
+    resolution: {integrity: sha512-/nZQXuN7KzipFNM20ko+dHY4kOr9rymSfZLUDED8rhx3m8OK5y74jcyN+y1L51ZqHqiB0kp40VdpZP99uWvQdA==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
@@ -5422,7 +5422,7 @@ packages:
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
-  /zustand@4.4.6(@types/react@18.2.35)(react@18.2.0):
+  /zustand@4.4.6(@types/react@18.2.37)(react@18.2.0):
     resolution: {integrity: sha512-Rb16eW55gqL4W2XZpJh0fnrATxYEG3Apl2gfHTyDSE965x/zxslTikpNch0JgNjJA9zK6gEFW8Fl6d1rTZaqgg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -5437,7 +5437,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.35
+      '@types/react': 18.2.37
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
