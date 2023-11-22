@@ -95,20 +95,20 @@ devDependencies:
     specifier: 0.5.7
     version: 0.5.7(tailwindcss@3.3.5)
   '@types/better-sqlite3':
-    specifier: 7.6.7
-    version: 7.6.7
+    specifier: 7.6.8
+    version: 7.6.8
   '@types/gensync':
-    specifier: 1.0.3
-    version: 1.0.3
+    specifier: 1.0.4
+    version: 1.0.4
   '@types/lodash-es':
-    specifier: 4.17.11
-    version: 4.17.11
+    specifier: 4.17.12
+    version: 4.17.12
   '@types/react':
     specifier: 18.2.38
     version: 18.2.38
   '@types/react-dom':
-    specifier: 18.2.16
-    version: 18.2.16
+    specifier: 18.2.17
+    version: 18.2.17
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -122,8 +122,8 @@ devDependencies:
     specifier: 8.54.0
     version: 8.54.0
   miniflare:
-    specifier: 3.20231030.0
-    version: 3.20231030.0
+    specifier: 3.20231030.1
+    version: 3.20231030.1
   only-allow:
     specifier: ^1.1.1
     version: 1.1.1
@@ -1290,7 +1290,7 @@ packages:
     resolution: {integrity: sha512-73GnLtWn5iP936ctE6ZJrMqGu134KOoIIveq5Yd/B+NnbFfzpuzjCpkLrnqjkDdsxDbruXSb5eTR/SmAdpJxZQ==}
     engines: {node: '>=16.13'}
     dependencies:
-      '@types/better-sqlite3': 7.6.7
+      '@types/better-sqlite3': 7.6.8
       kleur: 4.1.5
       npx-import: 1.1.4
       picomatch: 2.3.1
@@ -1476,8 +1476,8 @@ packages:
       tailwindcss: 3.3.5
     dev: true
 
-  /@types/better-sqlite3@7.6.7:
-    resolution: {integrity: sha512-+c2YGPWY5831v3uj2/X0HRTK94u1GXU3sCnLqu7AKlxlSfawswnAiJR//TFzSL5azWsLQkG/uS+YnnqHtuZxPw==}
+  /@types/better-sqlite3@7.6.8:
+    resolution: {integrity: sha512-ASndM4rdGrzk7iXXqyNC4fbwt4UEjpK0i3j4q4FyeQrLAthfB6s7EF135ZJE0qQxtKIMFwmyT6x0switET7uIw==}
     dependencies:
       '@types/node': 20.3.1
     dev: true
@@ -1492,8 +1492,8 @@ packages:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: true
 
-  /@types/gensync@1.0.3:
-    resolution: {integrity: sha512-oDvbXfdZe5UcdOyZViC2FZEINJrro8JJ2PRGdF5WLE3FjKnjDcTl8OaM68eaeDM/R0hjqFlqG01nWaKG5ljOKA==}
+  /@types/gensync@1.0.4:
+    resolution: {integrity: sha512-C3YYeRQWp2fmq9OryX+FoDy8nXS6scQ7dPptD8LnFDAUNcKWJjXQKDNJD3HVm+kOUsXhTOkpi69vI4EuAr95bA==}
     dev: true
 
   /@types/json-schema@7.0.15:
@@ -1503,8 +1503,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/lodash-es@4.17.11:
-    resolution: {integrity: sha512-eCw8FYAWHt2DDl77s+AMLLzPn310LKohruumpucZI4oOFJkIgnlaJcy23OKMJxx4r9PeTF13Gv6w+jqjWQaYUg==}
+  /@types/lodash-es@4.17.12:
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
@@ -1524,8 +1524,8 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.2.16:
-    resolution: {integrity: sha512-766c37araZ9vxtYs25gvY2wNdFWsT2ZiUvOd0zMhTaoGj6B911N8CKQWgXXJoPMLF3J82thpRqQA7Rf3rBwyJw==}
+  /@types/react-dom@18.2.17:
+    resolution: {integrity: sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==}
     dependencies:
       '@types/react': 18.2.38
     dev: true
@@ -3754,29 +3754,6 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20231030.0:
-    resolution: {integrity: sha512-iCg1dNauUG+kNp7jizcNmV/1XFItuTDvD/6xIC34PrszgKxYCbBO2R72y5NEDJTwaqr5ohQI/320wuJ8GEe7nQ==}
-    engines: {node: '>=16.13'}
-    hasBin: true
-    dependencies:
-      acorn: 8.9.0
-      acorn-walk: 8.2.0
-      capnp-ts: 0.7.0
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      source-map-support: 0.5.21
-      stoppable: 1.1.0
-      undici: 5.23.0
-      workerd: 1.20231030.0
-      ws: 8.12.0
-      youch: 3.2.3
-      zod: 3.22.4
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
-    dev: true
-
   /miniflare@3.20231030.1:
     resolution: {integrity: sha512-Y+EkgV/aFg/3Y/xfFtImK36sLZGXvNS45avVEz0cUCA2pGpg4hGdPu1Udmz5b06SyeUEFVf/dEDMJwdRYVEgLw==}
     engines: {node: '>=16.13'}
@@ -4319,7 +4296,7 @@ packages:
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
       '@types/react': 18.2.38
-      '@types/react-dom': 18.2.16
+      '@types/react-dom': 18.2.17
       '@vavite/connect': 1.5.3(vite@4.5.0)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.0)
       '@vavite/multibuild': 1.5.3(vite@4.5.0)
