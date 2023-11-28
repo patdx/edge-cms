@@ -54,8 +54,8 @@ dependencies:
     specifier: 4.0.11
     version: 4.0.11(react@18.2.0)
   sql-template-tag:
-    specifier: 5.1.0
-    version: 5.1.0
+    specifier: 5.2.0
+    version: 5.2.0
   sqlstring-sqlite:
     specifier: 0.1.1
     version: 0.1.1
@@ -116,8 +116,8 @@ devDependencies:
     specifier: 9.1.1
     version: 9.1.1
   daisyui:
-    specifier: 4.4.11
-    version: 4.4.11(postcss@8.4.31)
+    specifier: 4.4.12
+    version: 4.4.12(postcss@8.4.31)
   eslint:
     specifier: 8.54.0
     version: 8.54.0
@@ -2307,8 +2307,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisyui@4.4.11(postcss@8.4.31):
-    resolution: {integrity: sha512-AXP9oltpez0y6z3Lrzdu7JfEBi/4jpGqmuoJjq42hsY4aXODkhv07k4MgVJZIeh4x6vD03wrdjntofOk6APGxg==}
+  /daisyui@4.4.12(postcss@8.4.31):
+    resolution: {integrity: sha512-h5yRV0EOyLnMkFdU7OYPJl27kdS4xDjF2Cm4aFqjJRWKcfEGyudFGYIcTFG6umwPKQiHsZCu8+7vqnj9bqgdVw==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -4632,8 +4632,8 @@ packages:
       nearley: 2.20.1
     dev: true
 
-  /sql-template-tag@5.1.0:
-    resolution: {integrity: sha512-+0uwu2fn1LJ3KzZYUrTSViBuHEkyjpAGMnJ3X7RYRFDNIMft99lLAe6kkybPPkV+8GgDrifxUmj+C4j1hpYAgQ==}
+  /sql-template-tag@5.2.0:
+    resolution: {integrity: sha512-VVrlwWfOvG5hhDkcaoxmwv7uHdpJfAYImfKq37GVGRCYHjvlVdHpNkG8ITOIJlwAlSQDesS4arPfKif/19zjoQ==}
     engines: {node: '>=14'}
     dev: false
 
