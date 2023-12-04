@@ -64,7 +64,7 @@ dependencies:
     version: 3.22.4
   zustand:
     specifier: 4.4.7
-    version: 4.4.7(@types/react@18.2.41)(react@18.2.0)
+    version: 4.4.7(@types/react@18.2.42)(react@18.2.0)
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -93,7 +93,7 @@ devDependencies:
     version: 0.6.20(eslint@8.55.0)(typescript@5.3.2)
   '@tailwindcss/forms':
     specifier: 0.5.7
-    version: 0.5.7(tailwindcss@3.3.5)
+    version: 0.5.7(tailwindcss@3.3.6)
   '@types/better-sqlite3':
     specifier: 7.6.8
     version: 7.6.8
@@ -104,8 +104,8 @@ devDependencies:
     specifier: 4.17.12
     version: 4.17.12
   '@types/react':
-    specifier: 18.2.41
-    version: 18.2.41
+    specifier: 18.2.42
+    version: 18.2.42
   '@types/react-dom':
     specifier: 18.2.17
     version: 18.2.17
@@ -116,8 +116,8 @@ devDependencies:
     specifier: 9.2.0
     version: 9.2.0
   daisyui:
-    specifier: 4.4.18
-    version: 4.4.18(postcss@8.4.32)
+    specifier: 4.4.19
+    version: 4.4.19(postcss@8.4.32)
   eslint:
     specifier: 8.55.0
     version: 8.55.0
@@ -135,19 +135,19 @@ devDependencies:
     version: 3.1.0
   rakkasjs:
     specifier: 0.6.20
-    version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.0)
+    version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.1)
   sql-formatter:
     specifier: 14.0.0
     version: 14.0.0
   tailwindcss:
-    specifier: 3.3.5
-    version: 3.3.5
+    specifier: 3.3.6
+    version: 3.3.6
   typescript:
     specifier: 5.3.2
     version: 5.3.2
   vite:
-    specifier: 4.5.0
-    version: 4.5.0
+    specifier: 4.5.1
+    version: 4.5.1
   vite-node:
     specifier: 1.0.1
     version: 1.0.1
@@ -156,7 +156,7 @@ devDependencies:
     version: 1.1.0(monaco-editor@0.44.0)
   vite-tsconfig-paths:
     specifier: 4.2.1
-    version: 4.2.1(typescript@5.3.2)(vite@4.5.0)
+    version: 4.2.1(typescript@5.3.2)(vite@4.5.1)
   vitest:
     specifier: 1.0.1
     version: 1.0.1
@@ -1551,13 +1551,13 @@ packages:
     resolution: {integrity: sha512-/s55Jujywdw/Jpan+vsy6JZs1z2ZTGxTmbZTPiuSL2wz9mfzA2gN1zzaqmvfi4pq+uOt7Du85fkiwv5ymW84aQ==}
     dev: false
 
-  /@tailwindcss/forms@0.5.7(tailwindcss@3.3.5):
+  /@tailwindcss/forms@0.5.7(tailwindcss@3.3.6):
     resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.3.5
+      tailwindcss: 3.3.6
     dev: true
 
   /@types/better-sqlite3@7.6.8:
@@ -1601,11 +1601,11 @@ packages:
   /@types/react-dom@18.2.17:
     resolution: {integrity: sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==}
     dependencies:
-      '@types/react': 18.2.41
+      '@types/react': 18.2.42
     dev: true
 
-  /@types/react@18.2.41:
-    resolution: {integrity: sha512-CwOGr/PiLiNBxEBqpJ7fO3kocP/2SSuC9fpH5K7tusrg4xPSRT/193rzolYwQnTN02We/ATXKnb6GqA5w4fRxw==}
+  /@types/react@18.2.42:
+    resolution: {integrity: sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -1752,24 +1752,24 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vavite/connect@1.5.3(vite@4.5.0):
+  /@vavite/connect@1.5.3(vite@4.5.1):
     resolution: {integrity: sha512-a+vlpvbDc2GKqCiK+v2LtsA3+Y6T1VI7kGIdUwMxdptp46kYXVmoDtMycNvObxVu4vPY4b7TXcZj/Sb+Cj7DuQ==}
     peerDependencies:
       vite: '>=2.8.1'
     dependencies:
       '@types/node': 18.14.4
-      vite: 4.5.0
+      vite: 4.5.1
     dev: true
 
-  /@vavite/expose-vite-dev-server@1.5.3(vite@4.5.0):
+  /@vavite/expose-vite-dev-server@1.5.3(vite@4.5.1):
     resolution: {integrity: sha512-ngZ6mR05JjpyxpPKXPnCd7TGyz9oMAfAZKd+0Gwst2e2Re7zOMMkV3MOclqsQvs6B+T7WJpXuutwotdgK0nJVw==}
     peerDependencies:
       vite: '>=2.8.1'
     dependencies:
-      vite: 4.5.0
+      vite: 4.5.1
     dev: true
 
-  /@vavite/multibuild@1.5.3(vite@4.5.0):
+  /@vavite/multibuild@1.5.3(vite@4.5.1):
     resolution: {integrity: sha512-NGUJvyzSrrfR6lwhB6iC9KZGNRSue4BDaBj8mLESggN/dPNwAMNwOKsH5m0IRsKJu8NMskAESH7VwAGgyI5+lQ==}
     peerDependencies:
       vite: '>=2.8.1'
@@ -1777,10 +1777,10 @@ packages:
       '@types/node': 18.14.4
       cac: 6.7.14
       picocolors: 1.0.0
-      vite: 4.5.0
+      vite: 4.5.1
     dev: true
 
-  /@vitejs/plugin-react@3.1.0(vite@4.5.0):
+  /@vitejs/plugin-react@3.1.0(vite@4.5.1):
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1791,7 +1791,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.0)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.5.0
+      vite: 4.5.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2260,7 +2260,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /chownr@1.1.4:
@@ -2392,8 +2392,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisyui@4.4.18(postcss@8.4.32):
-    resolution: {integrity: sha512-7e9gHo8swozeYMrXR10Mjo0QoBt7rAhKZZ1gQKiu+FxuSW8tinSV//O/rMQAw3liVBxkxWNYD/g2vrNQ8h/ThQ==}
+  /daisyui@4.4.19(postcss@8.4.32):
+    resolution: {integrity: sha512-IjOLWwnndD4N7Ut5CDxbUsaVtbqXPeVHM92IcgxGFxpuOd3CCKW/PAXZH6JoBTHFRaN57vB9XqEhdWm5yC+bPA==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -3171,13 +3171,6 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    dev: true
-    optional: true
-
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -3331,7 +3324,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -3342,7 +3335,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
@@ -4408,7 +4401,7 @@ packages:
     resolution: {integrity: sha512-cz93DjNeLY0idrCNOH6PviZGRN9GJhsdm9hpn1YCS879fj4W+x5IFJhhkRZcwVgMmFF7R82UA/7Oh+R8lLZg6A==}
     dev: true
 
-  /rakkasjs@0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.0):
+  /rakkasjs@0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.1):
     resolution: {integrity: sha512-53i/0Q/95emu3nFnA8EbvpsoGm7cjx+HbiutlgW+OVTqh+WbbCZMrm5DngxCY9l3PDSMRJRDT7T0Xrt6Az4B0A==}
     hasBin: true
     peerDependencies:
@@ -4428,12 +4421,12 @@ packages:
       '@hattip/polyfills': 0.0.29
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
-      '@types/react': 18.2.41
+      '@types/react': 18.2.42
       '@types/react-dom': 18.2.17
-      '@vavite/connect': 1.5.3(vite@4.5.0)
-      '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.0)
-      '@vavite/multibuild': 1.5.3(vite@4.5.0)
-      '@vitejs/plugin-react': 3.1.0(vite@4.5.0)
+      '@vavite/connect': 1.5.3(vite@4.5.1)
+      '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.1)
+      '@vavite/multibuild': 1.5.3(vite@4.5.1)
+      '@vitejs/plugin-react': 3.1.0(vite@4.5.1)
       cac: 6.7.14
       cheerio: 1.0.0-rc.12
       devalue: 4.3.0
@@ -4444,7 +4437,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       sirv: 2.0.2
-      vite: 4.5.0
+      vite: 4.5.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4625,7 +4618,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /rollup@4.6.1:
@@ -4951,8 +4944,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /tailwindcss@3.3.5:
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.3.6:
+    resolution: {integrity: sha512-AKjF7qbbLvLaPieoKeTjG1+FyNZT6KaJMJPFeQyLfIp7l82ggH1fbHJSsYIvnbTFQOlkh+gBYpyby5GT1LIdLw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -5283,7 +5276,7 @@ packages:
       monaco-editor: 0.44.0
     dev: true
 
-  /vite-tsconfig-paths@4.2.1(typescript@5.3.2)(vite@4.5.0):
+  /vite-tsconfig-paths@4.2.1(typescript@5.3.2)(vite@4.5.1):
     resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
     peerDependencies:
       vite: '*'
@@ -5294,14 +5287,14 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@5.3.2)
-      vite: 4.5.0
+      vite: 4.5.1
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.5.0:
-    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
+  /vite@4.5.1:
+    resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -5332,7 +5325,7 @@ packages:
       postcss: 8.4.32
       rollup: 3.28.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /vite@5.0.5:
@@ -5521,7 +5514,7 @@ packages:
       source-map-support: 0.5.21
       xxhash-wasm: 1.0.2
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -5583,7 +5576,7 @@ packages:
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
-  /zustand@4.4.7(@types/react@18.2.41)(react@18.2.0):
+  /zustand@4.4.7(@types/react@18.2.42)(react@18.2.0):
     resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -5598,7 +5591,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.41
+      '@types/react': 18.2.42
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
