@@ -15,14 +15,14 @@ dependencies:
     specifier: ^4.5.1
     version: 4.5.1(monaco-editor@0.45.0)(react-dom@18.2.0)(react@18.2.0)
   '@rjsf/core':
-    specifier: 5.15.0
-    version: 5.15.0(@rjsf/utils@5.15.0)(react@18.2.0)
+    specifier: 5.15.1
+    version: 5.15.1(@rjsf/utils@5.15.1)(react@18.2.0)
   '@rjsf/utils':
-    specifier: 5.15.0
-    version: 5.15.0(react@18.2.0)
+    specifier: 5.15.1
+    version: 5.15.1(react@18.2.0)
   '@rjsf/validator-ajv8':
-    specifier: 5.15.0
-    version: 5.15.0(@rjsf/utils@5.15.0)
+    specifier: 5.15.1
+    version: 5.15.1(@rjsf/utils@5.15.1)
   '@sinclair/typebox':
     specifier: 0.31.28
     version: 0.31.28
@@ -1412,24 +1412,24 @@ packages:
       - supports-color
     dev: true
 
-  /@rjsf/core@5.15.0(@rjsf/utils@5.15.0)(react@18.2.0):
-    resolution: {integrity: sha512-tD+S0Sx6TtiW1Wp2E8fLArlKcPDXaOS0MBnM6FNWZuum1bbQFoavjm/wf0PpKQ2AohsKGvWXjIAajC+HX4Anww==}
+  /@rjsf/core@5.15.1(@rjsf/utils@5.15.1)(react@18.2.0):
+    resolution: {integrity: sha512-Ysn9G7sAS9A/fY4tCXv0LUUM8rNgXpVUkkoeOg3Yx6Y0vTctLVM7eorfmKuRKOrUZFCVe/MY0RjJfP3n2v1Fbg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.12.x
       react: ^16.14.0 || >=17
     dependencies:
-      '@rjsf/utils': 5.15.0(react@18.2.0)
+      '@rjsf/utils': 5.15.1(react@18.2.0)
       lodash: 4.17.21
       lodash-es: 4.17.21
       markdown-to-jsx: 7.3.2(react@18.2.0)
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@rjsf/utils@5.15.0(react@18.2.0):
-    resolution: {integrity: sha512-+K+WA/tGD8jSDRB6QzCvyCY0/rVZ+q/u0f07AGfx/h/ICVcJjOy5fWtUANQ0bBltLNPqjXqpFb3e3SxDXzSVaA==}
+  /@rjsf/utils@5.15.1(react@18.2.0):
+    resolution: {integrity: sha512-ko1hpwy5gK7qwUpiD9fULekBShSrnFDWaIuhLkrN6HsNYGhN9PHZKrlTGcxl3seQvAzXkWfh1aRxNYw4YLCywg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
@@ -1442,13 +1442,13 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@rjsf/validator-ajv8@5.15.0(@rjsf/utils@5.15.0):
-    resolution: {integrity: sha512-+kSemuPRZzayt+CQHu2f4oN6CeCn7gSxQYC8CU3gDZXL48HKlvnq8VlgFWetbtawojQ7x8NjAyuBTJDIP/TqZg==}
+  /@rjsf/validator-ajv8@5.15.1(@rjsf/utils@5.15.1):
+    resolution: {integrity: sha512-QEbjdpLTmDCq4pdmeNaCiMiq3CId7IJ/Iri5FI794fhH8mn8Geu5hWqisMBTbrptfGdItY4RapKvoIglQEZKOg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.12.x
     dependencies:
-      '@rjsf/utils': 5.15.0(react@18.2.0)
+      '@rjsf/utils': 5.15.1(react@18.2.0)
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
@@ -3947,17 +3947,10 @@ packages:
       thenify-all: 1.6.0
     dev: true
 
-  /nanoid@3.3.6:
-    resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-    dev: false
-
   /nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
