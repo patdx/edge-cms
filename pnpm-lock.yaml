@@ -86,8 +86,8 @@ devDependencies:
     specifier: 2.14.1
     version: 2.14.1
   '@miniflare/tre':
-    specifier: 3.0.0-next.13
-    version: 3.0.0-next.13
+    specifier: 3.0.0-next.14
+    version: 3.0.0-next.14
   '@rakkasjs/eslint-config':
     specifier: 0.6.20
     version: 0.6.20(eslint@8.55.0)(typescript@5.3.3)
@@ -1296,12 +1296,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@miniflare/tre@3.0.0-next.13:
-    resolution: {integrity: sha512-FogtwZUmUqico28dTdrFd2BF2wyMMheUw3MI9MDSSYNqRUGiNw8cJopHRMjo7OoO3dq6F5D01HwqMMZvSA1ZFA==}
+  /@miniflare/tre@3.0.0-next.14:
+    resolution: {integrity: sha512-qT2gnua5fhWv7DUHtrOXMv3AZfNarc0wZJ1q6jbXdMpSA7aQtyr06lE9t1+Nb8TBqxpz8wHArXxMAtIWjfrzYA==}
     engines: {node: '>=16.13'}
     dependencies:
-      acorn: 8.8.2
-      acorn-walk: 8.2.0
+      acorn: 8.11.2
+      acorn-walk: 8.3.0
       better-sqlite3: 8.7.0
       capnp-ts: 0.7.0
       exit-hook: 2.2.1
@@ -1311,7 +1311,7 @@ packages:
       kleur: 4.1.5
       source-map-support: 0.5.21
       stoppable: 1.1.0
-      undici: 5.20.0
+      undici: 5.23.0
       workerd: 1.20230404.0
       ws: 8.12.0
       youch: 3.2.3
@@ -1842,11 +1842,6 @@ packages:
       acorn: 8.11.2
     dev: true
 
-  /acorn-walk@8.2.0:
-    resolution: {integrity: sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==}
-    engines: {node: '>=0.4.0'}
-    dev: true
-
   /acorn-walk@8.3.0:
     resolution: {integrity: sha512-FS7hV565M5l1R08MXqo8odwMTB02C2UqzB17RVgu9EyuYFBqJZ3/ZY97sQD5FewVu1UyDFc1yztUDrAwT0EypA==}
     engines: {node: '>=0.4.0'}
@@ -1854,12 +1849,6 @@ packages:
 
   /acorn@8.11.2:
     resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn@8.8.2:
-    resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
