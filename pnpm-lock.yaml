@@ -24,8 +24,8 @@ dependencies:
     specifier: 5.15.1
     version: 5.15.1(@rjsf/utils@5.15.1)
   '@sinclair/typebox':
-    specifier: 0.31.28
-    version: 0.31.28
+    specifier: 0.32.0
+    version: 0.32.0
   '@types/json-schema':
     specifier: 7.0.15
     version: 7.0.15
@@ -1561,8 +1561,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.31.28:
-    resolution: {integrity: sha512-/s55Jujywdw/Jpan+vsy6JZs1z2ZTGxTmbZTPiuSL2wz9mfzA2gN1zzaqmvfi4pq+uOt7Du85fkiwv5ymW84aQ==}
+  /@sinclair/typebox@0.32.0:
+    resolution: {integrity: sha512-FdBgO+ib0JCSPtq55cDva/5xd55vfAAyTXWVLCaTAFzNjVPaR5lNRKoEzMHTtArELEaHNs4E6WmdNJIY+gUoZw==}
     dev: false
 
   /@tailwindcss/forms@0.5.7(tailwindcss@3.4.0):
