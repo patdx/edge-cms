@@ -24,8 +24,8 @@ dependencies:
     specifier: 5.16.1
     version: 5.16.1(@rjsf/utils@5.16.1)
   '@sinclair/typebox':
-    specifier: 0.32.11
-    version: 0.32.11
+    specifier: 0.32.12
+    version: 0.32.12
   '@types/json-schema':
     specifier: 7.0.15
     version: 7.0.15
@@ -137,8 +137,8 @@ devDependencies:
     specifier: 0.6.20
     version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.2)
   sql-formatter:
-    specifier: 15.0.2
-    version: 15.0.2
+    specifier: 15.1.0
+    version: 15.1.0
   tailwindcss:
     specifier: 3.4.1
     version: 3.4.1
@@ -1574,8 +1574,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.32.11:
-    resolution: {integrity: sha512-YtmrPo85LgWnw12GEwfdu44P/I7GsU6r/7PNHDxToHEIJxZk0+c3pZQBBj9ElP2uB2UwG2H2aazB+UHDG4iC1w==}
+  /@sinclair/typebox@0.32.12:
+    resolution: {integrity: sha512-uKRQW9a+alkPwZMzQk6W8cCZC117kZJZ3GQx3Yn9unu2oWX09PxEsyMF7D9tuvoH8se1hIZqLRja+FtU7HKGhQ==}
     dev: false
 
   /@tailwindcss/forms@0.5.7(tailwindcss@3.4.1):
@@ -4832,8 +4832,8 @@ packages:
     deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
-  /sql-formatter@15.0.2:
-    resolution: {integrity: sha512-B8FTRc1dhb36lfuwSdiLhwrhkvT3PU/3es7YDPPQBOhbGHdXKlweAXTRS+QfCWk06ufAh118yFja6NcukBS4gg==}
+  /sql-formatter@15.1.0:
+    resolution: {integrity: sha512-EP7fAT+xJad6FPUBL+E54D2/vx9A0vYDPhkKV7hJfVVmfiTQ620Rb0iFeFtpMwL7ZGm8uzCVFUHjm3iLa4P5NQ==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
