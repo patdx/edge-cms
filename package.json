@@ -50,7 +50,7 @@
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.3.1",
     "vitest": "1.2.1",
-    "wrangler": "3.23.0"
+    "wrangler": "3.24.0"
   },
   "dependencies": {
     "@hattip/response": "0.0.41",
