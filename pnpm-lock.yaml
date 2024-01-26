@@ -24,8 +24,8 @@ dependencies:
     specifier: 5.16.1
     version: 5.16.1(@rjsf/utils@5.16.1)
   '@sinclair/typebox':
-    specifier: 0.32.12
-    version: 0.32.12
+    specifier: 0.32.13
+    version: 0.32.13
   '@types/json-schema':
     specifier: 7.0.15
     version: 7.0.15
@@ -95,8 +95,8 @@ devDependencies:
     specifier: 0.5.7
     version: 0.5.7(tailwindcss@3.4.1)
   '@types/better-sqlite3':
-    specifier: 7.6.8
-    version: 7.6.8
+    specifier: 7.6.9
+    version: 7.6.9
   '@types/gensync':
     specifier: 1.0.4
     version: 1.0.4
@@ -1317,7 +1317,7 @@ packages:
     resolution: {integrity: sha512-dDnYIztz10zDQjaFJ8Gy9UaaBWZkw3NyhFdpX6tAeyPA/2lGvkftc42MYmNi8s5ljqkZAtKgWAJnSf2K75NCJw==}
     engines: {node: '>=16.13'}
     dependencies:
-      '@types/better-sqlite3': 7.6.8
+      '@types/better-sqlite3': 7.6.9
       kleur: 4.1.5
       npx-import: 1.1.4
       picomatch: 2.3.1
@@ -1574,8 +1574,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.32.12:
-    resolution: {integrity: sha512-uKRQW9a+alkPwZMzQk6W8cCZC117kZJZ3GQx3Yn9unu2oWX09PxEsyMF7D9tuvoH8se1hIZqLRja+FtU7HKGhQ==}
+  /@sinclair/typebox@0.32.13:
+    resolution: {integrity: sha512-6gfhrgov2RWxPIlGyFcCVn1DejhmQvObIiBIx/Qx3FRnxlLS/RuoyDxK1hhhVU+S5+1Xmul32QALLErVfinyxw==}
     dev: false
 
   /@tailwindcss/forms@0.5.7(tailwindcss@3.4.1):
@@ -1587,8 +1587,8 @@ packages:
       tailwindcss: 3.4.1
     dev: true
 
-  /@types/better-sqlite3@7.6.8:
-    resolution: {integrity: sha512-ASndM4rdGrzk7iXXqyNC4fbwt4UEjpK0i3j4q4FyeQrLAthfB6s7EF135ZJE0qQxtKIMFwmyT6x0switET7uIw==}
+  /@types/better-sqlite3@7.6.9:
+    resolution: {integrity: sha512-FvktcujPDj9XKMJQWFcl2vVl7OdRIqsSRX9b0acWwTmwLK9CF2eqo/FRcmMLNpugKoX/avA6pb7TorDLmpgTnQ==}
     dependencies:
       '@types/node': 20.3.1
     dev: true
