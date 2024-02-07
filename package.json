@@ -35,7 +35,7 @@
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.17",
     "better-sqlite3": "9.4.0",
-    "daisyui": "4.6.1",
+    "daisyui": "4.6.2",
     "eslint": "8.56.0",
     "miniflare": "3.20240129.1",
     "only-allow": "^1.1.1",
