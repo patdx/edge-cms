@@ -24,8 +24,8 @@ dependencies:
     specifier: 5.17.0
     version: 5.17.0(@rjsf/utils@5.17.0)
   '@sinclair/typebox':
-    specifier: 0.32.13
-    version: 0.32.13
+    specifier: 0.32.14
+    version: 0.32.14
   '@types/json-schema':
     specifier: 7.0.15
     version: 7.0.15
@@ -113,8 +113,8 @@ devDependencies:
     specifier: 10.4.17
     version: 10.4.17(postcss@8.4.35)
   better-sqlite3:
-    specifier: 9.4.0
-    version: 9.4.0
+    specifier: 9.4.1
+    version: 9.4.1
   daisyui:
     specifier: 4.6.2
     version: 4.6.2(postcss@8.4.35)
@@ -1758,8 +1758,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.32.13:
-    resolution: {integrity: sha512-6gfhrgov2RWxPIlGyFcCVn1DejhmQvObIiBIx/Qx3FRnxlLS/RuoyDxK1hhhVU+S5+1Xmul32QALLErVfinyxw==}
+  /@sinclair/typebox@0.32.14:
+    resolution: {integrity: sha512-EC77Mw8huT2z9YlYbWfpIQgN6shZE1tH4NP4/Trig8UBel9FZNMZRJ42ubJI8PLor2uIU+waLml1dce5ReCOPg==}
     dev: false
 
   /@tailwindcss/forms@0.5.7(tailwindcss@3.4.1):
@@ -2246,8 +2246,8 @@ packages:
       prebuild-install: 7.1.1
     dev: true
 
-  /better-sqlite3@9.4.0:
-    resolution: {integrity: sha512-5kynxekMxSjCMiFyUBLHggFcJkCmiZi6fUkiGz/B5GZOvdRWQJD0klqCx5/Y+bm2AKP7I/DHbSFx26AxjruWNg==}
+  /better-sqlite3@9.4.1:
+    resolution: {integrity: sha512-QpqiQeMI4WkE+dQ68zTMX5OzlPGc7lXIDP1iKUt4Omt9PdaVgzKYxHIJRIzt1E+RUBQoFmkip/IbvzyrxehAIg==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
