@@ -35,7 +35,7 @@
     "@types/react-dom": "18.2.19",
     "autoprefixer": "10.4.17",
     "better-sqlite3": "9.4.1",
-    "daisyui": "4.6.3",
+    "daisyui": "4.7.0",
     "eslint": "8.56.0",
     "miniflare": "3.20240129.1",
     "only-allow": "^1.1.1",
@@ -78,5 +78,5 @@
       "better-sqlite3"
     ]
   },
-  "packageManager": "pnpm@8.15.1"
+  "packageManager": "pnpm@8.15.2"
 }
