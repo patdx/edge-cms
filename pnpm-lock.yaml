@@ -116,14 +116,14 @@ devDependencies:
     specifier: 9.4.1
     version: 9.4.1
   daisyui:
-    specifier: 4.7.0
-    version: 4.7.0(postcss@8.4.35)
+    specifier: 4.7.2
+    version: 4.7.2(postcss@8.4.35)
   eslint:
     specifier: 8.56.0
     version: 8.56.0
   miniflare:
-    specifier: 3.20240129.1
-    version: 3.20240129.1
+    specifier: 3.20240129.2
+    version: 3.20240129.2
   only-allow:
     specifier: ^1.1.1
     version: 1.1.1
@@ -2605,8 +2605,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisyui@4.7.0(postcss@8.4.35):
-    resolution: {integrity: sha512-3IHnwpdQszy3Dl9UyTUAAPRX7CWSc4eoruOC1/FA71Rk9suD4dUW2v55UUwCnFArWhvIO7u87n+vU/Np0xeoWA==}
+  /daisyui@4.7.2(postcss@8.4.35):
+    resolution: {integrity: sha512-9UCss12Zmyk/22u+JbkVrHHxOzFOyY17HuqP5LeswI4hclbj6qbjJTovdj2zRy8cCH6/n6Wh0lTLjriGnyGh0g==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -4126,29 +4126,6 @@ packages:
   /mini-svg-data-uri@1.4.4:
     resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
     hasBin: true
-    dev: true
-
-  /miniflare@3.20240129.1:
-    resolution: {integrity: sha512-GfqclPxbTnam4S8GKHRkFyr+s+szELK/ORtQ3ZFUiGBO4HNJsaeA6RhBMKBH7iHqn5ng035cyPsLZvH35lwtsA==}
-    engines: {node: '>=16.13'}
-    hasBin: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      acorn: 8.11.2
-      acorn-walk: 8.3.2
-      capnp-ts: 0.7.0
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      stoppable: 1.1.0
-      undici: 5.28.2
-      workerd: 1.20240129.0
-      ws: 8.12.0
-      youch: 3.2.3
-      zod: 3.22.4
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /miniflare@3.20240129.2:
