@@ -107,8 +107,8 @@ devDependencies:
     specifier: 18.2.63
     version: 18.2.63
   '@types/react-dom':
-    specifier: 18.2.19
-    version: 18.2.19
+    specifier: 18.2.20
+    version: 18.2.20
   autoprefixer:
     specifier: 10.4.18
     version: 10.4.18(postcss@8.4.35)
@@ -122,8 +122,8 @@ devDependencies:
     specifier: 8.57.0
     version: 8.57.0
   miniflare:
-    specifier: 3.20240223.0
-    version: 3.20240223.0
+    specifier: 3.20240223.1
+    version: 3.20240223.1
   only-allow:
     specifier: ^1.1.1
     version: 1.2.1
@@ -1807,8 +1807,8 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.2.19:
-    resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
+  /@types/react-dom@18.2.20:
+    resolution: {integrity: sha512-HXN/biJY8nv20Cn9ZbCFq3liERd4CozVZmKbaiZ9KiKTrWqsP7eoGDO6OOGvJQwoVFuiXaiJ7nBBjiFFbRmQMQ==}
     dependencies:
       '@types/react': 18.2.63
     dev: true
@@ -4108,6 +4108,29 @@ packages:
       - utf-8-validate
     dev: true
 
+  /miniflare@3.20240223.1:
+    resolution: {integrity: sha512-5pP4Kml9JtPpCMhfVkTyzNen08bKl2swxZ6i+gYzQTo/Rcjk6neLqgVGG64JFeJFKzdGEczk5Hnwl9U04OGRiw==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      acorn: 8.11.2
+      acorn-walk: 8.3.2
+      capnp-ts: 0.7.0
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
+      stoppable: 1.1.0
+      undici: 5.28.2
+      workerd: 1.20240223.1
+      ws: 8.12.0
+      youch: 3.2.3
+      zod: 3.22.4
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -4626,7 +4649,7 @@ packages:
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
       '@types/react': 18.2.63
-      '@types/react-dom': 18.2.19
+      '@types/react-dom': 18.2.20
       '@vavite/connect': 1.5.3(vite@4.5.2)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.2)
       '@vavite/multibuild': 1.5.3(vite@4.5.2)
