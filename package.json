@@ -42,7 +42,7 @@
     "postcss": "8.4.35",
     "prettier": "3.2.5",
     "rakkasjs": "0.6.20",
-    "sql-formatter": "15.2.0",
+    "sql-formatter": "15.3.0",
     "tailwindcss": "3.4.1",
     "typescript": "5.4.2",
     "vite": "4.5.2",
