@@ -137,8 +137,8 @@ devDependencies:
     specifier: 0.6.20
     version: 0.6.20(react-dom@18.2.0)(react@18.2.0)(vite@4.5.2)
   sql-formatter:
-    specifier: 15.2.0
-    version: 15.2.0
+    specifier: 15.3.0
+    version: 15.3.0
   tailwindcss:
     specifier: 3.4.1
     version: 3.4.1
@@ -4987,8 +4987,8 @@ packages:
     deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
-  /sql-formatter@15.2.0:
-    resolution: {integrity: sha512-k1gDOblvmtzmrBT687Y167ElwQI/8KrlhfKeIUXsi6jw7Rp5n3G8TkMFZF0Z9NG7rAzHKXUlJ8kfmcIfMf5lFg==}
+  /sql-formatter@15.3.0:
+    resolution: {integrity: sha512-1aDYVEX+dwOSCkRYns4HEGupRZoaivcsNpU4IzR+MVC+cWFYK9/dce7pr4aId4+ED2iK9PNs3j1Vdf8C+SIvDg==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
