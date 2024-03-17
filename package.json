@@ -39,7 +39,7 @@
     "eslint": "8.57.0",
     "miniflare": "3.20240304.2",
     "only-allow": "^1.1.1",
-    "postcss": "8.4.35",
+    "postcss": "8.4.36",
     "prettier": "3.2.5",
     "rakkasjs": "0.6.20",
     "sql-formatter": "15.3.0",
@@ -78,5 +78,5 @@
       "better-sqlite3"
     ]
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "pnpm@8.15.5"
 }
