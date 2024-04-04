@@ -107,14 +107,14 @@ devDependencies:
     specifier: 18.2.74
     version: 18.2.74
   '@types/react-dom':
-    specifier: 18.2.23
-    version: 18.2.23
+    specifier: 18.2.24
+    version: 18.2.24
   autoprefixer:
     specifier: 10.4.19
     version: 10.4.19(postcss@8.4.38)
   better-sqlite3:
-    specifier: 9.4.4
-    version: 9.4.4
+    specifier: 9.4.5
+    version: 9.4.5
   daisyui:
     specifier: 4.9.0
     version: 4.9.0(postcss@8.4.38)
@@ -122,8 +122,8 @@ devDependencies:
     specifier: 8.57.0
     version: 8.57.0
   miniflare:
-    specifier: 3.20240329.0
-    version: 3.20240329.0
+    specifier: 3.20240329.1
+    version: 3.20240329.1
   only-allow:
     specifier: ^1.1.1
     version: 1.2.1
@@ -1807,8 +1807,8 @@ packages:
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react-dom@18.2.23:
-    resolution: {integrity: sha512-ZQ71wgGOTmDYpnav2knkjr3qXdAFu0vsk8Ci5w3pGAIdj7/kKAyn+VsQDhXsmzzzepAiI9leWMmubXz690AI/A==}
+  /@types/react-dom@18.2.24:
+    resolution: {integrity: sha512-cN6upcKd8zkGy4HU9F1+/s98Hrp6D4MOcippK4PoE8OZRngohHZpbJn1GsaDLz87MqvHNoT13nHvNqM9ocRHZg==}
     dependencies:
       '@types/react': 18.2.74
     dev: true
@@ -2230,8 +2230,8 @@ packages:
       prebuild-install: 7.1.1
     dev: true
 
-  /better-sqlite3@9.4.4:
-    resolution: {integrity: sha512-h/gmKmmcTBHg9kDE05ZfocXyfQ7UzPlLVwHVD3yCZ5iXdj3x0hK5x2VTm4BRavBqxTGBOsmYcjOOHHMxuM0BVw==}
+  /better-sqlite3@9.4.5:
+    resolution: {integrity: sha512-uFVyoyZR9BNcjSca+cp3MWCv6upAv+tbMC4SWM51NIMhoQOm4tjIkyxFO/ZsYdGAF61WJBgdzyJcz4OokJi0gQ==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -4104,6 +4104,29 @@ packages:
       - utf-8-validate
     dev: true
 
+  /miniflare@3.20240329.1:
+    resolution: {integrity: sha512-YUn1SwfxLqFWT8S0DeFtInIOSOAuZhIOiy8NSe4J4WeDx2/KkL7ksEyQ4iOM8VyPAReLzPV3KSUk+ARpkoTBWQ==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      acorn: 8.11.2
+      acorn-walk: 8.3.2
+      capnp-ts: 0.7.0
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
+      stoppable: 1.1.0
+      undici: 5.28.2
+      workerd: 1.20240329.0
+      ws: 8.12.0
+      youch: 3.2.3
+      zod: 3.22.4
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -4622,7 +4645,7 @@ packages:
       '@microsoft/fetch-event-source': 2.0.1
       '@types/node': 18.14.4
       '@types/react': 18.2.74
-      '@types/react-dom': 18.2.23
+      '@types/react-dom': 18.2.24
       '@vavite/connect': 1.5.3(vite@4.5.3)
       '@vavite/expose-vite-dev-server': 1.5.3(vite@4.5.3)
       '@vavite/multibuild': 1.5.3(vite@4.5.3)
