@@ -36,7 +36,7 @@
     "autoprefixer": "10.4.19",
     "better-sqlite3": "9.5.0",
     "daisyui": "4.10.2",
-    "eslint": "9.1.0",
+    "eslint": "9.1.1",
     "miniflare": "3.20240405.2",
     "only-allow": "^1.1.1",
     "postcss": "8.4.38",
