@@ -60,8 +60,8 @@ importers:
         specifier: 0.1.1
         version: 0.1.1
       zod:
-        specifier: 3.23.0
-        version: 3.23.0
+        specifier: 3.23.3
+        version: 3.23.3
       zustand:
         specifier: 4.5.2
         version: 4.5.2(@types/react@18.2.79)(react@18.2.0)
@@ -3351,8 +3351,8 @@ packages:
   youch@3.2.3:
     resolution: {integrity: sha512-ZBcWz/uzZaQVdCvfV4uk616Bbpf2ee+F/AvuKDR5EwX/Y4v06xWdtMluqTD7+KlZdM93lLm9gMZYo0sKBS0pgw==}
 
-  zod@3.23.0:
-    resolution: {integrity: sha512-OFLT+LTocvabn6q76BTwVB0hExEBS0IduTr3cqZyMqEDbOnYmcU+y0tUAYbND4uwclpBGi4I4UUBGzylWpjLGA==}
+  zod@3.23.3:
+    resolution: {integrity: sha512-tPvq1B/2Yu/dh2uAIH2/BhUlUeLIUvAjr6dpL/75I0pCYefHgjhXk1o1Kob3kTU8C7yU1j396jFHlsVWFi9ogg==}
 
   zustand@4.5.2:
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
@@ -4028,7 +4028,7 @@ snapshots:
       workerd: 1.20230404.0
       ws: 8.12.0
       youch: 3.2.3
-      zod: 3.23.0
+      zod: 3.23.3
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -5619,7 +5619,7 @@ snapshots:
       workerd: 1.20240405.0
       ws: 8.12.0
       youch: 3.2.3
-      zod: 3.23.0
+      zod: 3.23.3
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -6603,7 +6603,7 @@ snapshots:
       mustache: 4.2.0
       stacktracey: 2.1.8
 
-  zod@3.23.0: {}
+  zod@3.23.3: {}
 
   zustand@4.5.2(@types/react@18.2.79)(react@18.2.0):
     dependencies:
