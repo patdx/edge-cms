@@ -58,7 +58,7 @@
     "@rjsf/core": "5.18.2",
     "@rjsf/utils": "5.18.2",
     "@rjsf/validator-ajv8": "5.18.2",
-    "@sinclair/typebox": "0.32.23",
+    "@sinclair/typebox": "0.32.24",
     "@types/json-schema": "7.0.15",
     "clsx": "2.1.1",
     "dirty-json": "0.9.2",
