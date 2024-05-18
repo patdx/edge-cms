@@ -15,14 +15,14 @@ importers:
         specifier: ^4.5.1
         version: 4.6.0(monaco-editor@0.48.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@rjsf/core':
-        specifier: 5.18.3
-        version: 5.18.3(@rjsf/utils@5.18.3(react@18.3.1))(react@18.3.1)
+        specifier: 5.18.4
+        version: 5.18.4(@rjsf/utils@5.18.4(react@18.3.1))(react@18.3.1)
       '@rjsf/utils':
-        specifier: 5.18.3
-        version: 5.18.3(react@18.3.1)
+        specifier: 5.18.4
+        version: 5.18.4(react@18.3.1)
       '@rjsf/validator-ajv8':
-        specifier: 5.18.3
-        version: 5.18.3(@rjsf/utils@5.18.3(react@18.3.1))
+        specifier: 5.18.4
+        version: 5.18.4(@rjsf/utils@5.18.4(react@18.3.1))
       '@sinclair/typebox':
         specifier: 0.32.30
         version: 0.32.30
@@ -1088,21 +1088,21 @@ packages:
       eslint: ^8.7.0
       typescript: ^4.5.4
 
-  '@rjsf/core@5.18.3':
-    resolution: {integrity: sha512-HVqqoVzcjYX1BUCqHm7iUjBoVx1UDud1KP6bJ5drtOOvHChfKEbMUt2hWJcuXIlmNPuw2lRxETtcuRbEM2wsRA==}
+  '@rjsf/core@5.18.4':
+    resolution: {integrity: sha512-OUPC+l44X1geYT9sSsmQC2pakvFWCQB+5Iy/ITfLMJq3MIjJn0gakCwYHXMMBGUAKM1SSMIyKWyCazt3kY9fhg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.18.x
       react: ^16.14.0 || >=17
 
-  '@rjsf/utils@5.18.3':
-    resolution: {integrity: sha512-0TzjAKAlqXSCneVnHhcL3gAr4DlIPgwzkFdNEI4A+LFjLFlECPah2o3RhEgvqJnUXFviDGF1dqhkxa/Pr59ajw==}
+  '@rjsf/utils@5.18.4':
+    resolution: {integrity: sha512-svLMk5aW6q3JQRYVTJradFc9tLeQ1vX5/k6fPwxf+08eweqPbINq7aokLBSStUNr8FfYgThTl8IfehLoVP2dvw==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
 
-  '@rjsf/validator-ajv8@5.18.3':
-    resolution: {integrity: sha512-geEVuNuYulHVUBnnkLCS7QZRvAuD1clOjuUbwNjFzSpnYHVO0+mvvi4uHTia/eSvRyDy4vdkxu320uPe4TsgeQ==}
+  '@rjsf/validator-ajv8@5.18.4':
+    resolution: {integrity: sha512-D0bUtruWbUmXG8z3VBbCky0Cx65rmcdG/QypB9ri5YTSNTQIxuq28StBpZUZn84CO/oMOtociGy4afW1aj5C0g==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.18.x
@@ -4076,9 +4076,9 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@rjsf/core@5.18.3(@rjsf/utils@5.18.3(react@18.3.1))(react@18.3.1)':
+  '@rjsf/core@5.18.4(@rjsf/utils@5.18.4(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@rjsf/utils': 5.18.3(react@18.3.1)
+      '@rjsf/utils': 5.18.4(react@18.3.1)
       lodash: 4.17.21
       lodash-es: 4.17.21
       markdown-to-jsx: 7.4.1(react@18.3.1)
@@ -4086,7 +4086,7 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  '@rjsf/utils@5.18.3(react@18.3.1)':
+  '@rjsf/utils@5.18.4(react@18.3.1)':
     dependencies:
       json-schema-merge-allof: 0.8.1
       jsonpointer: 5.0.1
@@ -4095,9 +4095,9 @@ snapshots:
       react: 18.3.1
       react-is: 18.2.0
 
-  '@rjsf/validator-ajv8@5.18.3(@rjsf/utils@5.18.3(react@18.3.1))':
+  '@rjsf/validator-ajv8@5.18.4(@rjsf/utils@5.18.4(react@18.3.1))':
     dependencies:
-      '@rjsf/utils': 5.18.3(react@18.3.1)
+      '@rjsf/utils': 5.18.4(react@18.3.1)
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
