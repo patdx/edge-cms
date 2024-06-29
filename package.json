@@ -39,7 +39,7 @@
     "eslint": "9.6.0",
     "miniflare": "3.20240620.0",
     "only-allow": "^1.1.1",
-    "postcss": "8.4.38",
+    "postcss": "8.4.39",
     "prettier": "3.3.2",
     "rakkasjs": "0.6.20",
     "sql-formatter": "15.3.2",
