@@ -94,8 +94,8 @@ importers:
         specifier: 0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
       '@types/better-sqlite3':
-        specifier: 7.6.10
-        version: 7.6.10
+        specifier: 7.6.11
+        version: 7.6.11
       '@types/gensync':
         specifier: 1.0.4
         version: 1.0.4
@@ -1183,8 +1183,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
 
-  '@types/better-sqlite3@7.6.10':
-    resolution: {integrity: sha512-TZBjD+yOsyrUJGmcUj6OS3JADk3+UZcNv3NOBqGkM09bZdi28fNZw8ODqbMOLfKCu7RYCO62/ldq1iHbzxqoPw==}
+  '@types/better-sqlite3@7.6.11':
+    resolution: {integrity: sha512-i8KcD3PgGtGBLl3+mMYA8PdKkButvPyARxA7IQAd6qeslht13qxb1zzO8dRCtE7U3IoJS782zDBAeoKiM695kg==}
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -4039,7 +4039,7 @@ snapshots:
 
   '@miniflare/shared@2.14.2':
     dependencies:
-      '@types/better-sqlite3': 7.6.10
+      '@types/better-sqlite3': 7.6.11
       kleur: 4.1.5
       npx-import: 1.1.4
       picomatch: 2.3.1
@@ -4199,7 +4199,7 @@ snapshots:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.4.4
 
-  '@types/better-sqlite3@7.6.10':
+  '@types/better-sqlite3@7.6.11':
     dependencies:
       '@types/node': 20.3.1
 
