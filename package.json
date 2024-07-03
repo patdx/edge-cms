@@ -37,7 +37,7 @@
     "better-sqlite3": "11.1.2",
     "daisyui": "4.12.10",
     "eslint": "9.6.0",
-    "miniflare": "3.20240620.0",
+    "miniflare": "3.20240701.0",
     "only-allow": "^1.1.1",
     "postcss": "8.4.39",
     "prettier": "3.3.2",
