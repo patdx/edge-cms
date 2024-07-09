@@ -1,24 +1,24 @@
 import type { FormProps } from '@rjsf/core';
 import {
-	FieldTemplateProps,
-	FormContextType,
+	type FieldTemplateProps,
+	type FormContextType,
 	getInputProps,
 	getSubmitButtonOptions,
 	getTemplate,
 	getUiOptions,
-	RegistryWidgetsType,
-	RJSFSchema,
-	StrictRJSFSchema,
-	SubmitButtonProps,
-	WidgetProps,
+	type RegistryWidgetsType,
+	type RJSFSchema,
+	type StrictRJSFSchema,
+	type SubmitButtonProps,
+	type WidgetProps,
 } from '@rjsf/utils';
 import validator from '@rjsf/validator-ajv8';
 import dirtyJSON from 'dirty-json';
 import type { JSONSchema6 } from 'json-schema';
-import { useRef, useCallback, forwardRef, useState, FocusEvent } from 'react';
+import { useRef, useCallback, forwardRef, useState, type FocusEvent } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Details } from './components/details';
-import { ThemeProps, withTheme } from '@rjsf/core';
+import { type ThemeProps, withTheme } from '@rjsf/core';
 import clsx from 'clsx';
 import MonacoEditor from '@monaco-editor/react';
 import jsonSchemaDraft7 from './json-schema-draft-7.json'; // https://github.com/json-schema-org/json-schema-spec/issues/1007
@@ -53,8 +53,8 @@ const tryCompactJson = (maybeJson?: string): string => {
 	}
 };
 
-const JsonTextEdit = function (props: WidgetProps) {
-	let defaultValue = tryFormatJson(props.value);
+const JsonTextEdit = (props: WidgetProps) => {
+	const defaultValue = tryFormatJson(props.value);
 
 	// const lines = Math.max(value.split("\n").length, 5);
 

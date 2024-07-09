@@ -23,6 +23,8 @@ export const adapterCloudflarePages: RakkasAdapter = {
 		//   await fs.promises.writeFile(entry, CLOUDFLARE_WORKERS_ENTRY);
 		// }
 
+		console.log('Start bundling cloudflare pages');
+
 		await cloudflareWorkers(
 			{
 				output: path.resolve(root, 'dist/client/_worker.js'),
@@ -32,8 +34,12 @@ export const adapterCloudflarePages: RakkasAdapter = {
 				// options.minify = false;
 				options.define = options.define || {};
 				options.define['process.env.RAKKAS_PRERENDER'] = 'undefined';
-				options.define['global'] = 'globalThis';
+				options.define.global = 'globalThis';
+				options.external = options.external || [];
+				options.external.push('node:async_hooks');
 			},
 		);
+
+		console.log('Done bundling cloudflare pages');
 	},
 };

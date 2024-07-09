@@ -14,10 +14,9 @@ export const formatSql = (
 	} catch (err) {
 		if (options?.throwOnError) {
 			throw err;
-		} else {
-			console.log('Error while formatting:');
-			console.warn(err);
-			return query;
 		}
+		console.log('Error while formatting:');
+		console.warn(err);
+		return query;
 	}
 };

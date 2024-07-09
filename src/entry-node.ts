@@ -2,7 +2,7 @@ import { createMiddleware } from 'rakkasjs/node-adapter';
 import hattipHandler from './entry-hattip';
 import { D1Database, D1DatabaseAPI } from '@miniflare/d1';
 import { createSQLiteDB } from '@miniflare/shared';
-import fs from 'fs';
+import fs from 'node:fs';
 
 fs.mkdirSync('./data', { recursive: true });
 
@@ -13,7 +13,7 @@ const dbPromise = Promise.resolve()
 	.then(async (db) => {
 		// simulate the extra system tables of the real cloudflare d1 database
 		await db.exec(
-			`CREATE TABLE IF NOT EXISTS d1_kv (key TEXT PRIMARY KEY, value TEXT)`,
+			'CREATE TABLE IF NOT EXISTS d1_kv (key TEXT PRIMARY KEY, value TEXT)',
 		);
 
 		return db;

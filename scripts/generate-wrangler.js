@@ -1,6 +1,6 @@
 import TOML from '@ltd/j-toml';
-import fs from 'fs';
-import child_process from 'child_process';
+import fs from 'node:fs';
+import child_process from 'node:child_process';
 
 /** @type {import('../secrets.json') | undefined} */
 let secrets = undefined;

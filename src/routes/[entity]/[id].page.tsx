@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Link, Page, PageProps, useServerSideQuery } from 'rakkasjs';
+import { Link, type Page, type PageProps, useServerSideQuery } from 'rakkasjs';
 import { ViewEntity } from 'src/components/view-entity';
 import { loadEntityData } from 'src/db/load-entity-data';
 import { useDeleteMutation } from 'src/db/use-delete-mutation';

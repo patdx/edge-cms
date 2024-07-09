@@ -1,4 +1,4 @@
-import { Static, Type } from '@sinclair/typebox';
+import { type Static, Type } from '@sinclair/typebox';
 import type { JSONSchema6 } from 'json-schema';
 
 export const systemTables = {

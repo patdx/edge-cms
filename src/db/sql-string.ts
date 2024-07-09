@@ -79,7 +79,7 @@ export const format = function format(sql, values, stringifyObjects, timeZone) {
 		return sql;
 	}
 
-	if (!(values instanceof Array || Array.isArray(values))) {
+	if (!Array.isArray(values)) {
 		values = [values];
 	}
 
@@ -158,26 +158,13 @@ export const dateToString = function dateToString(date, timeZone) {
 	}
 
 	// YYYY-MM-DD HH:mm:ss.mmm
-	const str =
-		zeroPad(year, 4) +
-		'-' +
-		zeroPad(month, 2) +
-		'-' +
-		zeroPad(day, 2) +
-		' ' +
-		zeroPad(hour, 2) +
-		':' +
-		zeroPad(minute, 2) +
-		':' +
-		zeroPad(second, 2) +
-		'.' +
-		zeroPad(millisecond, 3);
+	const str = `${zeroPad(year, 4)}-${zeroPad(month, 2)}-${zeroPad(day, 2)} ${zeroPad(hour, 2)}:${zeroPad(minute, 2)}:${zeroPad(second, 2)}.${zeroPad(millisecond, 3)}`;
 
 	return escapeString(str);
 };
 
 export const bufferToString = function bufferToString(buffer) {
-	return 'X' + escapeString(buffer.toString('hex'));
+	return `X${escapeString(buffer.toString('hex'))}`;
 };
 
 export const objectToValues = function objectToValues(object, timeZone) {
@@ -190,11 +177,9 @@ export const objectToValues = function objectToValues(object, timeZone) {
 			continue;
 		}
 
-		sql +=
-			(sql.length === 0 ? '' : ', ') +
-			escapeId(key) +
-			' = ' +
-			escape(val, true, timeZone);
+		sql += `${
+			(sql.length === 0 ? '' : ', ') + escapeId(key)
+		} = ${escape(val, true, timeZone)}`;
 	}
 
 	return sql;
@@ -253,7 +238,8 @@ function convertTimezone(tz) {
 	if (m) {
 		return (
 			(m[1] === '-' ? -1 : 1) *
-			(parseInt(m[2], 10) + (m[3] ? parseInt(m[3], 10) : 0) / 60) *
+			(Number.parseInt(m[2], 10) +
+				(m[3] ? Number.parseInt(m[3], 10) : 0) / 60) *
 			60
 		);
 	}
