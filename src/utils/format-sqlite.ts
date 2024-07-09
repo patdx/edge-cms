@@ -1,23 +1,23 @@
 import { formatDialect, sqlite } from 'sql-formatter';
 
 export const formatSql = (
-  query: string,
-  options?: {
-    throwOnError?: boolean;
-  }
+	query: string,
+	options?: {
+		throwOnError?: boolean;
+	},
 ) => {
-  try {
-    return formatDialect(query, {
-      dialect: sqlite,
-      keywordCase: 'upper',
-    });
-  } catch (err) {
-    if (options?.throwOnError) {
-      throw err;
-    } else {
-      console.log('Error while formatting:');
-      console.warn(err);
-      return query;
-    }
-  }
+	try {
+		return formatDialect(query, {
+			dialect: sqlite,
+			keywordCase: 'upper',
+		});
+	} catch (err) {
+		if (options?.throwOnError) {
+			throw err;
+		} else {
+			console.log('Error while formatting:');
+			console.warn(err);
+			return query;
+		}
+	}
 };

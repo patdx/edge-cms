@@ -4,35 +4,35 @@ import type { SchemaTable } from './system-tables';
 import type { SqliteTableSchema } from './types';
 
 export const convertJsonSchemaToDatabaseSchema = (
-  jsonSchema: JSONSchema6
+	jsonSchema: JSONSchema6,
 ): SqliteTableSchema => {
-  const title = jsonSchema.title;
+	const title = jsonSchema.title;
 
-  if (!title)
-    throw new Error(
-      `json schema is missing a title ${JSON.stringify(jsonSchema)}`
-    );
+	if (!title)
+		throw new Error(
+			`json schema is missing a title ${JSON.stringify(jsonSchema)}`,
+		);
 
-  const rootTable: SqliteTableSchema = {
-    name: title,
-    columns: [],
-  };
+	const rootTable: SqliteTableSchema = {
+		name: title,
+		columns: [],
+	};
 
-  for (const [key, prop] of Object.entries(jsonSchema.properties ?? {})) {
-    if (typeof prop === 'object') {
-      rootTable.columns.push({
-        name: key,
-        type: getSqlType(prop.type),
-        notNull: jsonSchema.required?.includes(key),
-        defaultValue: prop.default as any,
-        primaryKey: key === 'id' ,
-      });
-    } else {
-      console.warn(`property of type ${typeof prop} not supported`);
-    }
-  }
+	for (const [key, prop] of Object.entries(jsonSchema.properties ?? {})) {
+		if (typeof prop === 'object') {
+			rootTable.columns.push({
+				name: key,
+				type: getSqlType(prop.type),
+				notNull: jsonSchema.required?.includes(key),
+				defaultValue: prop.default as any,
+				primaryKey: key === 'id',
+			});
+		} else {
+			console.warn(`property of type ${typeof prop} not supported`);
+		}
+	}
 
-  return rootTable;
+	return rootTable;
 };
 
 /**
@@ -40,7 +40,7 @@ export const convertJsonSchemaToDatabaseSchema = (
  * for better handling/recovery from invalid state
  */
 export const convertManyJsonSchemasToDatabaseSchema = (
-  jsonSchemas: JSONSchema6[]
+	jsonSchemas: JSONSchema6[],
 ) => jsonSchemas.map((schema) => convertJsonSchemaToDatabaseSchema(schema));
 
 /**
@@ -48,20 +48,20 @@ export const convertManyJsonSchemasToDatabaseSchema = (
  * gracefully ignore invalid rows to allow recovery
  */
 export const safeParseJsonSchemaTables = (schemas: SchemaTable[]) => {
-  const errors: string[] = [];
-  const result: SqliteTableSchema[] = [];
+	const errors: string[] = [];
+	const result: SqliteTableSchema[] = [];
 
-  for (const schema of schemas) {
-    try {
-      const jsonSchema = JSON.parse(schema.json);
-      const databaseSchema = convertJsonSchemaToDatabaseSchema(jsonSchema);
-      result.push(databaseSchema);
-    } catch (err) {
-      errors.push(
-        `Error on ${JSON.stringify(schema)}: ${(err as Error).message}`
-      );
-    }
-  }
+	for (const schema of schemas) {
+		try {
+			const jsonSchema = JSON.parse(schema.json);
+			const databaseSchema = convertJsonSchemaToDatabaseSchema(jsonSchema);
+			result.push(databaseSchema);
+		} catch (err) {
+			errors.push(
+				`Error on ${JSON.stringify(schema)}: ${(err as Error).message}`,
+			);
+		}
+	}
 
-  return { errors, result };
+	return { errors, result };
 };
