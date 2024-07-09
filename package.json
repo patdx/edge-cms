@@ -19,6 +19,7 @@
     "pages-preview": "wrangler pages dev dist/client/"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@cloudflare/workers-types": "4.20240620.0",
     "@hattip/adapter-cloudflare-workers": "0.0.46",
     "@hattip/bundler-cloudflare-workers": "0.0.46",
@@ -26,7 +27,6 @@
     "@miniflare/d1": "2.14.2",
     "@miniflare/shared": "2.14.2",
     "@miniflare/tre": "3.0.0-next.14",
-    "@rakkasjs/eslint-config": "0.6.20",
     "@tailwindcss/forms": "0.5.7",
     "@types/better-sqlite3": "7.6.11",
     "@types/gensync": "1.0.4",
@@ -36,21 +36,20 @@
     "autoprefixer": "10.4.19",
     "better-sqlite3": "11.1.2",
     "daisyui": "4.12.10",
-    "eslint": "9.6.0",
     "miniflare": "3.20240701.0",
     "only-allow": "^1.1.1",
     "postcss": "8.4.39",
     "prettier": "3.3.2",
-    "rakkasjs": "0.6.20",
+    "rakkasjs": "0.7.0-next.48",
     "sql-formatter": "15.3.2",
     "tailwindcss": "3.4.4",
     "typescript": "5.5.3",
-    "vite": "4.5.3",
+    "vite": "5.3.3",
     "vite-node": "2.0.1",
     "vite-plugin-monaco-editor": "^1.1.0",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "2.0.1",
-    "wrangler": "3.63.1"
+    "wrangler": "3.63.2"
   },
   "dependencies": {
     "@hattip/response": "0.0.46",
@@ -78,5 +77,5 @@
       "better-sqlite3"
     ]
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }
