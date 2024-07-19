@@ -1,15 +1,8 @@
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
-dist
 node_modules
-/data
 
-# /wrangler.toml
+/.cache
+/build
+.env
+.dev.vars
 
-/bin
+.wrangler

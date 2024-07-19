@@ -10,14 +10,22 @@
 	},
 	"linter": {
 		"enabled": true,
+		"ignore": ["app/db/sql-string.ts"],
 		"rules": {
 			"recommended": true,
+			"correctness": {
+				"noUnusedImports": "error"
+			},
 			"style": {
-				"noUselessElse": "off"
+				"useImportType": "error",
+				"noUselessElse": "off",
+				"noNonNullAssertion": "off",
+				"noParameterAssign": "off"
 			},
 			"suspicious": {
 				"noExplicitAny": "off",
-				"noImplicitAnyLet": "off"
+				"noImplicitAnyLet": "off",
+				"noArrayIndexKey": "off"
 			}
 		}
 	}

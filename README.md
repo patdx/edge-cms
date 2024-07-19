@@ -36,3 +36,11 @@ node scripts/generate-wrangler.js
 ```
 
 If you run without sops set up it will still work but some values will be undefined.
+
+
+## Wishlist
+
+- tenants
+- user sso
+- can host posts for a blog, etc
+- fix overlap API bug

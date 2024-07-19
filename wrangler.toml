@@ -1,1 +1,9 @@
+name = "edge-cms"
 send_metrics = false
+pages_build_output_dir = "./build/client"
+compatibility_date = "2024-06-03"
+
+[[d1_databases]]
+binding = "CLOUDFLARE_DB"
+database_name = "edge-cms-db"
+database_id = "2e423cb9-12bb-4265-a22f-b1050e30e2a3"

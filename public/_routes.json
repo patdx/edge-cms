@@ -3,7 +3,6 @@
 	"include": ["/*"],
 	"exclude": [
 		"/assets/*",
-		"/monacoeditorwork/*",
 		"/robots.txt",
 		"/android-chrome-192x192.png",
 		"/android-chrome-512x512.png",
