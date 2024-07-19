@@ -31,14 +31,14 @@ importers:
         specifier: ^2.10.3
         version: 2.10.3(react-dom@19.0.0-rc-01172397-20240716(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)(typescript@5.5.3)
       '@rjsf/core':
-        specifier: 5.19.2
-        version: 5.19.2(@rjsf/utils@5.19.2(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)
+        specifier: 5.19.3
+        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)
       '@rjsf/utils':
-        specifier: 5.19.2
-        version: 5.19.2(react@19.0.0-rc-01172397-20240716)
+        specifier: 5.19.3
+        version: 5.19.3(react@19.0.0-rc-01172397-20240716)
       '@rjsf/validator-ajv8':
-        specifier: 5.19.2
-        version: 5.19.2(@rjsf/utils@5.19.2(react@19.0.0-rc-01172397-20240716))
+        specifier: 5.19.3
+        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-01172397-20240716))
       '@sinclair/typebox':
         specifier: 0.32.34
         version: 0.32.34
@@ -1060,21 +1060,21 @@ packages:
   '@remix-run/web-stream@1.1.0':
     resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
 
-  '@rjsf/core@5.19.2':
-    resolution: {integrity: sha512-wGajeHs6wyX56JoiMuUxOZd/U9XkAhioRHGkf+w+Jg5tj6tzeP0uw87qGncUBFupKzw8/vv2+/VCOBvMbdpYzg==}
+  '@rjsf/core@5.19.3':
+    resolution: {integrity: sha512-AAzolj+fcFlwk0/5THA7T2JkmYTIUa+fLPM5prFqPw55FwWOa0qC5zIOfkhPS95Z9bfwJv3BubOAiKZ7MOGe8Q==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.19.x
       react: ^16.14.0 || >=17
 
-  '@rjsf/utils@5.19.2':
-    resolution: {integrity: sha512-NpmFdQqCdctdwslqsVIMd6zWgrT4jas6T7urykNuDwwmukOotG9LMnPtuSNQXg1NWrl+DfM6zagStgbQwss2aA==}
+  '@rjsf/utils@5.19.3':
+    resolution: {integrity: sha512-1lG/uMMmnAJE48BHUl4laNY2W2j2gIR2LH4jsxeEMSuFloB06ZuUXLesD03Nz2zQjm66izNmnm5eAmAi3Pa1yQ==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
 
-  '@rjsf/validator-ajv8@5.19.2':
-    resolution: {integrity: sha512-tb6LAdWGkkeVWUXCYR/Xzu8Ki2A/3p6fUDR2RV9xafaqqM9HN+yfT9U/xCjBidQGatJg0Lzr5D3dVVAX9A9/jw==}
+  '@rjsf/validator-ajv8@5.19.3':
+    resolution: {integrity: sha512-ah0DY1tGmBDNd0iIjH9/iL3TSflriY8cYPmAwK4aDzGLnwHgD2w8sEfJJjG01pX89rY2CeeYxcwCalwlBlUZ/w==}
     engines: {node: '>=14'}
     peerDependencies:
       '@rjsf/utils': ^5.19.x
@@ -4609,9 +4609,9 @@ snapshots:
     dependencies:
       web-streams-polyfill: 3.3.3
 
-  '@rjsf/core@5.19.2(@rjsf/utils@5.19.2(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)':
+  '@rjsf/core@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)':
     dependencies:
-      '@rjsf/utils': 5.19.2(react@19.0.0-rc-01172397-20240716)
+      '@rjsf/utils': 5.19.3(react@19.0.0-rc-01172397-20240716)
       lodash: 4.17.21
       lodash-es: 4.17.21
       markdown-to-jsx: 7.4.1(react@19.0.0-rc-01172397-20240716)
@@ -4619,7 +4619,7 @@ snapshots:
       prop-types: 15.8.1
       react: 19.0.0-rc-01172397-20240716
 
-  '@rjsf/utils@5.19.2(react@19.0.0-rc-01172397-20240716)':
+  '@rjsf/utils@5.19.3(react@19.0.0-rc-01172397-20240716)':
     dependencies:
       json-schema-merge-allof: 0.8.1
       jsonpointer: 5.0.1
@@ -4628,9 +4628,9 @@ snapshots:
       react: 19.0.0-rc-01172397-20240716
       react-is: 18.2.0
 
-  '@rjsf/validator-ajv8@5.19.2(@rjsf/utils@5.19.2(react@19.0.0-rc-01172397-20240716))':
+  '@rjsf/validator-ajv8@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-01172397-20240716))':
     dependencies:
-      '@rjsf/utils': 5.19.2(react@19.0.0-rc-01172397-20240716)
+      '@rjsf/utils': 5.19.3(react@19.0.0-rc-01172397-20240716)
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
@@ -4790,7 +4790,7 @@ snapshots:
       '@babel/plugin-syntax-typescript': 7.24.7(@babel/core@7.24.7)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.6
       '@vanilla-extract/css': 1.15.3
-      esbuild: 0.17.6
+      esbuild: 0.17.19
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
