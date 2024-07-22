@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
-		"@cloudflare/workers-types": "4.20240718.0",
+		"@cloudflare/workers-types": "4.20240722.0",
 		"@hattip/adapter-cloudflare-workers": "0.0.46",
 		"@hattip/bundler-cloudflare-workers": "0.0.46",
 		"@ltd/j-toml": "1.38.0",
