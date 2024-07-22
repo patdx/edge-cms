@@ -40,8 +40,8 @@ importers:
         specifier: 5.19.3
         version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))
       '@sinclair/typebox':
-        specifier: 0.32.34
-        version: 0.32.34
+        specifier: 0.32.35
+        version: 0.32.35
       '@tanstack/react-query':
         specifier: 5.51.11
         version: 5.51.11(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -1164,8 +1164,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sinclair/typebox@0.32.34':
-    resolution: {integrity: sha512-a3Z3ytYl6R/+7ldxx04PO1semkwWlX/8pTqxsPw4quIcIXDFPZhOc1Wx8azWmkU26ccK3mHwcWenn0avNgAKQg==}
+  '@sinclair/typebox@0.32.35':
+    resolution: {integrity: sha512-Ul3YyOTU++to8cgNkttakC0dWvpERr6RYoHO2W47DLbFvrwBDJUY31B1sImH6JZSYc4Kt4PyHtoPNu+vL2r2dA==}
 
   '@tailwindcss/forms@0.5.7':
     resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
@@ -4686,7 +4686,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.18.1':
     optional: true
 
-  '@sinclair/typebox@0.32.34': {}
+  '@sinclair/typebox@0.32.35': {}
 
   '@tailwindcss/forms@0.5.7(tailwindcss@3.4.6)':
     dependencies:
