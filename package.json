@@ -35,7 +35,7 @@
 		"tailwindcss": "3.4.6",
 		"typescript": "5.5.4",
 		"unimport": "3.9.0",
-		"unplugin-auto-import": "0.18.0",
+		"unplugin-auto-import": "0.18.1",
 		"vite": "5.3.4",
 		"vite-node": "2.0.4",
 		"vite-plugin-cjs-interop": "2.1.1",
