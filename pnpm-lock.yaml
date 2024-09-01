@@ -17,7 +17,7 @@ importers:
         version: 0.0.47
       '@hono/zod-validator':
         specifier: 0.2.2
-        version: 0.2.2(hono@4.5.3)(zod@3.23.8)
+        version: 0.2.2(hono@4.5.8)(zod@3.23.8)
       '@monaco-editor/react':
         specifier: ^4.5.1
         version: 4.6.0(monaco-editor@0.50.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -58,8 +58,8 @@ importers:
         specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2
       hono:
-        specifier: 4.5.3
-        version: 4.5.3
+        specifier: 4.5.8
+        version: 4.5.8
       isbot:
         specifier: 5.1.13
         version: 5.1.13
@@ -2175,8 +2175,8 @@ packages:
   hast-util-whitespace@2.0.1:
     resolution: {integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==}
 
-  hono@4.5.3:
-    resolution: {integrity: sha512-r26WwwbKD3BAYdfB294knNnegNda7VfV1tVn66D9Kvl9WQTdrR+5eKdoeaQNHQcC3Gr0KBikzAtjd6VsRGVSaw==}
+  hono@4.5.8:
+    resolution: {integrity: sha512-pqpSlcdqGkpTTRpLYU1PnCz52gVr0zVR9H5GzMyJWuKQLLEBQxh96q45QizJ2PPX8NATtz2mu31/PKW/Jt+90Q==}
     engines: {node: '>=16.0.0'}
 
   hosted-git-info@6.1.1:
@@ -4536,9 +4536,9 @@ snapshots:
     dependencies:
       '@hattip/core': 0.0.47
 
-  '@hono/zod-validator@0.2.2(hono@4.5.3)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.5.8)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.3
+      hono: 4.5.8
       zod: 3.23.8
 
   '@isaacs/cliui@8.0.2':
@@ -5914,7 +5914,7 @@ snapshots:
 
   hast-util-whitespace@2.0.1: {}
 
-  hono@4.5.3: {}
+  hono@4.5.8: {}
 
   hosted-git-info@6.1.1:
     dependencies:

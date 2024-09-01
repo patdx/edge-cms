@@ -59,7 +59,7 @@
 		"clsx": "2.1.1",
 		"dirty-json": "0.9.2",
 		"gensync": "1.0.0-beta.2",
-		"hono": "4.5.3",
+		"hono": "4.5.8",
 		"isbot": "5.1.13",
 		"lodash-es": "4.17.21",
 		"monaco-editor": "^0.50.0",
