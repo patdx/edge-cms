@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@hattip/response':
-        specifier: 0.0.47
-        version: 0.0.47
+        specifier: 0.0.48
+        version: 0.0.48
       '@hono/zod-validator':
         specifier: 0.2.2
         version: 0.2.2(hono@4.5.8)(zod@3.23.8)
@@ -98,11 +98,11 @@ importers:
         specifier: 4.20240725.0
         version: 4.20240725.0
       '@hattip/adapter-cloudflare-workers':
-        specifier: 0.0.47
-        version: 0.0.47
+        specifier: 0.0.48
+        version: 0.0.48
       '@hattip/bundler-cloudflare-workers':
-        specifier: 0.0.47
-        version: 0.0.47
+        specifier: 0.0.48
+        version: 0.0.48
       '@ltd/j-toml':
         specifier: 1.38.0
         version: 1.38.0
@@ -444,8 +444,8 @@ packages:
   '@cloudflare/workers-types@4.20240725.0':
     resolution: {integrity: sha512-L6T/Bg50zm9IIACQVQ0CdVcQL+2nLkRXdPz6BsXF3SlzgjyWR5ndVctAbfr/HLV7aKYxWnnEZsIORsTWb+FssA==}
 
-  '@cloudflare/workers-types@4.20240821.1':
-    resolution: {integrity: sha512-icAkbnAqgVl6ef9lgLTom8na+kj2RBw2ViPAQ586hbdj0xZcnrjK7P46Eu08OU9D/lNDgN2sKU/sxhe2iK/gIg==}
+  '@cloudflare/workers-types@4.20240925.0':
+    resolution: {integrity: sha512-KpqyRWvanEuXgBTKYFzRp4NsWOEcswxjsPRSre1zYQcODmc8PUrraVHQUmgvkJgv3FzB+vI9xm7J6oE4MmZHCA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -1014,18 +1014,18 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@hattip/adapter-cloudflare-workers@0.0.47':
-    resolution: {integrity: sha512-3B6gM0dsDhDgnig91AQIo3M9LcpDy+WRUHN4XhaG2uNHzAE9pxlFvNru3Kryd/ht5KpBIX07FrbFd9j4qi3spw==}
+  '@hattip/adapter-cloudflare-workers@0.0.48':
+    resolution: {integrity: sha512-F9KqtV7J4nhCpFM7CtCph1lHv6d+18qRl4u4W6Quszj/LkUUj4FxyaUde1U1H67UOvTh4sPelIqQ46N5ZjVCIg==}
 
-  '@hattip/bundler-cloudflare-workers@0.0.47':
-    resolution: {integrity: sha512-ICeVvsA49E2yBiD0k+mvWssfgw1hP982LOf3Lif4DmrSYzimPTlCvL7SVguOM73DwQ+hryV+eRV1ZSWldGHH6w==}
+  '@hattip/bundler-cloudflare-workers@0.0.48':
+    resolution: {integrity: sha512-5F+2kb7orh8MxGwoz86n6pT8T+M8awN9eZTp+0UlHkcJSlD1o1G49sXmS3kkvPJgmoLdHi0kcVPZG3xZFtwB4g==}
     hasBin: true
 
-  '@hattip/core@0.0.47':
-    resolution: {integrity: sha512-g+yoz7ZCTc4WRIGvbrbnrzfB77Z3tknbJxkLDicxpCL/oErj+IV+jfJj/DWNsgijuUFYCqR2HLaYzl0NGfppRA==}
+  '@hattip/core@0.0.48':
+    resolution: {integrity: sha512-rx28E2Ofl2GpJ73Uw011d1kM3kLyuFTijcBZjRWZn6cZ6qmFI194BZLtsvvO3ocBgyUUVv4JPC9PdH5FGA/ZoA==}
 
-  '@hattip/response@0.0.47':
-    resolution: {integrity: sha512-WP2xqlSXFz57qTk7q/8dhpYE62CxX/obQ6lRiSF51Mru4YEB5v9E3ofkkiwF6YaW6AGbGNM/iu80l/yG47FsDw==}
+  '@hattip/response@0.0.48':
+    resolution: {integrity: sha512-eoIXJV3FdrU+iL33T9d593w3BhTCE6fHirUr/19FzuBRqMON3R6nMyRblgdC/Kx7IRV4+yZD91Dl4OXAxsyYfQ==}
 
   '@hono/zod-validator@0.2.2':
     resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
@@ -4226,7 +4226,7 @@ snapshots:
 
   '@cloudflare/workers-types@4.20240725.0': {}
 
-  '@cloudflare/workers-types@4.20240821.1': {}
+  '@cloudflare/workers-types@4.20240925.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -4519,22 +4519,22 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@hattip/adapter-cloudflare-workers@0.0.47':
+  '@hattip/adapter-cloudflare-workers@0.0.48':
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
-      '@cloudflare/workers-types': 4.20240821.1
-      '@hattip/core': 0.0.47
+      '@cloudflare/workers-types': 4.20240925.0
+      '@hattip/core': 0.0.48
 
-  '@hattip/bundler-cloudflare-workers@0.0.47':
+  '@hattip/bundler-cloudflare-workers@0.0.48':
     dependencies:
       cac: 6.7.14
       esbuild: 0.23.1
 
-  '@hattip/core@0.0.47': {}
+  '@hattip/core@0.0.48': {}
 
-  '@hattip/response@0.0.47':
+  '@hattip/response@0.0.48':
     dependencies:
-      '@hattip/core': 0.0.47
+      '@hattip/core': 0.0.48
 
   '@hono/zod-validator@0.2.2(hono@4.5.8)(zod@3.23.8)':
     dependencies:
