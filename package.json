@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
-		"@cloudflare/workers-types": "4.20241022.0",
+		"@cloudflare/workers-types": "4.20241230.0",
 		"@hattip/adapter-cloudflare-workers": "0.0.49",
 		"@hattip/bundler-cloudflare-workers": "0.0.49",
 		"@ltd/j-toml": "1.38.0",
@@ -41,7 +41,7 @@
 		"vite-plugin-cjs-interop": "2.1.1",
 		"vite-tsconfig-paths": "4.3.2",
 		"vitest": "2.0.5",
-		"wrangler": "3.84.1"
+		"wrangler": "3.99.0"
 	},
 	"dependencies": {
 		"@hattip/response": "0.0.49",
