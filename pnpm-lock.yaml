@@ -31,14 +31,14 @@ importers:
         specifier: ^2.10.3
         version: 2.10.3(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(typescript@5.5.4)
       '@rjsf/core':
-        specifier: 5.19.3
-        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+        specifier: 5.24.8
+        version: 5.24.8(@rjsf/utils@5.24.8(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@rjsf/utils':
-        specifier: 5.19.3
-        version: 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+        specifier: 5.24.8
+        version: 5.24.8(react@19.0.0-rc-fb9a90fa48-20240614)
       '@rjsf/validator-ajv8':
-        specifier: 5.19.3
-        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))
+        specifier: 5.24.8
+        version: 5.24.8(@rjsf/utils@5.24.8(react@19.0.0-rc-fb9a90fa48-20240614))
       '@sinclair/typebox':
         specifier: 0.32.35
         version: 0.32.35
@@ -1305,24 +1305,24 @@ packages:
   '@remix-run/web-stream@1.1.0':
     resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
 
-  '@rjsf/core@5.19.3':
-    resolution: {integrity: sha512-AAzolj+fcFlwk0/5THA7T2JkmYTIUa+fLPM5prFqPw55FwWOa0qC5zIOfkhPS95Z9bfwJv3BubOAiKZ7MOGe8Q==}
+  '@rjsf/core@5.24.8':
+    resolution: {integrity: sha512-7YdOMl0UylldYR75rnKoQF5etibSwPQHA3rY8LEo28xyYek81ESGuqPTs37P14doBpGRL+SobggR76tYhDYO7A==}
     engines: {node: '>=14'}
     peerDependencies:
-      '@rjsf/utils': ^5.19.x
+      '@rjsf/utils': ^5.24.x
       react: ^16.14.0 || >=17
 
-  '@rjsf/utils@5.19.3':
-    resolution: {integrity: sha512-1lG/uMMmnAJE48BHUl4laNY2W2j2gIR2LH4jsxeEMSuFloB06ZuUXLesD03Nz2zQjm66izNmnm5eAmAi3Pa1yQ==}
+  '@rjsf/utils@5.24.8':
+    resolution: {integrity: sha512-Y/D1orNsTnIswp23QtWKq7QEme07/nSdnSJoK4gSsm2cDBkSCW+9KUsWSvmE7poqHwCn3zpbIaa3ZWEAQUJEEg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
 
-  '@rjsf/validator-ajv8@5.19.3':
-    resolution: {integrity: sha512-ah0DY1tGmBDNd0iIjH9/iL3TSflriY8cYPmAwK4aDzGLnwHgD2w8sEfJJjG01pX89rY2CeeYxcwCalwlBlUZ/w==}
+  '@rjsf/validator-ajv8@5.24.8':
+    resolution: {integrity: sha512-0l5/9CL2BhW5tUtP+vKg6o5Wpp5kuee5SPea3STtdBN/xbGf3dUX08jbKcvokTJt5552rFDcNjMZmu+C0H7ezQ==}
     engines: {node: '>=14'}
     peerDependencies:
-      '@rjsf/utils': ^5.19.x
+      '@rjsf/utils': ^5.24.x
 
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -5055,17 +5055,17 @@ snapshots:
     dependencies:
       web-streams-polyfill: 3.3.3
 
-  '@rjsf/core@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@rjsf/core@5.24.8(@rjsf/utils@5.24.8(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
-      '@rjsf/utils': 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@rjsf/utils': 5.24.8(react@19.0.0-rc-fb9a90fa48-20240614)
       lodash: 4.17.21
       lodash-es: 4.17.21
       markdown-to-jsx: 7.4.1(react@19.0.0-rc-fb9a90fa48-20240614)
-      nanoid: 3.3.7
+      nanoid: 3.3.8
       prop-types: 15.8.1
       react: 19.0.0-rc-fb9a90fa48-20240614
 
-  '@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@rjsf/utils@5.24.8(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
       json-schema-merge-allof: 0.8.1
       jsonpointer: 5.0.1
@@ -5074,9 +5074,9 @@ snapshots:
       react: 19.0.0-rc-fb9a90fa48-20240614
       react-is: 18.2.0
 
-  '@rjsf/validator-ajv8@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))':
+  '@rjsf/validator-ajv8@5.24.8(@rjsf/utils@5.24.8(react@19.0.0-rc-fb9a90fa48-20240614))':
     dependencies:
-      '@rjsf/utils': 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@rjsf/utils': 5.24.8(react@19.0.0-rc-fb9a90fa48-20240614)
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
