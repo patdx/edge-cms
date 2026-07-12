@@ -31,14 +31,14 @@ importers:
         specifier: ^2.10.3
         version: 2.10.3(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(typescript@5.5.4)
       '@rjsf/core':
-        specifier: 5.19.3
-        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
+        specifier: 5.24.13
+        version: 5.24.13(@rjsf/utils@5.24.13(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@rjsf/utils':
-        specifier: 5.19.3
-        version: 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+        specifier: 5.24.13
+        version: 5.24.13(react@19.0.0-rc-fb9a90fa48-20240614)
       '@rjsf/validator-ajv8':
-        specifier: 5.19.3
-        version: 5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))
+        specifier: 5.24.13
+        version: 5.24.13(@rjsf/utils@5.24.13(react@19.0.0-rc-fb9a90fa48-20240614))
       '@sinclair/typebox':
         specifier: 0.32.35
         version: 0.32.35
@@ -1314,24 +1314,24 @@ packages:
   '@remix-run/web-stream@1.1.0':
     resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
 
-  '@rjsf/core@5.19.3':
-    resolution: {integrity: sha512-AAzolj+fcFlwk0/5THA7T2JkmYTIUa+fLPM5prFqPw55FwWOa0qC5zIOfkhPS95Z9bfwJv3BubOAiKZ7MOGe8Q==}
+  '@rjsf/core@5.24.13':
+    resolution: {integrity: sha512-ONTr14s7LFIjx2VRFLuOpagL76sM/HPy6/OhdBfq6UukINmTIs6+aFN0GgcR0aXQHFDXQ7f/fel0o/SO05Htdg==}
     engines: {node: '>=14'}
     peerDependencies:
-      '@rjsf/utils': ^5.19.x
+      '@rjsf/utils': ^5.24.x
       react: ^16.14.0 || >=17
 
-  '@rjsf/utils@5.19.3':
-    resolution: {integrity: sha512-1lG/uMMmnAJE48BHUl4laNY2W2j2gIR2LH4jsxeEMSuFloB06ZuUXLesD03Nz2zQjm66izNmnm5eAmAi3Pa1yQ==}
+  '@rjsf/utils@5.24.13':
+    resolution: {integrity: sha512-rNF8tDxIwTtXzz5O/U23QU73nlhgQNYJ+Sv5BAwQOIyhIE2Z3S5tUiSVMwZHt0julkv/Ryfwi+qsD4FiE5rOuw==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.14.0 || >=17
 
-  '@rjsf/validator-ajv8@5.19.3':
-    resolution: {integrity: sha512-ah0DY1tGmBDNd0iIjH9/iL3TSflriY8cYPmAwK4aDzGLnwHgD2w8sEfJJjG01pX89rY2CeeYxcwCalwlBlUZ/w==}
+  '@rjsf/validator-ajv8@5.24.13':
+    resolution: {integrity: sha512-oWHP7YK581M8I5cF1t+UXFavnv+bhcqjtL1a7MG/Kaffi0EwhgcYjODrD8SsnrhncsEYMqSECr4ZOEoirnEUWw==}
     engines: {node: '>=14'}
     peerDependencies:
-      '@rjsf/utils': ^5.19.x
+      '@rjsf/utils': ^5.24.x
 
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -2278,6 +2278,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   globals@11.12.0:
@@ -3176,6 +3177,7 @@ packages:
   prebuild-install@7.1.1:
     resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
     engines: {node: '>=10'}
+    deprecated: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
     hasBin: true
 
   prettier@2.8.8:
@@ -3624,6 +3626,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -3680,6 +3683,7 @@ packages:
   tsconfck@3.0.3:
     resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -5064,17 +5068,16 @@ snapshots:
     dependencies:
       web-streams-polyfill: 3.3.3
 
-  '@rjsf/core@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@rjsf/core@5.24.13(@rjsf/utils@5.24.13(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
-      '@rjsf/utils': 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@rjsf/utils': 5.24.13(react@19.0.0-rc-fb9a90fa48-20240614)
       lodash: 4.17.21
       lodash-es: 4.17.21
       markdown-to-jsx: 7.4.1(react@19.0.0-rc-fb9a90fa48-20240614)
-      nanoid: 3.3.7
       prop-types: 15.8.1
       react: 19.0.0-rc-fb9a90fa48-20240614
 
-  '@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)':
+  '@rjsf/utils@5.24.13(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:
       json-schema-merge-allof: 0.8.1
       jsonpointer: 5.0.1
@@ -5083,9 +5086,9 @@ snapshots:
       react: 19.0.0-rc-fb9a90fa48-20240614
       react-is: 18.2.0
 
-  '@rjsf/validator-ajv8@5.19.3(@rjsf/utils@5.19.3(react@19.0.0-rc-fb9a90fa48-20240614))':
+  '@rjsf/validator-ajv8@5.24.13(@rjsf/utils@5.24.13(react@19.0.0-rc-fb9a90fa48-20240614))':
     dependencies:
-      '@rjsf/utils': 5.19.3(react@19.0.0-rc-fb9a90fa48-20240614)
+      '@rjsf/utils': 5.24.13(react@19.0.0-rc-fb9a90fa48-20240614)
       ajv: 8.12.0
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
