@@ -40,7 +40,7 @@
 		"vite-node": "2.0.5",
 		"vite-plugin-cjs-interop": "2.1.1",
 		"vite-tsconfig-paths": "4.3.2",
-		"vitest": "2.1.9",
+		"vitest": "4.1.11",
 		"wrangler": "3.114.3"
 	},
 	"dependencies": {
